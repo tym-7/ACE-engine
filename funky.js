@@ -112,6 +112,7 @@ function getLine(data) {
         text: line.text || '',
         style: line.style || 'default',
         speed: line.speed || 1,
+        muted: line.muted || false,
         effect: line.effect || null,
         background: line.background || null,
         ambience: line.ambience || null,
@@ -129,8 +130,14 @@ function getLine(data) {
     default: "sfx/pixelText.mp3"
 };
 
-function startTyping() {
+function startTyping(text, onFinish = null) {
+    if (typeId) {
+        clearTimeout(typeId);
+        typeId = null;
+    }
+    fullText = text;
 }
+
 function type() {
 }
 function finishTyping() {
