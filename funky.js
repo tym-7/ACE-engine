@@ -22,7 +22,7 @@ kap.load(addAssets());
 kap.loadFont("Doiscallme", "fonts/Docallismeonstreet.otf");
 
 kap.onLoading((progress) => {
-    kay.setBackground(0,0,0);
+    kap.setBackground(0,0,0);
     kap.drawText({
         text: `LOADING... [${Math.floor(progress * assets.length)} / ${assets.length}]`,
         font: "monospace",
