@@ -76,8 +76,10 @@ async function loadDialogue(sceneName, lineId = null) {
 function closeDialogue() {
 }
 
-// adding a new line char to separate speaker from the old way of rendering the sprite, might be a bit redundant but id like to separate visual (speaker) from internal id (char)
-// i think old way also pulled from only /sprites? i plan to have a bunch of folders within sprites, no direct images inside /sprites itself so i will handle that
+// adding a new line char to separate speaker from the old way of rendering the sprite, might be a bit redundant but 
+// id like to separate visual (speaker) from internal id (char)
+// i think old way also pulled from only /sprites? i plan to have a bunch of folders within sprites, no direct images
+// inside /sprites itself so i will handle that
 
 function getLine(data) {
     return data.map(line => ({
