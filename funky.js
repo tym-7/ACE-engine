@@ -5,3 +5,16 @@ const kap = kaplay({
     height: 1099,
     letterbox: true,
 });
+
+let assets = [];
+
+async function addAssets() {
+    const r = await fetch("data/assets.json");
+    assets = await r.json();
+
+    assets.forEach (a=> {
+        kap.loadSprite(a.name, a.src, a.options);
+            });
+}
+
+kap.load(addAssets());
