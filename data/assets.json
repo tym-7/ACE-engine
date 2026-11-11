@@ -1,3 +1,6 @@
 [
-  "assets/loading.png"
+  { 
+    "name": "loading",
+    "src": "assets/loading.png"
+  }
 ]
