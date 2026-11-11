@@ -19,7 +19,7 @@ async function addAssets() {
 
 kap.load(addAssets());
 
-kap.loadFont("Doiscallme", "fonts/Doiscallmestreet.ttf"
+kap.loadFont("Doiscallme", "fonts/Docallismeonstreet.otf"
 
 const loadingText = kap.add([
     kap.text("Loading...", {
