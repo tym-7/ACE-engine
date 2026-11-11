@@ -68,6 +68,7 @@ let settings = {
   midscroll: false,
   downscroll: false,
   skipPrologue: false,
+    muteBlips: false,
   showFPS: false
 };
 
@@ -81,7 +82,7 @@ function getTextSpeed() {
 let inDialogue = false;
 let shownDialogue = new Set();
 let currentScene = "";
-let currentLine = "";
+let currentLine = null;
 let dialogueQueue = [];
 let typeId = null;
 let fullText = "";
@@ -145,7 +146,8 @@ function finishTyping() {
 
 function renderLine(line) {
     // i need to add back the html and css vro
-    renderBox(line.style);
+    currentLine = line;
+    renderBox(currentLine.style);
 }
 
 function renderBox(style) {
