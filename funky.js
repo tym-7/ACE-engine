@@ -30,7 +30,7 @@ const loadingText = kap.add([
     ]);
 
 kap.onLoading((progress) => {
-    loadingText.text = `LOADING... [${Math.floor(progress / assets.length)} / ${assets.length}`
+    loadingText.text = `LOADING... [${Math.floor(progress / assets.length)} / ${assets.length}`;
 });
 
 let inventory = new Map();
