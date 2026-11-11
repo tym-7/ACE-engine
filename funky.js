@@ -21,16 +21,13 @@ kap.load(addAssets());
 
 kap.loadFont("Doiscallme", "fonts/Docallismeonstreet.otf");
 
-const loadingText = kap.add([
-    kap.text("Loading...", {
-        font: "Doiscallme",
-        size: 50,
-        align: "center"
-    }),
-    ]);
-
 kap.onLoading((progress) => {
-    loadingText.text = `LOADING... [${Math.floor(progress / assets.length)} / ${assets.length}`;
+    kap.drawText({
+        text: `LOADING... [${Math.floor(progress * assets.length)} / ${assets.length}`,
+        font: "Doiscallme",
+        size: "50",
+        align: "center",
+    });
 });
 
 let inventory = new Map();
