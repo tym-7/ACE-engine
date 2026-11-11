@@ -62,7 +62,8 @@ addRandomData();
 
 let inDialogue = false;
 let shownDialogue = new Set();
-let currentScene = null;
+let currentScene = "";
+let currentLine = "";
 let dialogueQueue = [];
 
 async function loadDialogue(sceneName, lineId = null) {
