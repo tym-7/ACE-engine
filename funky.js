@@ -18,3 +18,37 @@ async function addAssets() {
 }
 
 kap.load(addAssets());
+
+let inventory = new Map();
+let gameFlags = {};
+let stickers = {};
+
+async function addRandomData() {
+    try {
+        const inventoryResponse = await fetch('data/inventory.json');
+        const inventoryData = await inventoryResponse.json();
+        inventory = new Map(Object.entries(inventoryData));
+
+        const flagsResponse = await fetch('data/flags.json');
+        const flagsData = await flagsResponse.json();
+        gameFlags = flagsData;
+
+        //const stickersResponse = await fetch('data/stickers.json');
+        //const sitckersData = await stickersResponse.json();
+        //stickers = stickersData;
+
+    } catch (error) {
+        console.error("Error:", error);
+    }
+}
+
+addRandomData();
+
+    let meters = {
+    stamina: 100,
+    sanity: 100,
+    picolove: 50,
+    keithlove: 50,
+    approval: 0,
+    lv: 0
+};
