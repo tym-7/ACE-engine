@@ -15,13 +15,8 @@ async function addAssets() {
     assets.forEach (a=> {
         kap.loadSprite(a.name, a.src, a.options);
             });
-}
-
-kap.load(addAssets());
-
-kap.loadFont("Doiscallme", "fonts/Docallismeonstreet.otf");
-
-kap.onLoading((progress) => {
+    
+    kap.onLoading((progress) => {
     kap.setBackground(0,0,0);
     kap.drawText({
         text: `LOADING... [${Math.floor(progress * assets.length)} / ${assets.length}]`,
@@ -32,6 +27,11 @@ kap.onLoading((progress) => {
         align: "center",
     });
 });
+}
+
+kap.load(addAssets());
+
+kap.loadFont("Doiscallme", "fonts/Docallismeonstreet.otf");
 
 let inventory = new Map();
 let gameFlags = {};
