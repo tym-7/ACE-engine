@@ -61,6 +61,10 @@ async function addRandomData() {
 
 addRandomData();
 
+//i want to add translation support, but i don't have any plans to get translators bc no one is going to translate so much dialogue
+// when each week will have over tens of thousands of words
+// if anyone does wanna, feel free tho ❤
+
 let inDialogue = false;
 let shownDialogue = new Set();
 let currentScene = null;
