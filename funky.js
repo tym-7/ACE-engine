@@ -60,11 +60,32 @@ addRandomData();
 // when each week will have over tens of thousands of words
 // if anyone does wanna, feel free tho ❤
 
+let settings = {
+  fontSize: 1,
+  speedDialogue: 1,
+  speedNotes: 0,
+  overlay: 0,
+  midscroll: false,
+  downscroll: false,
+  skipPrologue: false,
+  showFPS: false
+};
+
+function getTextSpeed() {
+    if (settings.speedDialogue === 0) return 45;
+    if (settings.speedDialogue === 1) return 30;
+    if (settings.speedDialogue === 2) return 10;
+    if (settings.speedDialogue === 3) return 0;
+}
+
 let inDialogue = false;
 let shownDialogue = new Set();
 let currentScene = "";
 let currentLine = "";
 let dialogueQueue = [];
+let typeId = null;
+let fullText = "";
+let textSpeed = 30;
 
 async function loadDialogue(sceneName, lineId = null) {
 }
@@ -90,6 +111,7 @@ function getLine(data) {
         position: line.position || 'center',
         text: line.text || '',
         style: line.style || 'default',
+        speed: line.speed || 1,
         effect: line.effect || null,
         background: line.background || null,
         ambience: line.ambience || null,
@@ -102,11 +124,25 @@ function getLine(data) {
     }));
 }
 
+   const charBlip = {
+    Pico: "sfx/pixelText.mp3",
+    default: "sfx/pixelText.mp3"
+};
+
+function startTyping() {
+}
 function type() {
+}
+function finishTyping() {
 }
 
 function renderLine(line) {
     // i need to add back the html and css vro
+    renderBox(line.style);
+}
+
+function renderBox(style) {
+    // get back the box html
 }
 
     let meters = {
