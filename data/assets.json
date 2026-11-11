@@ -1,6 +1,6 @@
 [
   { 
-    "name": "loading",
-    "src": "assets/loading.png"
+    "name": "disclaimer",
+    "src": "assets/ui/images/disclaimer.png"
   }
 ]
