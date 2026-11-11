@@ -59,7 +59,7 @@ addRandomData();
 //i want to add translation support, but i don't have any plans to get translators bc no one is going to translate so much dialogue
 // when each week will have over tens of thousands of words
 // if anyone does wanna, feel free tho ❤
-
+let currentChapter = 0;
 let settings = {
   fontSize: 1,
   speedDialogue: 1,
@@ -107,6 +107,15 @@ function saveDialogue() {
     localStorage.setItem(shownSave, JSON.stringify(shownData));
 }
     loadShown();
+
+function loadGame(data) {
+    if (!data) return;
+    gameFlags = data.flags;
+    meters = data.meters;
+    inventory = new Map(Object.entries(data.inventory));
+    currentChapter = data.currentChapter || 1;
+}
+
 
 function getGame(sceneName, lineId = null) {
     return {
