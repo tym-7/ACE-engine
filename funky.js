@@ -79,6 +79,103 @@ function getTextSpeed() {
     if (settings.speedDialogue === 3) return 0;
 }
 
+// save stuff idk
+//
+// adding a lot of spaces bc they kinda look ugly copy and pasted like that
+
+const settingsSave = 'fnf_dark_minds_settings';
+const shownSave = 'fnf_dark_minds_shown';
+const chapterSave = 'fnf_dark_minds_chapter_save';
+const sceneSave = 'fnf_dark_minds_scene_save';
+const lineSave = 'fnf-dark-minds_line_save';
+const slot1Save = 'fnf-dark-minds_slot1_save';
+const slot2Save = 'fnf-dark-minds_slot2_save';
+const slot3Save = 'fnf-dark-minds_slot3_save';
+
+function loadShown() {
+    const shownDialogues = localStorage.getItem(shownSave);
+    if (shownDialogues) {
+        const dialogueData = JSON.parse(shownDialogues); 
+        shownDialogs = new Set(dialogueData.shownDialogs || []);
+    }
+}
+
+function saveDialogue() {
+    const shownData = {
+    shownDialogs: Array.from(shownDialogs),
+    };
+    localStorage.setItem(shownSave, JSON.stringify(shownData));
+}
+    loadShown();
+
+function getGame(sceneName, lineId = null) {
+    return {
+        currentScene: sceneName,
+        currentId: lineId,
+        flags: { ...gameFlags },
+        meters: { ...meters },
+        inventory: Object.fromEntries(inventory),
+        currentChapter: currentChapter,
+        timestamp: new Date().toLocaleString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true
+        })
+    };
+}
+
+document.addEventListener("keydown", (event) => {
+    if (event.key === "1") {
+        saveSlot1(sceneName, currentId); 
+    } else if (event.key === "2") {
+        saveSlot2(sceneName, currentId);
+    } else if (event.key === "3") {
+        saveSlot3(sceneName, currentId);
+    }
+});
+
+function saveLine(sceneName, lineId) {
+    localStorage.setItem(lineSave, JSON.stringify(getGame(sceneName, lineId)));
+}
+
+function saveSlot1(sceneName, lineId) {
+    localStorage.setItem(slot1Save, JSON.stringify(getGame(sceneName, lineId)));
+}
+
+function saveSlot2(sceneName, lineId) {
+    localStorage.setItem(slot2Save, JSON.stringify(getGame(sceneName, lineId)));
+}
+
+function saveSlot3(sceneName, lineId) {
+    localStorage.setItem(slot3Save, JSON.stringify(getGame(sceneName, lineId)));
+}
+
+function saveScene(sceneName) {
+    localStorage.setItem(sceneSave, JSON.stringify(getGame(sceneName)));
+}
+
+function saveChapter(sceneName, lineId) {
+    localStorage.setItem(chapterSave, JSON.stringify(getGame(sceneName, lineId)));
+}
+
+function saveSettings() {
+    localStorage.setItem(settingsSave, JSON.stringify(settings));
+}
+
+function loadSettings() {
+    const settingData = localStorage.getItem(settingsSave);
+    if (settingData) {
+        settings = JSON.parse(settingData);
+    }
+    //updateSettings();
+}
+
+// 
+//
+//
+
 let inDialogue = false;
 let shownDialogue = new Set();
 let currentScene = "";
