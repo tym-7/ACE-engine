@@ -177,6 +177,7 @@ function loadSettings() {
 //
 
 let inDialogue = false;
+let inFreeplay = false;
 let shownDialogue = new Set();
 let currentScene = "";
 let currentLine = null;
@@ -186,7 +187,17 @@ let fullText = "";
 let textSpeed = 30;
 
 async function loadDialogue(sceneName, lineId = null) {
+    const r = await fetch(`assets/vn/dialogue/${sceneName}.json`);
+    sceneData = await r.json();
+    currentScene = sceneName;
+    saveScene(sceneName);
+    if (!inFreeplay) {
+            shownDialogs.add(sceneName);
+            saveDialogue();
+            }
+        showDialog(sceneData, lineId);
 }
+
         function showDialogue(data, lineId = null) {
             inDialogue = true;
             dialogueQueue = getLine(data);
