@@ -19,7 +19,6 @@ async function addAssets() {
 }
 
     kap.onLoading((progress) => {
-    kap.setBackground(0,0,0);
     kap.drawText({
         text: `LOADING... [${Math.floor(progress * assets.length)} / ${assets.length}]`,
         font: "monospace",
@@ -31,6 +30,7 @@ async function addAssets() {
 });
 
 kap.load(addAssets());
+kap.setBackground(0,0,0);
 
 kap.loadFont("Doiscallme", "fonts/docallismeonstreet.otf");
 
