@@ -90,6 +90,7 @@ function getLine(data) {
         position: line.position || 'center',
         text: line.text || '',
         style: line.style || 'default',
+        effect: line.effect || null,
         background: line.background || null,
         ambience: line.ambience || null,
         track: line.track || null,
