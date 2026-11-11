@@ -96,7 +96,7 @@ function loadShown() {
     const shownDialogues = localStorage.getItem(shownSave);
     if (shownDialogues) {
         const dialogueData = JSON.parse(shownDialogues); 
-        shownDialogs = new Set(dialogueData.shownDialogs || []);
+        shownDialogues = new Set(dialogueData.shownDialogues || []);
     }
 }
 
@@ -128,11 +128,11 @@ function getGame(sceneName, lineId = null) {
 
 document.addEventListener("keydown", (event) => {
     if (event.key === "1") {
-        saveSlot1(sceneName, currentId); 
+        saveSlot1(currentScene, currentId); 
     } else if (event.key === "2") {
-        saveSlot2(sceneName, currentId);
+        saveSlot2(currentScene, currentId);
     } else if (event.key === "3") {
-        saveSlot3(sceneName, currentId);
+        saveSlot3(currentScene, currentId);
     }
 });
 
@@ -195,7 +195,7 @@ async function loadDialogue(sceneName, lineId = null) {
             shownDialogs.add(sceneName);
             saveDialogue();
             }
-        showDialog(sceneData, lineId);
+        showDialogue(sceneData, lineId);
 }
 
         function showDialogue(data, lineId = null) {
