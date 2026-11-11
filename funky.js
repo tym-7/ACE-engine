@@ -12,10 +12,11 @@ async function addAssets() {
     const r = await fetch("data/assets.json");
     assets = await r.json();
 
-    assets.forEach (a=> {
-        kap.loadSprite(a.name, a.src, a.options);
-            });
-    
+    await Promise.all(
+    assets.map((a) => kap.loadSprite(a.name, a.src, a.options))
+  );
+}
+
     kap.onLoading((progress) => {
     kap.setBackground(0,0,0);
     kap.drawText({
@@ -27,7 +28,6 @@ async function addAssets() {
         align: "center",
     });
 });
-}
 
 kap.load(addAssets());
 
