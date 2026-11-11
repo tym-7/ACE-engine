@@ -4,6 +4,7 @@ const kap = kaplay({
     width: 1595,
     height: 1099,
     letterbox: true,
+    loadingScreen: false
 });
 
 let assets = [];
