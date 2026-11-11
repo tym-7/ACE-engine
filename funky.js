@@ -34,6 +34,8 @@ kap.setBackground(0,0,0);
 
 kap.loadFont("Doiscallme", "fonts/docallismeonstreet.otf");
 
+let version = "0.0.0";
+
 let inventory = new Map();
 let gameFlags = {};
 let stickers = {};
@@ -58,6 +60,51 @@ async function addRandomData() {
 }
 
 addRandomData();
+
+let inDialogue = false;
+let shownDialogue = new Set();
+let currentScene = null;
+let dialogueQueue = [];
+
+async function loadDialogue(sceneName, lineId = null) {
+}
+        function showDialogue(data, lineId = null) {
+            inDialogue = true;
+            dialogueQueue = getLine(data);
+        }
+
+function closeDialogue() {
+}
+
+// adding a new line char to separate speaker from the old way of rendering the sprite, might be a bit redundant but id like to separate visual (speaker) from internal id (char)
+// i think old way also pulled from only /sprites? i plan to have a bunch of folders within sprites, no direct images inside /sprites itself so i will handle that
+
+function getLine(data) {
+    return data.map(line => ({
+        id: line.id || null,
+        speaker: line.speaker || null,
+        char: line.char || null,
+        mood: line.mood || null,
+        position: line.position || 'center',
+        text: line.text || '',
+        style: line.style || 'default',
+        background: line.background || null,
+        ambience: line.ambience || null,
+        track: line.track || null,
+        triggers: line.triggers || [],
+        next: line.next || null,
+        branches: line.branches || null,
+        newChapter: line.newChapter || false,
+        choices: line.choices || []
+    }));
+}
+
+function type() {
+}
+
+function renderLine(line) {
+    // i need to add back the html and css vro
+}
 
     let meters = {
     stamina: 100,
