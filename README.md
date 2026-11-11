@@ -1,0 +1,1 @@
+This is my javascript Friday Night Funkin' engine, ACE Engine (Aloe's Cool Engine), in use for my mod FNF: Dark Minds. I don't expect anyone else to try to use this engine, but feel free to use! I'll likely make a guide of how to use it once it's finished
