@@ -1,0 +1,135 @@
+[
+  {
+    "speaker": "Pico",
+    "mood": "neutral",
+    "position": "left",
+    "background": "darkalley",
+    "text": "He is not showing up.",
+    "style": "picothink",
+    "triggers": []
+  },
+
+  {
+    "speaker": "Pico",
+    "mood": "neutral",
+    "position": "left",
+    "text": "The target 'apparently lounges here a lot'? That's a lot of bullshit.",
+    "style": "picothink",
+    "triggers": []
+  },
+
+  {
+    "speaker": "Pico",
+    "mood": "neutral",
+    "position": "left",
+    "text": "I haven't even seen this guy once across the week I've been here.",
+    "style": "picothink",
+    "triggers": []
+  },
+  {
+    "speaker": "Pico",
+    "mood": "neutral",
+    "position": "left",
+    "text": "This is so inefficient. Don't understand why I'm not provided his address or anything like that. I could just stake his house and like... fire at him, get it done much easier.",
+    "style": "picothink",
+    "triggers": []
+  },
+  {
+    "speaker": "Pico",
+    "mood": "neutral",
+    "position": "left",
+    "text": "There's a dumpster near by. And no one's around. It would be a perfect time for him to show up now.",
+    "style": "picothink",
+    "triggers": []
+  },
+  {
+    "speaker": "Pico",
+    "mood": "neutral",
+    "position": "left",
+    "text": "But of course he's not gonna come over because that's what always happens!",
+    "style": "picothink",
+    "triggers": []
+  },
+  {
+    "speaker": "Pico",
+    "mood": "neutral",
+    "position": "left",
+    "text": "Or maybe I'm not being conspicious enough and I'm scaring him off.",
+    "style": "picothink",
+    "triggers": []
+  },
+  {
+    "speaker": "Pico",
+    "mood": "neutral",
+    "position": "left",
+    "text": "Could always be a possibility.",
+    "style": "picothink",
+    "triggers": []
+  },
+  {
+    "speaker": "Pico",
+    "mood": "neutral",
+    "position": "left",
+    "text": "Actually hold on, wait, I see someone coming...",
+    "style": "picothink",
+    "triggers": []
+  },
+  {
+    "id": "001",
+    "speaker": "Pico",
+    "mood": "neutral",
+    "position": "left",
+    "text": "So far he looks like he's matching the description.",
+    "style": "picothink",
+    "triggers": []
+  },
+  {
+    "speaker": "Pico",
+    "mood": "neutral",
+    "position": "left",
+    "text": "He looks a bit familiar though. Whatever. I'm still going to shoot—",
+    "style": "picothink",
+    "triggers": []
+  },
+  {
+    "speaker": "Pico",
+    "mood": "neutral",
+    "position": "left",
+    "text": "Wait, BOYFRIEND?!",
+    "style": "picothink",
+    "triggers": []
+  },
+  {
+    "speaker": "Pico",
+    "mood": "neutral",
+    "position": "left",
+    "text": "Fuck, oh god, I would have never taken up this job if I knew I had to kill him.",
+    "style": "picothink",
+    "triggers": []
+  },
+  {
+    "speaker": "Pico",
+    "mood": "neutral",
+    "position": "left",
+    "text": "I gotta act normal or something, he's coming over. Yep, he's approaching me.",
+    "style": "picothink",
+    "triggers": []
+  },
+  {
+    "speaker": "Boyfriend",
+    "mood": "neutral",
+    "position": "right",
+    "text": "Pico.",
+    "style": "bf",
+    "triggers": []
+  },
+  {
+    "speaker": "Pico",
+    "mood": "neutral",
+    "position": "left",
+    "text": "Testing out the shaky",
+    "effect": "shaky",
+    "style": "pico",
+    "triggers": []
+  }
+]
