@@ -19,6 +19,16 @@ async function addAssets() {
 
 kap.load(addAssets());
 
+kap.loadFont("Doiscallme", "fonts/Doiscallmestreet.ttf"
+
+const loadingText = kap.add([
+    kap.text("Loading...", {
+        font: "Doiscallme",
+        size: 50,
+        align: "center"
+    }),
+    ]);
+
 let inventory = new Map();
 let gameFlags = {};
 let stickers = {};
