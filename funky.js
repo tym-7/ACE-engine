@@ -19,7 +19,7 @@ async function addAssets() {
 
 kap.load(addAssets());
 
-kap.loadFont("Doiscallme", "fonts/Docallismeonstreet.otf"
+kap.loadFont("Doiscallme", "fonts/Docallismeonstreet.otf");
 
 const loadingText = kap.add([
     kap.text("Loading...", {
@@ -28,6 +28,10 @@ const loadingText = kap.add([
         align: "center"
     }),
     ]);
+
+kap.onLoading((progress) => {
+    loadingText.text = `LOADING... [${Math.floor(progress / assets.length)} / ${assets.length}`
+});
 
 let inventory = new Map();
 let gameFlags = {};
