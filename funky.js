@@ -41,7 +41,6 @@ let gameFlags = {};
 let stickers = {};
 
 async function addRandomData() {
-    try {
         const inventoryResponse = await fetch('data/inventory.json');
         const inventoryData = await inventoryResponse.json();
         inventory = new Map(Object.entries(inventoryData));
@@ -53,10 +52,6 @@ async function addRandomData() {
         //const stickersResponse = await fetch('data/stickers.json');
         //const sitckersData = await stickersResponse.json();
         //stickers = stickersData;
-
-    } catch (error) {
-        console.error("Error:", error);
-    }
 }
 
 addRandomData();
