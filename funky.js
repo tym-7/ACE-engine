@@ -31,7 +31,7 @@ async function addAssets() {
 
 kap.load(addAssets());
 
-kap.loadFont("Doiscallme", "fonts/Docallismeonstreet.otf");
+kap.loadFont("Doiscallme", "fonts/docallismeonstreet.otf");
 
 let inventory = new Map();
 let gameFlags = {};
