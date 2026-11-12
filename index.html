@@ -25,11 +25,26 @@ a,
     font-family: "Doiscallme";
     src: url("fonts/DOCALLISMEONSTREET.ttf") format("truetype");
 }
+        #dialogue-background {
+  display: none;
+  position: absolute;
+            top: 0;
+            left: 0;
+  width: 1599px;
+  height: 1099px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: black; 
+  z-index: 1;
+}
         
     </style>
 </head>
 <body>
     
+    <div id ="dialogue-background"></div>
+    <img id ="dialogue-sprite" class ="sprite">
     <div id="dialogue-box">
   <div id="speaker-tag">
     <div id="dialogue-speaker"></div>
