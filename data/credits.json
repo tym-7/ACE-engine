@@ -1,0 +1,8 @@
+[
+  {
+    "role": "Directors",
+    "people": [
+      { "name": "name", "icon": "icon.png", "desc": "list out what they did" }
+    ]
+  }
+]
