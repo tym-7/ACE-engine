@@ -354,6 +354,7 @@ function renderLine(line) {
     const bg = document.getElementById("dialogue-background");
     const tag = document.getElementById("speaker-tag");
     const speaker = document.getElementById("dialogue-speaker");
+    // idk how many of these are useless go figure it out and remove later
     
     currentLine = line;
 
@@ -470,6 +471,26 @@ let VNSprite = null;
 let VNBg = null;
 
 function renderVNSprite() {
+    if (!currentLine.char && !currentLine.mood) {
+        VNSprite.destroy();
+        VNSprite = null;
+        return;
+    }
+    const sprite = getAsset(`assets/vn/sprites/${currentLine.char}/${currentLine.mood}.png`);
+    if (!VNSprite) {
+        VNSprite = kap.add([
+            kap.sprite(sprite),
+            kap.pos(200,735),
+            kap.anchor(botleft),
+            kap.fixed(),
+            kap.z(1),
+            ]);
+        return;
+        if (VNSprite) {
+            VNSprite.use(kap.sprite(sprite));
+        }
+        //
+    
 }
 
 function renderVNBg() {
@@ -490,13 +511,22 @@ function renderVNBg() {
 }
 
 function renderVNUI() {
+    // render the tag and the bg box here cuz they use images too
+    // i have to think abt what other vn assets use imgs but i think that might be it
+    // i think about adding full screen visuals but i dont think thats any complex shit; just remove the box for a moment and then bring it back when its over
 }
 
 function removeKaplayVN() {
 }
-
-
-
+    
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        if (inDialogue) {
+        // do dialogue things
+        }
+    }
+});
+    
 document.addEventListener("keydown", (e) => {
     if (e.key === "9") {
         loadDialogue("test");
