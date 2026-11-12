@@ -482,11 +482,12 @@ function renderVNSprite() {
         VNSprite = kap.add([
             kap.sprite(sprite),
             kap.pos(200,735),
-            kap.anchor(botleft),
+            kap.anchor("botleft"),
             kap.fixed(),
             kap.z(1),
             ]);
         return;
+    }
         if (VNSprite) {
             VNSprite.use(kap.sprite(sprite));
         }
