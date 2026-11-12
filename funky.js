@@ -272,6 +272,7 @@ function startTyping(text, onFinish = null) {
     finish = onFinish;
     const dialogueText = document.getElementById("dialogue-text");
     dialogueText.innerHTML = "";
+    const blip = new Audio(charBlip[currentLine.char] || charBlip.default);
     type();
 }
 
@@ -286,7 +287,6 @@ function type() {
         document.getElementById("dialogue-text").appendChild(span);
         
         if (!currentLine.muted && !settings.mutedBlips && c !== " ") {
-            const blip = new Audio(charBlip[currentLine.char] || charBlip.default);
             blip.volume = 0.5;
             blip.play();
         }
