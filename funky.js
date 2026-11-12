@@ -362,7 +362,7 @@ function renderLine(line) {
         renderLine(dialogueQueue.shift());
         return;
     }
-    if (currentLine.hasNoFlag && gameFlags[currentLine.hasNoFlag)] {
+    if (currentLine.hasNoFlag && gameFlags[currentLine.hasNoFlag]) {
         renderLine(dialogueQueue.shift());
         return;
     }
