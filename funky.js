@@ -368,9 +368,9 @@ function renderLine(line) {
         
     renderBox(currentLine.style);
     getFont();
-    renderVNBg():
+    renderVNBg();
     renderVNSprite();
-    renderVnUI();
+    renderVNUI();
     
     if (currentLine.id) {
         saveLine(currentScene, currentLine.id);
