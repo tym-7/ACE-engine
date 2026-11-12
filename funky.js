@@ -79,6 +79,10 @@ function getTextSpeed() {
     if (settings.speedDialogue === 3) return 0;
 }
 function getFont() {
+    const text = document.getElementById("dialogue-text");
+    if (settings.fontSize === 0) text.style.fontSize = "24px";
+    if (settings.fontSize === 1) text.style.fontSize = "28px";
+    if (settings.fontSize === 2) text.style.fontSize = "32px";
 }
 
 // save stuff idk
@@ -195,6 +199,7 @@ let currentLine = null;
 let dialogueQueue = [];
 let typeId = null;
 let fullText = "";
+let nextScene = null;
 
 async function loadDialogue(sceneName, lineId = null) {
     const r = await fetch(`assets/vn/dialogue/${sceneName}.json`);
@@ -330,9 +335,52 @@ function finishTyping() {
 }
 
 function renderLine(line) {
-    // i need to add back the html and css vro okay now just the css
+    const text = document.getElementById("dialogue-text");
+    const box = document.getElementById("dialogue-box");
+    const sprite = document.getElementById("dialogue-sprite");
+    const bg = document.getElementById("dialogue-background");
+    const tag = document.getElementById("speaker-tag");
+    const speaker = document.getElementById("dialogue-speaker");
+    
     currentLine = line;
     renderBox(currentLine.style);
+    getFont();
+    if (currentLine.background) {
+        bg.style.backgroundImage = `url('assets/vn/backgrounds/${currentLine.background}.png')`;
+        bg.style.display = "block";
+    }
+    if (currentLine.speaker) {
+        tag.style.display = "block";
+        speaker.textContent = currentLine.speaker;
+    }
+    if (!currentLine.speaker) {
+        tag.style.display = "none";
+        speaker.textContent = "";
+    }
+    if (currentLine.char && currentLine.mood) {
+        sprite.style.display = "block";
+        sprite.src = `assets/vn/sprites/${currentLine.char}/${currentLine.mood}.png`;
+    }
+    if (currentLine.id) {
+        saveLine(currentScene, currentLine.id);
+                 }
+    if (currentLine.newChapter) {
+        currentChapter++;
+    }
+    if (currentLine.triggers) {
+        currentLine.triggers.forEach(event => {
+            if (event.when === "start") handleTrigger(event);
+        });
+    }
+    
+    startTyping(currentLine.text, () => {
+        if (currentLine.triggers) {
+            currentLine.triggers.forEach(event => {
+                if (event.when === "finish") handleTrigger(event);
+            });
+        }
+    });
+    //
 }
 
 function renderBox(style) {
