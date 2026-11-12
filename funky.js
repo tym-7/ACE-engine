@@ -231,6 +231,7 @@ function closeDialogue() {
 // id like to separate visual (speaker) from internal id (char)
 // i think old way also pulled from only /sprites? i plan to have a bunch of folders within sprites, no direct images
 // inside /sprites itself so i will handle that
+// i wanna add a transition sec for backgrounds too
 
 function getLine(data) {
     return data.map(line => ({
