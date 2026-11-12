@@ -461,8 +461,15 @@ function handleTrigger(event) {
 }
 
 function giveItem(item, amount){
+    const currentCount = inventory.get(item) || 0;
+    inventory.set(item, currentCount + amount);
 }
 
+document.addEventListener("keydown", (e) => {
+    if (e.key === "9") {
+        loadDialogue(test);
+    }
+});
 
     let meters = {
     stamina: 100,
