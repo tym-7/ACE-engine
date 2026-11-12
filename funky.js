@@ -78,6 +78,8 @@ function getTextSpeed() {
     if (settings.speedDialogue === 2) return 10;
     if (settings.speedDialogue === 3) return 0;
 }
+function getFont() {
+}
 
 // save stuff idk
 //
