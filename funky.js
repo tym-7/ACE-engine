@@ -102,7 +102,7 @@ function loadShown() {
 
 function saveDialogue() {
     const shownData = {
-    shownDialogs: Array.from(shownDialogs),
+    shownDialogues: Array.from(shownDialogues),
     };
     localStorage.setItem(shownSave, JSON.stringify(shownData));
 }
@@ -201,7 +201,7 @@ async function loadDialogue(sceneName, lineId = null) {
     currentScene = sceneName;
     saveScene(sceneName);
     if (!inFreeplay) {
-            shownDialogs.add(sceneName);
+            shownDialogues.add(sceneName);
             saveDialogue();
             }
         showDialogue(sceneData, lineId);
@@ -259,17 +259,67 @@ function getLine(data) {
     default: "sfx/pixelText.mp3"
 };
 
+let i = 0;
+let finish = null;
+
 function startTyping(text, onFinish = null) {
+    i = 0;
     if (typeId) {
         clearTimeout(typeId);
         typeId = null;
     }
     fullText = text;
+    finish = onFinish;
+    const dialogueText = document.getElementById("dialogue-text");
+    dialogueText.innerHTML = "";
+    type();
 }
 
 function type() {
+    if (i < fullText.length) {
+        const c = fullText.charAt(i);
+        const next = fullText.charAt(i+1);
+        const span = document.createElement('span');
+        span.textContent = c;
+        i++;
+        applyEffect(span);
+        document.getElementById("dialogue-text").appendChild(span);
+        
+        if (!currentLine.muted && !settings.mutedBlips && c !== " ") {
+            const blip = new Audio(charBlip[currentLine.char] || charBlip.default);
+            blip.volume = 0.5;
+            blip.play();
+        }
+        let delay = getTextSpeed() / currentLine.speed;
+            if (c === "." || c === "!" || c === "?") {
+                if (next !== "." && next !== "!" && next !== "?") {
+                    delay += 500;
+                }
+                } else if (c === ",") {
+                    delay += 250;
+                }
+            typeId = setTimeout(type, delay);
+            } else {
+                finishTyping();
+            }
 }
+    
 function finishTyping() {
+    if (typeId) {
+    clearTimeout(typeId);
+    typeId = null;
+    }
+    
+    const dialogueText = document.getElementById("dialogue-text");
+    dialogueText.innerHTML = "";
+    for (let index = 0; index < fullText.length; index++) {
+        const span = document.createElement("span");
+        span.textContent = fullText[index];
+        applyEffect(span);
+        dialogueText.appendChild(span);
+    }
+    
+    if (finish) finish();
 }
 
 function renderLine(line) {
@@ -279,6 +329,9 @@ function renderLine(line) {
 }
 
 function renderBox(style) {
+}
+
+function applyEffect(text) {
 }
 
     let meters = {
