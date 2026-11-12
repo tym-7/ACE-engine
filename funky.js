@@ -336,6 +336,20 @@ function renderLine(line) {
 }
 
 function renderBox(style) {
+    const box = document.getElementById("dialogue-box");
+    if (style === 'pico') {
+        box.style.backgroundColor = '#356849';
+        box.style.border = '14px solid #0a2d24';
+    }
+    if (style === 'bf') {
+    box.style.backgroundColor = '#263a8e';
+    box.style.border = '14px solid #1d0d59';
+  } 
+    if (style === 'picothink') {
+    box.style.backgroundColor = '#458b61';
+    box.style.border = '14px solid #144444';
+    }
+    
 }
 
 function applyEffect(text) {
