@@ -200,6 +200,7 @@ let inDialogue = false;
 let inFreeplay = false;
 let currentScene = "";
 let currentLine = null;
+let currentId = null;
 let dialogueQueue = [];
 let typeId = null;
 let fullText = "";
