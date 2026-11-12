@@ -59,6 +59,9 @@ addRandomData();
 //i want to add translation support, but i don't have any plans to get translators bc no one is going to translate so much dialogue
 // when each week will have over tens of thousands of words
 // if anyone does wanna, feel free tho ❤
+
+// i made "i" as a global variable so idk if "i" can be used anymore in a "for" loop, use index for the meanwhile 
+
 let currentChapter = 0;
 let settings = {
   fontSize: 1,
@@ -389,7 +392,7 @@ function renderLine(line) {
     }
 
     if (currentLine.branches) {
-        handleBranch();
+        handleBranch(currentLine.branches);
     }
     
     startTyping(currentLine.text, () => {
@@ -422,7 +425,8 @@ function renderBox(style) {
 function applyEffect(text) {
 }
 
-function handleBranch() {
+function handleBranch(branchs) {
+    
 }
 
 function handleTrigger(event) {
