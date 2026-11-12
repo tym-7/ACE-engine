@@ -460,6 +460,9 @@ function handleBranch(branchs) {
 function handleTrigger(event) {
 }
 
+function giveItem(item, amount){
+}
+
 
     let meters = {
     stamina: 100,
