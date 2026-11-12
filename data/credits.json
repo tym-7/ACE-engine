@@ -2,6 +2,49 @@
   {
     "role": "Directors",
     "people": [
+      { "name": "aloev", "icon": "icon.png", "desc": "list out what they did" }
+    ]
+  },
+  {
+    "role": "Coders",
+    "people": [
+      { "name": "aloev", "icon": "icon.png", "desc": "list out what they did" }
+    ]
+  },
+  {
+    "role": "Sprite Artists",
+    "people": [
+      { "name": "aloev", "icon": "icon.png", "desc": "list out what they did" }
+    ]
+  },
+  {
+    "role": "Background Artists",
+    "people": [
+      { "name": "aloev", "icon": "icon.png", "desc": "list out what they did" }
+    ]
+  },
+  {
+    "role": "Animators",
+    "people": [
+      { "name": "Tyke", "icon": "icon.png", "desc": "Animated Pico's idle" }
+    ]
+  },
+  {
+    "role": "Composers",
+    "people": [
+      { "name": "Red Imposter", "icon": "icon.png", "desc": "Made the menu music" },
+      { "name": "Kimmy", "icon": "icon.png", "desc": "Composer for future content edit this when it goes public" }
+    ]
+  },
+  {
+    "role": "Voice Actors",
+    "people": [
+      { "name": "Windmill Hills", "icon": "icon.png", "desc": "Voiced Keith's gameover lines" }
+    ]
+  },
+  {
+    "role": "Special Thanks",
+    "people": [
       { "name": "name", "icon": "icon.png", "desc": "list out what they did" }
     ]
   }
