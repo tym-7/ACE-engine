@@ -472,10 +472,12 @@ let VNSprite = null;
 let VNBg = null;
 
 function renderVNSprite() {
+    if (VNSprite) {
     if (!currentLine.char && !currentLine.mood) {
         VNSprite.destroy();
         VNSprite = null;
         return;
+    }
     }
     const sprite = getAsset(`assets/vn/sprites/${currentLine.char}/${currentLine.mood}.png`);
     if (!VNSprite) {
@@ -491,7 +493,7 @@ function renderVNSprite() {
         if (VNSprite) {
             VNSprite.use(kap.sprite(sprite));
         }
-        //
+        // position here
     
 }
 
