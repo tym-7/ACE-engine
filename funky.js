@@ -197,7 +197,7 @@ let textSpeed = 30;
 
 async function loadDialogue(sceneName, lineId = null) {
     const r = await fetch(`assets/vn/dialogue/${sceneName}.json`);
-    sceneData = await r.json();
+    const sceneData = await r.json();
     currentScene = sceneName;
     saveScene(sceneName);
     if (!inFreeplay) {
@@ -210,6 +210,17 @@ async function loadDialogue(sceneName, lineId = null) {
         function showDialogue(data, lineId = null) {
             inDialogue = true;
             dialogueQueue = getLine(data);
+            document.getElementById("dialogue-box").style.display = "block";
+    document.getElementById("dialogue-background").style.display = "block";
+    
+    if (lineId) {
+        while (dialogueQueue.length > 0 && dialogueQueue[0].id !== lineId) {
+            dialogueQueue.shift();
+        }
+    }
+    if (dialogueQueue.length > 0) {
+        renderLine(dialogueQueue.shift());
+    }
         }
 
 function closeDialogue() {
