@@ -234,7 +234,14 @@ async function loadDialogue(sceneName, lineId = null) {
     }
         }
 
-function closeDialogue() {
+function closeDialog() {
+  const text = document.getElementById("dialogue-text");
+  const box = document.getElementById("dialogue-box");
+  const bg = document.getElementById("dialogue-background");
+
+  text.innerHTML = "";
+  box.style.display = "none";
+  bg.style.display = "none";
 }
 
 // adding a new line char to separate speaker from the old way of rendering the sprite, might be a bit redundant but 
