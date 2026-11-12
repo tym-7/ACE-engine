@@ -358,7 +358,7 @@ function renderLine(line) {
     
     currentLine = line;
 
-    if (currentLine.hasFlag && !gameFlags[currentLine.hasFlag)] {
+    if (currentLine.hasFlag && !gameFlags[currentLine.hasFlag]) {
         renderLine(dialogueQueue.shift());
         return;
     }
