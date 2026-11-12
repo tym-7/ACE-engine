@@ -375,6 +375,9 @@ function renderLine(line) {
         sprite.src = `assets/vn/sprites/${currentLine.char}/${currentLine.mood}.png`;
         sprite.className = `sprite ${currentLine.position}`;
     }
+    if (!currentLine.char) {
+        sprite.style.display = "none";
+    }
         if (currentLine.position === "right") {
             sprite.classList.add('flip');
         }
