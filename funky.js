@@ -34,6 +34,7 @@ kap.setBackground(0,0,0);
 
 kap.loadFont("Doiscallme", "fonts/docallismeonstreet.otf");
 
+
 let version = "0.0.0";
 
 let inventory = new Map();
@@ -367,29 +368,9 @@ function renderLine(line) {
         
     renderBox(currentLine.style);
     getFont();
-    if (currentLine.background) {
-        bg.style.backgroundImage = `url('assets/vn/backgrounds/${currentLine.background}.png')`;
-        bg.style.display = "block";
-    }
-    if (currentLine.speaker) {
-        tag.style.display = "block";
-        speaker.textContent = currentLine.speaker;
-    }
-    if (!currentLine.speaker) {
-        tag.style.display = "none";
-        speaker.textContent = "";
-    }
-    if (currentLine.char && currentLine.mood) {
-        sprite.style.display = "block";
-        sprite.src = `assets/vn/sprites/${currentLine.char}/${currentLine.mood}.png`;
-        sprite.className = `sprite ${currentLine.position}`;
-    }
-    if (!currentLine.char) {
-        sprite.style.display = "none";
-    }
-        if (currentLine.position === "right") {
-            sprite.classList.add('flip');
-        }
+    renderVNBg():
+    renderVNSprite();
+    renderVnUI();
     
     if (currentLine.id) {
         saveLine(currentScene, currentLine.id);
@@ -473,6 +454,22 @@ function giveItem(item, amount){
     const currentCount = inventory.get(item) || 0;
     inventory.set(item, currentCount + amount);
 }
+
+//// kaplay stuff idk
+///
+
+function renderVNSprite() {
+}
+
+function renderVNBg() {
+}
+
+function renderVNUI() {
+}
+
+function removeKaplayVN() {
+}
+
 
 document.addEventListener("keydown", (e) => {
     if (e.key === "9") {
