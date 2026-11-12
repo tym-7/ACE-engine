@@ -115,7 +115,7 @@ function loadShown() {
 
 function saveDialogue() {
     const shownData = {
-    shownDialogues: Array.from(shownDialogues),
+    shownDialogue: Array.from(shownDialogue),
     };
     localStorage.setItem(shownSave, JSON.stringify(shownData));
 }
