@@ -10,7 +10,7 @@
             background-color: #000000;
         }
         * {
-  cursor: url("assets/ui/cursr.png") 0 0, auto;
+  cursor: url("assets/ui/images/cursr.png") 0 0, auto;
 }
 
 button,
@@ -19,50 +19,11 @@ a,
 .arrow,
 .checkbox,
 [style*="cursor: pointer"] {
-  cursor: url("assets/ui/point.png") 2 2, pointer !important;
+  cursor: url("assets/ui/images/point.png") 2 2, pointer !important;
 }
 @font-face {
     font-family: "Doiscallme";
     src: url("fonts/DOCALLISMEONSTREET.ttf") format("truetype");
-}
-        #dialogue-background {
-  display: none;
-  position: absolute;
-            top: 0;
-            left: 0;
-  width: 1599px;
-  height: 1099px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: black; 
-  z-index: 1;
-}
-        .sprite {
-  position: absolute;
-  display: none;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  width: auto;
-  height: auto;
-}
-    
-.sprite.left {
-  left: 30%;
-  top: 47%;
-  transform: translate(-54%, -55%);
-}
-
-.sprite.right {
-  top: 47%;
-  right: 55%;
-  transform: translate(-14%, -55%);
-}
-
-.sprite.flip {
-  scale: -1 1; 
 }
 
         #dialogue-box {
