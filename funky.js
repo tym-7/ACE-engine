@@ -18,15 +18,6 @@ async function addAssets() {
   );
 }
 
-kap.drawText({
-        text: `LOADING... [${Math.floor(progress * assets.length)} / ${assets.length}]`,
-        font: "monospace",
-        size: 50,
-        pos: kap.center(),
-        anchor: "center",
-        align: "center",
-    });
-
     kap.onLoading((progress) => {
     kap.drawText({
         text: `LOADING... [${Math.floor(progress * assets.length)} / ${assets.length}]`,
