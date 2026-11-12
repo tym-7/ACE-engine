@@ -254,6 +254,8 @@ function getLine(data) {
         ambience: line.ambience || null,
         track: line.track || null,
         triggers: line.triggers || [],
+        ifHas: line.ifHas || false,
+        ifDontHas: line.ifDontHas || false,
         next: line.next || null,
         branches: line.branches || null,
         newChapter: line.newChapter || false,
@@ -371,6 +373,10 @@ function renderLine(line) {
         currentLine.triggers.forEach(event => {
             if (event.when === "start") handleTrigger(event);
         });
+    }
+
+    if (currentLine.branches) {
+        handleBranch();
     }
     
     startTyping(currentLine.text, () => {
