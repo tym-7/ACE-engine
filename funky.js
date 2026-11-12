@@ -234,8 +234,6 @@ function closeDialogue() {
 
 // adding a new line char to separate speaker from the old way of rendering the sprite, might be a bit redundant but 
 // id like to separate visual (speaker) from internal id (char)
-// i think old way also pulled from only /sprites? i plan to have a bunch of folders within sprites, no direct images
-// inside /sprites itself so i will handle that
 // i wanna add a transition sec for backgrounds too
 
 function getLine(data) {
@@ -254,8 +252,8 @@ function getLine(data) {
         ambience: line.ambience || null,
         track: line.track || null,
         triggers: line.triggers || [],
-        ifHas: line.ifHas || false,
-        ifDontHas: line.ifDontHas || false,
+        hasFlag: line.ifHas || null,
+        hasNoFlag: line.ifDontHas || null,
         next: line.next || null,
         branches: line.branches || null,
         newChapter: line.newChapter || false,
@@ -345,6 +343,16 @@ function renderLine(line) {
     const speaker = document.getElementById("dialogue-speaker");
     
     currentLine = line;
+
+    if (currentLine.hasFlag && !gameFlags[currentLine.hasFlag)] {
+        renderLine(dialogueQueue.shift());
+        return;
+    }
+    if (currentLine.hasNoFlag && gameFlags[currentLine.hasNoFlag)] {
+        renderLine(dialogueQueue.shift());
+        return;
+    }
+        
     renderBox(currentLine.style);
     getFont();
     if (currentLine.background) {
@@ -362,7 +370,12 @@ function renderLine(line) {
     if (currentLine.char && currentLine.mood) {
         sprite.style.display = "block";
         sprite.src = `assets/vn/sprites/${currentLine.char}/${currentLine.mood}.png`;
+        sprite.className = `sprite ${currentLine.position}`;
     }
+        if (currentLine.position === "right") {
+            sprite.classList.add('flip');
+        }
+    
     if (currentLine.id) {
         saveLine(currentScene, currentLine.id);
                  }
@@ -408,6 +421,13 @@ function renderBox(style) {
 
 function applyEffect(text) {
 }
+
+function handleBranch() {
+}
+
+function handleTrigger(event) {
+}
+
 
     let meters = {
     stamina: 100,
