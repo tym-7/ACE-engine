@@ -276,6 +276,9 @@ function startTyping(text, onFinish = null) {
     dialogueText.innerHTML = "";
      blip = new Audio(charBlip[currentLine.char] || charBlip.default);
     type();
+    if (settings.speedDialogue === 3) {
+        finishTyping();
+    }
 }
 
 function type() {
