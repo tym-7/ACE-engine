@@ -195,7 +195,6 @@ let currentLine = null;
 let dialogueQueue = [];
 let typeId = null;
 let fullText = "";
-let textSpeed = 30;
 
 async function loadDialogue(sceneName, lineId = null) {
     const r = await fetch(`assets/vn/dialogue/${sceneName}.json`);
