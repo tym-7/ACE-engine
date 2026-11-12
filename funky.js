@@ -426,8 +426,33 @@ function applyEffect(text) {
 }
 
 function handleBranch(branchs) {
-    
+    for (let index = 0; index < branchs.length; index++) {
+        let branch = branchs[index];
+        if (branch.type === "flag") {
+            let isNeeded = branch.needed;
+            if (gameFlags[branch.value] && isNeeded) {
+                nextScene = branch.scene;
+                return;
+            }
+            if (!gameFlags[branch.value] && !isNeeded) {
+                nextScene =  branch.scene;
+                return;
+            }
+        }
+        if (branch.type === "meter") {
+            let meterNumber = meters[branch.value];
+            let num = meterNumber;
+            if (num >= branch.min && num <= branch.max) {
+                nextScene = branch.scene;
+                return;
+            }
+            }
+        if (branch.type === "inv") {
+            //
+            }
+    }
 }
+
 
 function handleTrigger(event) {
 }
