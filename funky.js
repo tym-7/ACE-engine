@@ -92,6 +92,8 @@ function getFont() {
 //
 // adding a lot of spaces bc they kinda look ugly copy and pasted like that
 
+let shownDialogue = new Set();
+
 const settingsSave = 'fnf_dark_minds_settings';
 const shownSave = 'fnf_dark_minds_shown';
 const chapterSave = 'fnf_dark_minds_chapter_save';
@@ -102,10 +104,10 @@ const slot2Save = 'fnf-dark-minds_slot2_save';
 const slot3Save = 'fnf-dark-minds_slot3_save';
 
 function loadShown() {
-    const shownDialogues = localStorage.getItem(shownSave);
-    if (shownDialogues) {
-        const dialogueData = JSON.parse(shownDialogues); 
-        shownDialogues = new Set(dialogueData.shownDialogues || []);
+    const shown = localStorage.getItem(shownSave);
+    if (shown) {
+        const dialogueData = JSON.parse(shown); 
+        shownDialogue = new Set(dialogueData.shownDialogue || []);
     }
 }
 
@@ -196,7 +198,6 @@ function loadSettings() {
 
 let inDialogue = false;
 let inFreeplay = false;
-let shownDialogue = new Set();
 let currentScene = "";
 let currentLine = null;
 let dialogueQueue = [];
@@ -210,7 +211,7 @@ async function loadDialogue(sceneName, lineId = null) {
     currentScene = sceneName;
     saveScene(sceneName);
     if (!inFreeplay) {
-            shownDialogues.add(sceneName);
+            shownDialogue.add(sceneName);
             saveDialogue();
             }
         showDialogue(sceneData, lineId);
@@ -467,7 +468,7 @@ function giveItem(item, amount){
 
 document.addEventListener("keydown", (e) => {
     if (e.key === "9") {
-        loadDialogue(test);
+        loadDialogue("test");
     }
 });
 
