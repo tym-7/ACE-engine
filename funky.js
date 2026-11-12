@@ -262,13 +262,12 @@ function finishTyping() {
 }
 
 function renderLine(line) {
-    // i need to add back the html and css vro
+    // i need to add back the html and css vro okay now just the css
     currentLine = line;
     renderBox(currentLine.style);
 }
 
 function renderBox(style) {
-    // get back the box html
 }
 
     let meters = {
