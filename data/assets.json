@@ -2,5 +2,13 @@
   { 
     "name": "disclaimer",
     "src": "assets/ui/images/disclaimer.png"
+  },
+  { 
+    "name": "darkalley",
+    "src": "assets/vn/backgrounds/darkalley.png"
+  },
+  { 
+    "name": "bgbox",
+    "src": "assets/ui/images/bg-box.png"
   }
 ]
