@@ -38,6 +38,53 @@ a,
   background-color: black; 
   z-index: 1;
 }
+        .sprite {
+  position: absolute;
+  display: none;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: auto;
+  height: auto;
+}
+    
+.sprite.left {
+  left: 30%;
+  top: 47%;
+  transform: translate(-54%, -55%);
+}
+
+.sprite.right {
+  top: 47%;
+  right: 55%;
+  transform: translate(-14%, -55%);
+}
+
+.sprite.flip {
+  scale: -1 1; 
+}
+
+        #dialogue-box {
+  display: none;
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  border: 15px solid #0b3d3e;
+  background-image: url('assets/bg-box.png');
+  background-size: cover;        
+  background-position: center;    
+  padding: 16px 30px;
+  box-sizing: border-box;
+  padding-top: 30px;
+  max-width: 1200px;
+  width: 1200px;
+  height: 250px;
+  font-family: 'Patrick Hand', sans-serif;
+  z-index: 3;
+}
         
     </style>
 </head>
