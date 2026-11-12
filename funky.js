@@ -261,6 +261,7 @@ function getLine(data) {
 
 let i = 0;
 let finish = null;
+let blip = null;
 
 function startTyping(text, onFinish = null) {
     i = 0;
@@ -272,7 +273,7 @@ function startTyping(text, onFinish = null) {
     finish = onFinish;
     const dialogueText = document.getElementById("dialogue-text");
     dialogueText.innerHTML = "";
-    const blip = new Audio(charBlip[currentLine.char] || charBlip.default);
+     blip = new Audio(charBlip[currentLine.char] || charBlip.default);
     type();
 }
 
@@ -287,8 +288,9 @@ function type() {
         document.getElementById("dialogue-text").appendChild(span);
         
         if (!currentLine.muted && !settings.mutedBlips && c !== " ") {
-            blip.volume = 0.5;
-            blip.play();
+            const clone = blip.cloneNode();
+            clone.volume = 0.5;
+            clone.play();
         }
         let delay = getTextSpeed() / currentLine.speed;
             if (c === "." || c === "!" || c === "?") {
