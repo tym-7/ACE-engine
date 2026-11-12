@@ -457,11 +457,36 @@ function giveItem(item, amount){
 
 //// kaplay stuff idk
 ///
+function getAsset(path) {
+    for (let index = 0; index < assets.length; index++) {
+        if (assets[index].src === path) {
+            return assets[index].name;
+        }
+    }
+    return;
+}
+
+let VNSprite = null;
+let VNBg = null;
 
 function renderVNSprite() {
 }
 
 function renderVNBg() {
+    if (!currentLine.background) return;
+    const bg = getAsset(`assets/vn/backgrounds/${currentLine.background}.png`);
+    if (!VNBg) {
+        VNBg = kap.add([
+            kap.sprite(bg),
+            kap.pos(0,0),
+            kap.fixed(),
+            kap.z(0),
+            ]);
+        return;
+    }
+    if (VNBg) {
+        VNBg.use(kap.sprite(bg));
+    }
 }
 
 function renderVNUI() {
@@ -469,6 +494,7 @@ function renderVNUI() {
 
 function removeKaplayVN() {
 }
+
 
 
 document.addEventListener("keydown", (e) => {
