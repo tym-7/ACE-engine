@@ -22,7 +22,30 @@ do not have commas at the end of arrays for example: <br>
 if you were to add another piece of dialogue, you would add a comma on the } "}," and let the new last piece of dialogue end without a comma <br>
 the first and last character should be a [ and ] add stuff within it <br>
 ## Visual Novel
-edit later
+All Values: <br>
+* [Id](###id)
+* [Speaker](###speaker)
+* [Char](###char)
+* [Mood](###mood)
+* [Position](###position)
+* [Text](###text)
+* [Style](###style)
+* [Speed](###speed)
+* [Muted](###muted)
+* [Effect](###effect)
+* [Background](###background)
+### Id
+### Speaker
+### Char
+### Mood
+### Position
+### Text
+### Style
+### Speed
+### Muted
+### Effect
+### Background
+
 ## Point And Click
 Engine Not Finished Yet
 ## FNF
