@@ -559,8 +559,8 @@ function renderVNUI() {
 
     if (!VNColor) {
         VNColor = kap.add([
-            kap.rect(1180,230),
-            kap.pos(800, 990),
+            kap.rect(1180,240),
+            kap.pos(800, 1000),
             kap.anchor("bot"),
             kap.color(0,0,0),
             kap.fixed(),
