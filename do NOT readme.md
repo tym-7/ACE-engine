@@ -23,17 +23,17 @@ if you were to add another piece of dialogue, you would add a comma on the } "},
 the first and last character should be a [ and ] add stuff within it <br>
 ## Visual Novel
 All Values: <br>
-* [Id](###id)
-* [Speaker](###speaker)
-* [Char](###char)
-* [Mood](###mood)
-* [Position](###position)
-* [Text](###text)
-* [Style](###style)
-* [Speed](###speed)
-* [Muted](###muted)
-* [Effect](###effect)
-* [Background](###background)
+* [Id](#id)
+* [Speaker](#speaker)
+* [Char](#char)
+* [Mood](#mood)
+* [Position](#position)
+* [Text](#text)
+* [Style](#style)
+* [Speed](#speed)
+* [Muted](#muted)
+* [Effect](#effect)
+* [Background](#background)
 ### Id
 ### Speaker
 ### Char
