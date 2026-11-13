@@ -63,7 +63,7 @@ what the character says
 ### Style
 modifies the box. currently modifies color, border color, box overlay, and the speaker container (referred to as tag/speaker tag). for a custom overlay, folder pathing = “assets/ui/images/{style}-overlay.png”. recommended overlay size is 1200x250. for adding new styles or wanting a style to modify new things (eg font), go to renderBox()
 ### Speed
-modifies how fast or slow a line is spoken. used on a 1.1x 0.9x 1x scale (1.1x = faster 0.9x = slower)
+modifies how fast or slow a line is spoken. used on a 1.1x 0.9x 1x 0.5x 1.5x scale (1.1x = faster 0.9x = slower) any values accepted
 ### Muted
 mutes the blips for the line (for if you want just a sfx to play, a moment of silence, etc)
 ### Effect
