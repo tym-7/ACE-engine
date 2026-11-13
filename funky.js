@@ -533,6 +533,14 @@ function renderVNBg() {
 function renderVNUI() {
     // render the tag and the bg box here cuz they use images too
     // i have to think abt what other vn assets use imgs but i think that might be it
+    const boxOverlay = kap.add([
+    kap.sprite("bg-box"),
+    kap.pos(797.5, 989),
+    kap.anchor("bot"),
+    kap.fixed(),
+    kap.z(2),
+]);
+
     // i think about adding full screen visuals but i dont think thats any complex shit; just remove the box for a moment and then bring it back when its over
 }
 
