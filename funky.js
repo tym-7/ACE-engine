@@ -454,6 +454,9 @@ function handleBranch(branchs) {
         if (branch.type === "inv") {
             //
             }
+        if (branch.type === "fallback") {
+            nextScene = branch.scene;
+        }
     }
 }
 
@@ -499,7 +502,7 @@ function renderVNSprite() {
     if (!VNSprite) {
         VNSprite = kap.add([
             kap.sprite(sprite),
-            kap.pos(200,735),
+            kap.pos(200,732),
             kap.anchor("botleft"),
             kap.fixed(),
             kap.z(1),
