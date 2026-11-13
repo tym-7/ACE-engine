@@ -9,6 +9,8 @@ const kap = kaplay({
 
 let assets = [];
 
+// PUT YOUR ASSETS IN THE ASSET JSON DONT BE STUPID LIKE ME
+
 async function addAssets() {
     const r = await fetch("data/assets.json");
     assets = await r.json();
