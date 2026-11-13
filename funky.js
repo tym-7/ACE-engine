@@ -514,7 +514,7 @@ function renderVNSprite() {
     if (!VNSprite) {
         VNSprite = kap.add([
             kap.sprite(sprite),
-            kap.pos(200,732),
+            kap.pos(200,740),
             kap.anchor("botleft"),
             kap.fixed(),
             kap.z(1),
