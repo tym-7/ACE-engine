@@ -371,11 +371,11 @@ function renderLine(line) {
         return;
     }
         
-    renderBox(currentLine.style);
     getFont();
     renderVNBg();
     renderVNSprite();
     renderVNUI();
+    renderBox(currentLine.style);
     
     if (currentLine.id) {
         saveLine(currentScene, currentLine.id);
@@ -406,15 +406,15 @@ function renderLine(line) {
 function renderBox(style) {
     const box = document.getElementById("dialogue-box");
     if (style === 'pico') {
-        box.style.backgroundColor = '#356849';
+        VNColor.color = Color.fromHex("#356849");
         box.style.border = '14px solid #0a2d24';
     }
     if (style === 'bf') {
-    box.style.backgroundColor = '#263a8e';
+        VNColor.color = Color.fromHex("#263a8e");
     box.style.border = '14px solid #1d0d59';
   } 
     if (style === 'picothink') {
-    box.style.backgroundColor = '#458b61';
+    VNColor.color = Color.fromHex("#458b61");
     box.style.border = '14px solid #144444';
     }
     
@@ -478,6 +478,8 @@ function getAsset(path) {
 let VNSprite = null;
 let VNBg = null;
 let VNBox = null;
+let VNSpeaker = null;
+let VNColor = null;
 
 function renderVNSprite() {
     if (VNSprite) {
@@ -533,6 +535,18 @@ function renderVNBg() {
 
 function renderVNUI() {
     // render the tag and the bg box here cuz they use images too okay now just the tag
+
+    if (!VNColor) {
+        VNColor = kap.add([
+            kap.rect(1200,250),
+            kap.pos(797.5, 989),
+            kap.anchor("bot"),
+            kap.color(0,0,0),
+            kap.fixed(),
+            kap.z(2),
+            ]);
+    }
+
     const overlay = getAsset(`assets/ui/images/bg-box.png`);
     if (!VNBox) {
         VNBox = kap.add([
