@@ -7,6 +7,7 @@ This is my javascript Friday Night Funkin' engine, ACE Engine (Aloe's Cool Engin
 - You may use any art assets made by me (rn all art assets are 100% made by me) for your own mod for whatever reason (eg it looks cool, need a placeholder), just give credit if it ends up in the final version/public
 
 # Modding Guide:
+Inventory, credits, flags, and shaders are located within the data folder while meters are in the raw code. You are more likely to find game specific data you want to modify in their respective folder in assets (eg songs, dialogue, freeplay) instead of data
 ## For Non Coders:
 each value must be wrapped in double quotes (") unless it's a number or true/false <br>
 use single quotes inside text for this reason eg "text": "I want to 'quote' this" <br>
@@ -35,6 +36,18 @@ All Values: <br>
 * [Muted](#muted)
 * [Effect](#effect)
 * [Background](#background)
+* [SpriteShader](#spriteshader)
+* [BgShader](#bgshader)
+* [ScreenShader](#screenshader)
+* [Ambience](#ambience)
+* [Track](#track)
+* [Triggers](#triggers)
+* [HasFlag](#hasflag)
+* [HasNoFlag](#hasnoflag)
+* [Next](#next)
+* [Branches](#branches)
+* [NewChapter](#newchapter)
+* [Choices](#choices)
 ### Id
 allows the player to save if they get to a line with an id, without it, only scene autosaving and chapter autosaving works, as linesaving & manual saving grabs the id of the current line
 ### Speaker
@@ -58,17 +71,35 @@ modifies how the text is rendered. current effects: none add some later
 ### Background
 changes the background. folder pathing = “assets/vn/backgrounds/${background}.png”
 ### SpriteShader
+i need to learn shaders
 ### BgShader
+yeah
 ### ScreenShader
+yeah
 ### Ambience
+NOT ADDED
 ### Track
+NOT ADDED
 ### Triggers
+NOT ADDED
 ### HasFlag
+shows the line if the player has the flag. usage “hasFlag”: “didSomething”
 ### HasNoFlag
+shows the line if the player does not have the flag. usage “hasNoFlag”: “didSomething”
 ### Next
+brings the player to the next scene. folder pathing = “assets/vn/dialogue/${scene}.json” add folders to the name if needed, eg “next”: “week1/coffee-scene”. use for end of chapters, otherwise use branching or choices for dynamic paths
 ### Branches
+like next, but more dynamic. does not show anything on screen, it is purely internal. requires an array. parameters: “type”: flag/meter/inv. if flag, the values “needed”, “value”, and “scene” are required. needed must be either true or false, if marked as false and the player does not have the flag, they are transported there. if meter, the values “min” “max” “value” and “scene” are needed. min and max includes the number itself. if inv, i didn’t program that yet. <br>
+example: <br>
+"branches": [<br>
+    { "type": "flag", “value”: “didX”, "needed": true, "scene": "scene1" },<br>
+    { "type": "meter", “value”: “love”: "min": 30, "max": 40, "scene": "scene2" },<br>
+    { "type": "inv", “value”: “gun” FIGURE OUT "scene": "scene3" }<br>
+  ]<br>
 ### NewChapter
+increases the current chapter by 1. just does currentChapter++. mark only once in a dialogue array, preferably the very top
 ### Choices
+NOT ADDED
 
 ## Point And Click
 Engine Not Finished Yet
