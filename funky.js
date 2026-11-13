@@ -263,6 +263,7 @@ function getLine(data) {
         muted: line.muted || false,
         effect: line.effect || null,
         background: line.background || null,
+        shader: line.shader || null,
         ambience: line.ambience || null,
         track: line.track || null,
         triggers: line.triggers || [],
@@ -459,6 +460,7 @@ function giveItem(item, amount){
 
 //// kaplay stuff idk
 ///
+
 function getAsset(path) {
     for (let index = 0; index < assets.length; index++) {
         if (assets[index].src === path) {
@@ -467,6 +469,9 @@ function getAsset(path) {
     }
     return;
 }
+
+
+// learn how to use shaders / frag
 
 let VNSprite = null;
 let VNBg = null;
@@ -488,13 +493,16 @@ function renderVNSprite() {
             kap.fixed(),
             kap.z(1),
             ]);
-        return;
-    }
-        if (VNSprite) {
+    } else {
             VNSprite.use(kap.sprite(sprite));
         }
-        // position here
+    if (currentLine.shader) {
+        VNSprite.use(kap.shader(currentLine.shader));
+    } else {
+        VNSprite.unuse("shader");
+    }
     
+        // position here
 }
 
 function renderVNBg() {
