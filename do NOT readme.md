@@ -89,12 +89,14 @@ shows the line if the player does not have the flag. usage “hasNoFlag”: “d
 ### Next
 brings the player to the next scene. folder pathing = “assets/vn/dialogue/${scene}.json” add folders to the name if needed, eg “next”: “week1/coffee-scene”. use for end of chapters, otherwise use branching or choices for dynamic paths
 ### Branches
-like next, but more dynamic. does not show anything on screen, it is purely internal. requires an array. parameters: “type”: flag/meter/inv. if flag, the values “needed”, “value”, and “scene” are required. needed must be either true or false, if marked as false and the player does not have the flag, they are transported there. if meter, the values “min” “max” “value” and “scene” are needed. min and max includes the number itself. if inv, i didn’t program that yet. <br>
+like next, but more dynamic. does not show anything on screen, it is purely internal. requires an array. parameters: “type”: flag/meter/inv/fallback. if flag, the values “needed”, “value”, and “scene” are required. needed must be either true or false, if marked as false and the player does not have the flag, they are transported there. if meter, the values “min” “max” “value” and “scene” are needed. min and max includes the number itself. if inv, it can either work like flag or meter, using needed or min/max. <br>
+finally, fallback sends the player to the scene if all else fails. the function works top to bottom, so it must be placed last, it's suggested to put the important/special scenes first and the more basic ones after <br>
 example: <br>
 "branches": [<br>
     { "type": "flag", “value”: “didX”, "needed": true, "scene": "scene1" },<br>
     { "type": "meter", “value”: “love”: "min": 30, "max": 40, "scene": "scene2" },<br>
-    { "type": "inv", “value”: “gun” FIGURE OUT "scene": "scene3" }<br>
+    { "type": "inv", “value”: “gun” FIGURE OUT "scene": "scene3" },<br>
+    { "type": "fallback", "scene": "scene4"} <br>
   ]<br>
 ### NewChapter
 increases the current chapter by 1. just does currentChapter++. mark only once in a dialogue array, preferably the very top
