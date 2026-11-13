@@ -263,7 +263,9 @@ function getLine(data) {
         muted: line.muted || false,
         effect: line.effect || null,
         background: line.background || null,
-        shader: line.shader || null,
+        spriteShader: line.spriteShader || null,
+        bgShader: line.bgShader || null,
+        screenShader: line.screenShader || null,
         ambience: line.ambience || null,
         track: line.track || null,
         triggers: line.triggers || [],
@@ -496,7 +498,7 @@ function renderVNSprite() {
     } else {
             VNSprite.use(kap.sprite(sprite));
         }
-    if (currentLine.shader) {
+    if (currentLine.spriteShader) {
         VNSprite.use(kap.shader(currentLine.shader));
     } else {
         VNSprite.unuse("shader");
@@ -520,6 +522,12 @@ function renderVNBg() {
     if (VNBg) {
         VNBg.use(kap.sprite(bg));
     }
+    if (currentLine.bgShader) {
+        VNSprite.use(kap.shader(currentLine.shader));
+    } else {
+        VNSprite.unuse("shader");
+    }
+    //
 }
 
 function renderVNUI() {
