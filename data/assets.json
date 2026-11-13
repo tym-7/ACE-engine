@@ -11,4 +11,12 @@
     "name": "bgbox",
     "src": "assets/ui/images/bg-box.png"
   }
+  { 
+    "name": "bgbox",
+    "src": "assets/ui/images/bg-box.png"
+  }
+  { 
+    "name": "pico-neutral",
+    "src": "assets/vn/sprites/pico/neutral.png"
+  }
 ]
