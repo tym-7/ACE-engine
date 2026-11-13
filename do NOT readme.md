@@ -21,6 +21,7 @@ do not have commas at the end of arrays for example: <br>
 
 if you were to add another piece of dialogue, you would add a comma on the } "}," and let the new last piece of dialogue end without a comma <br>
 the first and last character should be a [ and ] add stuff within it <br>
+keep things lowercase when entering the first value (eg "speaker" "mood" "style") as that's how they are accepted (for multiple word ones they are accepted as "hasFlag", "spriteShader"
 ## Visual Novel
 All Values: <br>
 * [Id](#id)
@@ -35,16 +36,39 @@ All Values: <br>
 * [Effect](#effect)
 * [Background](#background)
 ### Id
+allows the player to save if they get to a line with an id, without it, only scene autosaving and chapter autosaving works, as linesaving & manual saving grabs the id of the current line
 ### Speaker
+the visual display name
 ### Char
+the internal id to pull sprites from + their blip sfx. folder pathing = “assets/vn/sprites/${char}/${mood}.png”. 
 ### Mood
+changes which sprite is used. folder pathing = “assets/vn/sprites/${char}/${mood}.png”
 ### Position
+ puts the sprite somewhere on the box. accepts “left” “center” “right”. if you don’t like those options, (maybe you wanna put a sprite in the air or something idk) add a custom one in renderVNSprite()
 ### Text
+what the character says
 ### Style
+modifies the box. currently modifies color, border color, box overlay, and the speaker container (referred to as tag/speaker tag). for a custom overlay, folder pathing = “assets/ui/images/{style}-overlay.png”. recommended overlay size is 1200x250. for adding new styles or wanting a style to modify new things (eg font), go to renderBox()
 ### Speed
+modifies how fast or slow a line is spoken. used on a 1.1x 0.9x 1x scale (1.1x = faster 0.9x = slower)
 ### Muted
+mutes the blips for the line (for if you want just a sfx to play, a moment of silence, etc)
 ### Effect
+modifies how the text is rendered. current effects: none add some later
 ### Background
+changes the background. folder pathing = “assets/vn/backgrounds/${background}.png”
+### SpriteShader
+### BgShader
+### ScreenShader
+### Ambience
+### Track
+### Triggers
+### HasFlag
+### HasNoFlag
+### Next
+### Branches
+### NewChapter
+### Choices
 
 ## Point And Click
 Engine Not Finished Yet
