@@ -392,6 +392,10 @@ function renderLine(line) {
     if (currentLine.branches) {
         handleBranch(currentLine.branches);
     }
+
+    if (currentLine.next) {
+        nextScene = currentLine.next;
+    }
     
     startTyping(currentLine.text, () => {
         if (currentLine.triggers) {
