@@ -452,11 +452,23 @@ function handleBranch(branchs) {
             }
             }
         if (branch.type === "inv") {
-            //
+            let isNeeded = branch.needed;
+            let hasItem = (inventory.get(branch.value) || 0) > 0;
+            if (isNeeded && hasItem) {
+                nextScene = branch.scene;
+                return;
+            }
+            let amount = inventory.get(branch.value) || 0;
+            if (amount >= branch.min && amount <= branch.max) {
+                nextScene = branch.scene;
+                return;
+            }
             }
         if (branch.type === "fallback") {
             nextScene = branch.scene;
+            return;
         }
+        //
     }
 }
 
