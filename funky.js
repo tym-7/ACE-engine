@@ -554,7 +554,7 @@ function renderVNUI() {
     kap.pos(797.5, 989),
     kap.anchor("bot"),
     kap.fixed(),
-    kap.z(2),
+    kap.z(2.5),
 ]);
     }
     const newOverlay = getAsset(`assets/ui/images/${currentLine.style}-overlay.png`); 
