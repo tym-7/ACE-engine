@@ -1,6 +1,7 @@
 [
   {
     "speaker": "Pico",
+    "char": "pico",
     "mood": "neutral",
     "position": "left",
     "background": "darkalley",
