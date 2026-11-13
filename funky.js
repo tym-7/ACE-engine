@@ -499,7 +499,7 @@ function renderVNSprite() {
             VNSprite.use(kap.sprite(sprite));
         }
     if (currentLine.spriteShader) {
-        VNSprite.use(kap.shader(currentLine.shader));
+        VNSprite.use(kap.shader(currentLine.spriteShader));
     } else {
         VNSprite.unuse("shader");
     }
@@ -523,7 +523,7 @@ function renderVNBg() {
         VNBg.use(kap.sprite(bg));
     }
     if (currentLine.bgShader) {
-        VNSprite.use(kap.shader(currentLine.shader));
+        VNSprite.use(kap.shader(currentLine.bgShader));
     } else {
         VNSprite.unuse("shader");
     }
