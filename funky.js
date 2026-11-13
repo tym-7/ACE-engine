@@ -587,6 +587,8 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
+loadDialogue("test");
+
 document.addEventListener("keydown", (e) => {
     if (e.key === "7") {
         // free play
