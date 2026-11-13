@@ -477,6 +477,7 @@ function getAsset(path) {
 
 let VNSprite = null;
 let VNBg = null;
+let VNBox = null;
 
 function renderVNSprite() {
     if (VNSprite) {
@@ -531,17 +532,24 @@ function renderVNBg() {
 }
 
 function renderVNUI() {
-    // render the tag and the bg box here cuz they use images too
-    // i have to think abt what other vn assets use imgs but i think that might be it
-    const boxOverlay = kap.add([
-    kap.sprite("bg-box"),
+    // render the tag and the bg box here cuz they use images too okay now just the tag
+    const overlay = getAsset(`assets/ui/images/bg-box.png`);
+    if (!VNBox) {
+        VNBox = kap.add([
+    kap.sprite(overlay),
     kap.pos(797.5, 989),
     kap.anchor("bot"),
     kap.fixed(),
     kap.z(2),
 ]);
-
-    // i think about adding full screen visuals but i dont think thats any complex shit; just remove the box for a moment and then bring it back when its over
+    }
+    const newOverlay = getAsset(`assets/ui/images/${currentLine.style}-overlay.png`); 
+    if (newOverlay) {
+        VNBox.use(kap.sprite(newOverlay));
+    } else {
+        VNBox.use(kap.sprite(overlay));
+    }
+//
 }
 
 function removeKaplayVN() {
@@ -560,6 +568,13 @@ document.addEventListener("keydown", (e) => {
         loadDialogue("test");
     }
 });
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "7") {
+        // free play
+    }
+});
+                             
 
     let meters = {
     stamina: 100,
