@@ -605,6 +605,7 @@ function renderVNSprite() {
             VNSprite.flipX = true;
             VNSprite.pos = kap.vec2(1395, 740);
         }
+    }
         //
 }
 
