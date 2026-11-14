@@ -248,8 +248,6 @@ function closeDialog() {
   bg.style.display = "none";
 }
 
-// adding a new line char to separate speaker from the old way of rendering the sprite, might be a bit redundant but 
-// id like to separate visual (speaker) from internal id (char)
 // i wanna add a transition sec for backgrounds too
 
 function getLine(data) {
@@ -499,7 +497,7 @@ function getAsset(path) {
 let VNSprite = null;
 let VNBg = null;
 let VNBox = null;
-let VNSpeaker = null;
+let VNTag = null;
 let VNColor = null;
 
 function renderVNSprite() {
@@ -603,8 +601,6 @@ document.addEventListener("keydown", (e) => {
         loadDialogue("test");
     }
 });
-
-loadDialogue("test");
 
 document.addEventListener("keydown", (e) => {
     if (e.key === "7") {
