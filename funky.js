@@ -483,7 +483,40 @@ function handleTrigger(event) {
     if (event.type === "silence") {
         stopVNMusic();
     }
+    if (event.type === "addItem") {
+        giveItem(event.value, event.amount);
+    }
+    if (event.type === "removeItem") {
+        removeItem(event.value, event.amount);
+    }
     //
+}
+        
+
+function giveItem(item, amount){
+    const currentCount = inventory.get(item) || 0;
+    inventory.set(item, currentCount + amount);
+}
+
+function removeItem(item, amount){
+    const currentCount = inventory.get(item) || 0;
+    inventory.set(item, currentCount - amount);
+}
+// i would add a check so that it cant go under 0 but im too stupid and lazy for that
+// ngl it shouldnt realistically happen like for example
+// if i wrote you buy something with 5 coins, it wouldve only decreased it if u had over 5 anyway
+
+
+//// kaplay stuff idk
+///
+
+function getAsset(path) {
+    for (let index = 0; index < assets.length; index++) {
+        if (assets[index].src === path) {
+            return assets[index].name;
+        }
+    }
+    return;
 }
 
 let VNTrack = null;
@@ -518,26 +551,6 @@ function stopVNMusic() {
         VNAmbience = null;
     }
 }
-        
-
-function giveItem(item, amount){
-    const currentCount = inventory.get(item) || 0;
-    inventory.set(item, currentCount + amount);
-}
-
-//// kaplay stuff idk
-///
-
-function getAsset(path) {
-    for (let index = 0; index < assets.length; index++) {
-        if (assets[index].src === path) {
-            return assets[index].name;
-        }
-    }
-    return;
-}
-
-
 // learn how to use shaders / frag
 
 let VNSprite = null;
