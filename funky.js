@@ -412,6 +412,8 @@ function renderLine(line) {
     //
 }
 
+// i think i could add a setTimeout (handleTrigger, event.delay, event) to add more customization to triggers
+
 function renderBox(style) {
     const box = document.getElementById("dialogue-box");
     if (style === 'pico') {
