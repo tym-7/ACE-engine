@@ -219,6 +219,7 @@ async function loadDialogue(sceneName, lineId = null) {
     const sceneData = await r.json();
     currentScene = sceneName;
     saveScene(sceneName);
+    nextScene = null;
     if (!inFreeplay) {
             shownDialogue.add(sceneName);
             saveDialogue();
@@ -650,10 +651,30 @@ function removeKaplayVN() {
 document.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
         if (inDialogue) {
-        // do dialogue things
+        handleDialogue();
         }
     }
 });
+
+// making it into a separate function for idk mobile support
+function handleDialogue() {
+    if (typeId) {
+        finishTyping();
+        return;
+    }
+    if (nextScene) {
+        loadDialogue(nextScene);
+        return;
+    }
+    if (dialogueQueue.length > 0) {
+        renderLine(dialogueQueue.shift());
+        return;
+    }
+    if (dialogueQueue.length === 0) {
+        closeDialogue();
+    }
+}
+    
     
 document.addEventListener("keydown", (e) => {
     if (e.key === "9") {
