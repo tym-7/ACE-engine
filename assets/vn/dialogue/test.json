@@ -13,6 +13,7 @@
   {
     "speaker": "Pico",
     "mood": "neutral",
+    "char": "pico",
     "position": "left",
     "text": "The target 'apparently lounges here a lot'? That's a lot of bullshit.",
     "style": "picothink",
@@ -22,6 +23,7 @@
   {
     "speaker": "Pico",
     "mood": "neutral",
+    "char": "pico",
     "position": "left",
     "text": "I haven't even seen this guy once across the week I've been here.",
     "style": "picothink",
