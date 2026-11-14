@@ -48,6 +48,15 @@ let inventory = new Map();
 let gameFlags = {};
 let stickers = {};
 
+    let meters = {
+    stamina: 100,
+    sanity: 100,
+    picolove: 50,
+    keithlove: 50,
+    approval: 0,
+    lv: 0
+};
+
 async function addRandomData() {
         const inventoryResponse = await fetch('data/inventory.json');
         const inventoryData = await inventoryResponse.json();
@@ -712,13 +721,3 @@ document.addEventListener("keydown", (e) => {
         // free play
     }
 });
-                             
-
-    let meters = {
-    stamina: 100,
-    sanity: 100,
-    picolove: 50,
-    keithlove: 50,
-    approval: 0,
-    lv: 0
-};
