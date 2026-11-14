@@ -476,7 +476,49 @@ function handleBranch(branchs) {
 
 
 function handleTrigger(event) {
+    if (event.type === "sfx") {
+        const sfx = getAsset(event.value);
+        kap.play(sfx);
+    }
+    if (event.type === "silence") {
+        stopVNMusic();
+    }
+    //
 }
+
+let VNTrack = null;
+let VNAmbience = null;
+
+function playVNMusic() {
+    if (currentLine.track) {
+        if (VNTrack) {
+            VNTrack.stop();
+            VNTrack = null;
+        }
+        let track = getAsset(`assets/vn/sounds/${currentLine.track}`);
+        VNTrack = kap.play(track, {loop: true});
+    }
+    if (currentLine.ambience) {
+        if (VNAmbience) {
+            VNAmbience.stop();
+            VNAmbience = null;
+        }
+        let ambience = getAsset(`assets/vn/sounds/${currentLine.ambience}`);
+        VNAmbience = kap.play(ambience, {loop: true});
+    }
+}
+
+function stopVNMusic() {
+    if (VNTrack) {
+        VNTrack.stop();
+        VNTrack = null;
+    }
+    if (VNAmbience) {
+        VNAmbience.stop();
+        VNAmbience = null;
+    }
+}
+        
 
 function giveItem(item, amount){
     const currentCount = inventory.get(item) || 0;
