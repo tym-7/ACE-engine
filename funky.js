@@ -21,6 +21,7 @@ async function addAssets() {
         if (a.type === "music") return kap.loadMusic(a.name, a.src);
         if (a.type === "sound") return kap.loadSound(a.name, a.src);
         if (a.type === "shader") return kap.loadShaderURL(a.name, null, a.src);
+        if (a.type === "sheet") return kap.loadSpriteAtlas(a.src, a.data);
     })
   );
 }
