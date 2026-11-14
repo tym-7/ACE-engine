@@ -560,7 +560,7 @@ function renderVNUI() {
     if (!VNColor) {
         VNColor = kap.add([
             kap.rect(1180,240),
-            kap.pos(800, 990),
+            kap.pos(800, 985),
             kap.anchor("bot"),
             kap.color(0,0,0),
             kap.fixed(),
@@ -572,7 +572,7 @@ function renderVNUI() {
     if (!VNBox) {
         VNBox = kap.add([
     kap.sprite(overlay),
-    kap.pos(800, 990),
+    kap.pos(800, 985),
     kap.anchor("bot"),
     kap.fixed(),
     kap.z(2.5),
