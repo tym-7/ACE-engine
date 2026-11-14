@@ -585,8 +585,24 @@ function renderVNSprite() {
     } else {
         VNSprite.unuse("shader");
     }
-    
-        // position here
+
+    if (VNSprite) {
+        if (currentLine.position === "left") {
+        VNSprite.anchor = "botleft";
+            VNSprite.flipX = false;
+            VNSprite.pos = kap.vec2(200, 740);
+        }
+        if (currentLine.position === "center") {
+            VNSprite.anchor = "bot";
+            VNSprite.flipX = false;
+            VNSprite.pos = kap.vec2(797, 740);
+        }
+        if (currentLine.position === "right") {
+            VNSprite.anchor = "botright";
+            VNSprite.flipX = true;
+            VNSprite.pos = kap.vec2(1395, 740);
+        }
+        //
 }
 
 function renderVNBg() {
