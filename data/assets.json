@@ -1,17 +1,21 @@
 [
   { 
+    "type": "sprite",
     "name": "disclaimer",
     "src": "assets/ui/images/disclaimer.png"
   },
   { 
+    "type": "sprite",
     "name": "darkalley",
     "src": "assets/vn/backgrounds/darkalley.png"
   },
   { 
+    "type": "sprite",
     "name": "bgbox",
     "src": "assets/ui/images/bg-box.png"
   },
   { 
+    "type": "sprite",
     "name": "pico-neutral",
     "src": "assets/vn/sprites/pico/neutral.png"
   }
