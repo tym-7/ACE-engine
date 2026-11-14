@@ -625,9 +625,9 @@ function renderVNBg() {
         VNBg.use(kap.sprite(bg));
     }
     if (currentLine.bgShader) {
-        VNSprite.use(kap.shader(currentLine.bgShader));
+        VNBg.use(kap.shader(currentLine.bgShader));
     } else {
-        VNSprite.unuse("shader");
+        VNBG.unuse("shader");
     }
     //
 }
@@ -661,6 +661,11 @@ function renderVNUI() {
         VNBox.use(kap.sprite(newOverlay));
     } else {
         VNBox.use(kap.sprite(overlay));
+    }
+    if (currentLine.screenShader) {
+        kap.usePostEffect(currentLine.screenShader);
+    } else {
+        kap.usePostEffect(null);
     }
 //
 }
