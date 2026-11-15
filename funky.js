@@ -528,9 +528,11 @@ document.getElementById("dialogue-text").addEventListener("mouseenter", () => {
 });
 
 document.getElementById("dialogue-text").addEventListener("mouseleave", () => {
+    if (currentLine.translation && settings.translate) {
     renderBox(currentLine.style);
     const transBox = document.getElementById("translation-box");
         transBox.style.display = "none";
+    }
 });
 
         
