@@ -6,4 +6,5 @@
 - Reworked how branches worked from the old
 - Added being able to use shaders on sprites
 - Changed how images render (now using kaplay's functions)
-
+# 2026-11-15  [v0.0.0-build.3]
+- Added translation feature
