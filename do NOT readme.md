@@ -31,6 +31,7 @@ All Values: <br>
 * [Mood](#mood)
 * [Position](#position)
 * [Text](#text)
+* [Translation](#translation)
 * [Style](#style)
 * [Speed](#speed)
 * [Muted](#muted)
@@ -60,6 +61,8 @@ changes which sprite is used. folder pathing = “assets/vn/sprites/${char}/${mo
  puts the sprite somewhere on the box. accepts “left” “center” “right”. if you don’t like those options, (maybe you wanna put a sprite in the air or something idk) add a custom one in renderVNSprite()
 ### Text
 what the character says
+### Translation
+for if a character speaks in a language other than english for a moment. translated text is displayed in a different box when settings are enabled & a line has a translation
 ### Style
 modifies the box. currently modifies color, border color, box overlay, and the speaker container (referred to as tag/speaker tag). for a custom overlay, folder pathing = “assets/ui/images/{style}-overlay.png”. recommended overlay size is 1190x240. for adding new styles or wanting a style to modify new things (eg font), go to renderBox()
 ### Speed
