@@ -78,6 +78,7 @@ addRandomData();
 // when each week will have over tens of thousands of words
 // if anyone does wanna, feel free tho ❤
 // if i had to add it, i would include something like settings.lang set to 0, add getLang 0 = eng, 1 = esp or whatever order, return lang, edit the loading to accept assets/vn/dialogue/${lang}/${sceneName}.json
+// this new translation setting has nothing to do with the above, there will be dialogue in a diff language in week 7 
 
 // i made "i" as a global variable so idk if "i" can be used anymore in a "for" loop, use index for the meanwhile 
 
@@ -88,6 +89,7 @@ let settings = {
   speedNotes: 0,
   overlay: 0,
   midscroll: false,
+    translate: false,
   downscroll: false,
   skipPrologue: false,
     muteBlips: false,
@@ -274,6 +276,7 @@ function getLine(data) {
         mood: line.mood || null,
         position: line.position || 'center',
         text: line.text || '',
+        translation: line.translation || '',
         style: line.style || 'default',
         speed: line.speed || 1,
         muted: line.muted || false,
@@ -392,6 +395,10 @@ function renderLine(line) {
     renderVNSprite();
     renderVNUI();
     renderBox(currentLine.style);
+
+    if (currentLine.translation && settings.translate) {
+        translateText();
+    }
     
     if (currentLine.id) {
         saveLine(currentScene, currentLine.id);
@@ -427,6 +434,7 @@ function renderLine(line) {
 
 function renderBox(style) {
     const box = document.getElementById("dialogue-box");
+    document.getElementById("dialogue-text").style.color = "white";
     if (style === 'pico') {
         VNColor.color = Color.fromHex("#356849");
         box.style.border = '14px solid #0a2d24';
@@ -505,6 +513,26 @@ function handleTrigger(event) {
     }
     //
 }
+
+function translateText() {
+    const transBox = document.getElementById("translation-box");
+    transBox.innerHTML = currentLine.translation;
+}
+
+document.getElementById("dialogue-text").addEventListener("mouseenter", () => {
+    if (currentLine.translation && settings.translate) {
+        const transBox = document.getElementById("translation-box");
+        document.getElementById("dialogue-text").style.color = "yellow";
+        transBox.style.display = "block";
+    }
+});
+
+document.getElementById("dialogue-text").addEventListener("mouseleave", () => {
+    renderBox(currentLine.style);
+    const transBox = document.getElementById("translation-box");
+        transBox.style.display = "none";
+});
+
         
 
 function giveItem(item, amount){
