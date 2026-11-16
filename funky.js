@@ -321,7 +321,7 @@ function startTyping(text, onFinish = null) {
     const dialogueText = document.getElementById("dialogue-text");
     dialogueText.innerHTML = "";
      blipSfx = charBlip[currentLine.char] || charBlip.default;
-    blip = getAsset(blip);
+    blip = getAsset(blipSfx);
     if (settings.speedDialogue === 3) {
         finishTyping();
         return;
