@@ -963,6 +963,9 @@ function renderFNFBg() {
     });
 }
 
+function animate(sprite, animation) {
+}
+
 function changeBPM(bpm) {
     songData.bpm = bpm;
     kap.get("checkBPM").forEach(a => {
