@@ -940,13 +940,22 @@ function renderFNFBg() {
         const layerSrc = getAsset(`assets/fnf/${songData.week}/${l.src}`);
         let options = {};
         if (l.type === "animated") {
-            options = { anim: "idle"};
+            options = { anim: "idle", animSpeed: songData.bpm / 576};
         }
         const layer = kap.add([
             kap.sprite(layerSrc, options),
             kap.pos(l.x, l.y),
             kap.z(l.zIndex)
             ]);
+        if (l.type === "animated") {
+            layer.tag("checkBPM");
+        }
     });
 }
 
+function changeBPM(bpm) {
+    songData.bpm = bpm;
+    kap.get("checkBPM").forEach(a => {
+        a.animSpeed = songData.bpm / 576;
+    });
+}
