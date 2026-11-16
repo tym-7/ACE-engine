@@ -781,6 +781,8 @@ let accuracy = "100.00";
 let grade = "??";
 let comboRank = "??";
 
+let songData = null;
+
 
 function handleHit(rating) {
     if (rating === "sick") {
@@ -869,3 +871,6 @@ function resetScore() {
     grade = "??";
     comboRank = "??";
   }
+
+function getSongData() {
+}
