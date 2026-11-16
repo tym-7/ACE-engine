@@ -874,3 +874,10 @@ function resetScore() {
 
 function getSongData(data) {
 }
+
+async function loadSong(song, difficulty) {
+    const r = await fetch (`assets/fnf/data/${song}/chart-${difficulty}.json`);
+    const data = await r.json();
+    getSongData(data);
+}
+
