@@ -886,6 +886,7 @@ function getSongData(data) {
         bpm: data.bpm || 120,
         scrollSpeed: data.scrollSpeed || 1,
         stageLayers: data.stageLayers || [],
+        cutscene: data.cutscene || null,
         shader: data.shader || null,
         player: data.player || "pico",
         player2: data.player2 || null,
