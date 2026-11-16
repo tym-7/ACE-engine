@@ -873,11 +873,36 @@ function resetScore() {
   }
 
 function getSongData(data) {
+    return {
+        id: data.id || null,
+        name: data.name || "Song",
+        week: data.week || null,
+        composer: data.composer || "john music",
+        charter: data.composer || "john charter",
+        bpm: data.bpm || 120,
+        scrollSpeed: data.scrollSpeed || 1,
+        stageLayers: data.stageLayers || [],
+        shader: data.shader || null,
+        player: data.player || "pico",
+        player2: data.player2 || null,
+        opponent: data.opponent || "bf",
+        opponent2: data.opponent2 || null,
+        speaker: data.speaker || null,
+        opponentPosition: { ...data.opponentPosition },
+        opponent2Position: { ...data.opponent2Position },
+        playerPosition: { ...data.playerPosition },
+        player2Position: { ...data.player2Position },
+        speakerPosition: { ...data.speakerPosition },
+        cameraX: data.cameraX || 0,
+        cameraY: data.cameraY || 0,
+        cameraZoom: data.cameraZoom || 1
+        // notes
+    };  
 }
 
 async function loadSong(song, difficulty) {
     const r = await fetch (`assets/fnf/data/${song}/chart-${difficulty}.json`);
     const data = await r.json();
-    getSongData(data);
+    songData = getSongData(data);
 }
 
