@@ -767,7 +767,71 @@ document.addEventListener("keydown", (e) => {
 
 let timing = null;
 
-function handleHP(rating) {
+let hp = 100;
+let maxHp = 200;
+let sick = 0;
+let good = 0;
+let bad = 0;
+let shit = 0;
+let miss = 0;
+let combo = 0;
+let score = 0;
+let accuracy = "100.00";
+let grade = "??";
+let comboRank = "??";
+
+
+function handleHit(rating) {
+    if (rating === "sick") {
+        if (settings.hardMode) {
+            hp = Math.min(maxHP, hp + 1);
+            score += 500;
+        }
+        if (!settings.hardMode) {
+            hp = Math.min(maxHP, hp + 5);
+            score += 350;
+        }
+        combo++;
+        sick++;
+    }
+    if (rating === "good") {
+        if (settings.hardMode) {
+            hp = Math.max(0, hp - 5);
+            score += 0;
+        }
+        if (!settings.hardMode) {
+            hp = Math.min(maxHp, hp + 2);
+            score += 200;
+        }
+        good++;
+        combo++;
+    }
+    if (rating === "bad") {
+        if (settings.hardMode) {
+            hp = Math.max(0, hp - 10);
+            score -= 150;
+            combo = 0;
+        }
+        if (!settings.hardMode) {
+            hp = Math.max(0, hp + 0);
+            score += 100;
+            combo++;
+        }
+        bad++;
+    }
+    if (rating === "shit") {
+        if (settings.hardMode) {
+            hp = Math.max(0, hp - 15);
+            score -= 300;
+        }
+        if (!settings.hardMode) {
+            hp = Math.max(0, hp + 0);
+            score += 50;
+        }
+        shit++;
+        combo = 0;
+    }
+    //
 }
 
 function timingController() {
