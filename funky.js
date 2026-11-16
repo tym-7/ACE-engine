@@ -872,6 +872,10 @@ function resetScore() {
     comboRank = "??";
   }
 
+// id should be used as the folder pathing
+// name is just the display
+// week should be for bg pathing assets/fnf/${songData.week}/images.png
+
 function getSongData(data) {
     return {
         id: data.id || null,
@@ -895,8 +899,10 @@ function getSongData(data) {
         speakerPosition: { ...data.speakerPosition },
         cameraX: data.cameraX || 0,
         cameraY: data.cameraY || 0,
-        cameraZoom: data.cameraZoom || 1
-        // notes
+        cameraZoom: data.cameraZoom || 1,
+        opponentNotes: data.opponentNotes || [],
+        playerNotes: data.playerNotes || [],
+        events: data.events || []
     };  
 }
 
