@@ -91,6 +91,7 @@ let settings = {
   midscroll: false,
     translate: false,
   downscroll: false,
+    hardMode: false,
   skipPrologue: false,
     muteBlips: false,
   showFPS: false
@@ -758,3 +759,35 @@ document.addEventListener("keydown", (e) => {
         // free play
     }
 });
+
+
+// put point and click stuff here
+
+// put fnf stuff here
+
+let timing = null;
+
+function handleHP(rating) {
+}
+
+function timingController() {
+    if (!settings.hardMode) {
+        let normalTiming = {
+            sick: 45,
+            good: 90,
+            bad: 135,
+            shit: 166
+        };
+        timing = normalTiming;
+    }
+
+    if (settings.hardMode) {
+        let hardTiming = {
+            sick: 30,
+            good: 60,
+            bad: 90,
+            shit: 166
+        };
+        timing = hardTiming;
+    }
+}
