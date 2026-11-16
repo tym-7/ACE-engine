@@ -10,6 +10,7 @@ const kap = kaplay({
 let assets = [];
 
 // PUT YOUR ASSETS IN THE ASSET JSON DONT BE STUPID LIKE ME
+// IM BEING SERIOUS IF YOUR GAME CRASHES ITS PROBABLY CUZ ITS NOT THERE - note to future selves
 
 async function addAssets() {
     const r = await fetch("data/assets.json");
