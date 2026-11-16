@@ -872,5 +872,5 @@ function resetScore() {
     comboRank = "??";
   }
 
-function getSongData() {
+function getSongData(data) {
 }
