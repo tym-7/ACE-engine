@@ -917,6 +917,7 @@ async function loadSong(song, difficulty) {
 
 async function startSong(song, difficulty) {
     await loadSong(song, difficulty);
+    resetScore();
 }
 
 function playCutscene(src, finished) {
@@ -928,5 +929,24 @@ function playCutscene(src, finished) {
         cutscene.style.display = "none";
         if (finished) finished();
     };
+}
+
+function renderFNFSprite() {
+    
+}
+
+function renderFNFBg() {
+    songData.stageLayers.forEach(l => {
+        const layerSrc = getAsset(`assets/fnf/${songData.week}/${l.src}`);
+        let options = {};
+        if (l.type === "animated") {
+            options = { anim: "idle"};
+        }
+        const layer = kap.add([
+            kap.sprite(layerSrc, options),
+            kap.pos(l.x, l.y),
+            kap.z(l.zIndex)
+            ]);
+    });
 }
 
