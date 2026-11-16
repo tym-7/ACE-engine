@@ -114,6 +114,11 @@ NOT ADDED
 ## Point And Click
 Engine Not Finished Yet
 ## FNF
-Engine Not Finished Yet
+In progress
+
+Chart Data:
+
+Sprite Data:
+
 # Assets Used:
 - add things here when i need to credit people for using their assets
