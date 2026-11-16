@@ -266,6 +266,9 @@ function closeDialog() {
   bg.style.display = "none";
 }
 
+function gameOver() {
+}
+
 // i wanna add a transition sec for backgrounds too
 
 function getLine(data) {
@@ -298,8 +301,8 @@ function getLine(data) {
 }
 
    const charBlip = {
-    Pico: "sfx/pixelText.mp3",
-    default: "sfx/pixelText.mp3"
+    pico: "assets/vn/sfx/blips/pixelText.mp3",
+    default: "assets/vn/sfx/blips/pixelText.mp3"
 };
 
 let i = 0;
@@ -316,7 +319,8 @@ function startTyping(text, onFinish = null) {
     finish = onFinish;
     const dialogueText = document.getElementById("dialogue-text");
     dialogueText.innerHTML = "";
-     blip = new Audio(charBlip[currentLine.char] || charBlip.default);
+     blipSfx = charBlip[currentLine.char] || charBlip.default;
+    blip = getAsset(blip);
     if (settings.speedDialogue === 3) {
         finishTyping();
         return;
@@ -335,9 +339,7 @@ function type() {
         document.getElementById("dialogue-text").appendChild(span);
         
         if (!currentLine.muted && !settings.mutedBlips && c !== " ") {
-            const clone = blip.cloneNode();
-            clone.volume = 0.5;
-            clone.play();
+            kap.play(blip, {volume: 0.5});
         }
         let delay = getTextSpeed() / currentLine.speed;
             if (c === "." || c === "!" || c === "?") {
@@ -724,16 +726,19 @@ document.addEventListener("keydown", (e) => {
 
 // making it into a separate function for idk mobile support
 function handleDialogue() {
+    const enter = getAsset(`assets/vn/sfx/blips/textboxClick.mp3`);
     if (typeId) {
         finishTyping();
         return;
     }
     if (nextScene) {
         loadDialogue(nextScene);
+        kap.play(enter);
         return;
     }
     if (dialogueQueue.length > 0) {
         renderLine(dialogueQueue.shift());
+        kap.play(enter);
         return;
     }
     if (dialogueQueue.length === 0) {
