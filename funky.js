@@ -855,3 +855,16 @@ function timingController() {
         timing = hardTiming;
     }
 }
+
+function resetScore() {
+    sick = 0;
+    good = 0;
+    bad = 0;
+    shit = 0;
+    miss = 0;
+    score = 0; 
+    combo = 0;
+    accuracy = "100.00";
+    grade = "??";
+    comboRank = "??";
+  }
