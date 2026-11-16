@@ -75,6 +75,16 @@ async function addRandomData() {
 
 addRandomData();
 
+let charData = {};
+
+async function addCharacterData() {
+    const r = await fetch('assets/fnf/sprites/characters.json');
+    const data = await r.json();
+    charData = data;
+}
+
+//addCharacterData();
+
 //i want to add translation support, but i don't have any plans to get translators bc no one is going to translate so much dialogue
 // when each week will have over tens of thousands of words
 // if anyone does wanna, feel free tho ❤
