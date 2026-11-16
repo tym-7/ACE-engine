@@ -317,10 +317,11 @@ function startTyping(text, onFinish = null) {
     const dialogueText = document.getElementById("dialogue-text");
     dialogueText.innerHTML = "";
      blip = new Audio(charBlip[currentLine.char] || charBlip.default);
-    type();
     if (settings.speedDialogue === 3) {
         finishTyping();
+        return;
     }
+    type();
 }
 
 function type() {
