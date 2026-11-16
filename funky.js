@@ -887,7 +887,8 @@ function getSongData(data) {
         bpm: data.bpm || 120,
         scrollSpeed: data.scrollSpeed || 1,
         stageLayers: data.stageLayers || [],
-        cutscene: data.cutscene || null,
+        startCutscene: data.startCutscene || null,
+        endCutscene: data.endCutscene || null,
         shader: data.shader || null,
         player: data.player || "pico",
         player2: data.player2 || null,
@@ -912,5 +913,20 @@ async function loadSong(song, difficulty) {
     const r = await fetch (`assets/fnf/data/${song}/chart-${difficulty}.json`);
     const data = await r.json();
     songData = getSongData(data);
+}
+
+async function startSong(song, difficulty) {
+    await loadSong(song, difficulty);
+}
+
+function playCutscene(src, finished) {
+    const cutscene = document.getElementById("cutscene");
+    cutscene.style.display = "block";
+    cutscene.src = src;
+    cutscene.play();
+    cutscene.onended = () => {
+        cutscene.style.display = "none";
+        if (finished) finished();
+    };
 }
 
