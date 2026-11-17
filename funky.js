@@ -122,15 +122,14 @@ function getFont() {
 }
 
 function getNoteSpeed() {
-    if (settings.speedNotes === 0) songData.scrollSpeed = songData.scrollSpeed;
-    if (settings.speedNotes === 1) songData.scrollSpeed = 1;
-    if (settings.speedNotes === 2) songData.scrollSpeed = 1.1;
-    if (settings.speedNotes === 3) songData.scrollSpeed = 1.2;
-    if (settings.speedNotes === 4) songData.scrollSpeed = 1.3;
-    if (settings.speedNotes === 5) songData.scrollSpeed = 1.4;
-    if (settings.speedNotes === 6) songData.scrollSpeed = 1.5;
-    if (settings.speedNotes === 7) songData.scrollSpeed = 1.6;
-    // continue the copy and paste job
+    if (settings.speedNotes === 0) {
+        songData.scrollSpeed = songData.scrollSpeed;
+        return;
+    }
+    songData.scrollSpeed = 0.9 + (settings.speedNotes * 0.1); // thank you my brother for the suggestion
+}
+
+function getOverlay() {
 }
 
 // save stuff idk
