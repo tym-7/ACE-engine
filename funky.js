@@ -1058,12 +1058,11 @@ function spawnNote(n, mustHit) {
             }
         ]);
         const end = kap.add([
-            kap.sprite(`end_${lane}`),
+            kap.sprite(`end_${lane}`, { flipY: settings.downscroll }),
             kap.pos(x, y),
             kap.anchor(anchor),
             kap.fixed(),
             kap.z(51),
-            kap.flipY(settings.downscroll),
             "end",
             "note",
             {
