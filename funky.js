@@ -984,6 +984,24 @@ function renderReceptors() {
     //
 }
 
+function spawnNote(n, mustHit) {
+    const time = n[0];
+    const lane = n[1];
+    const length = n[2];
+    const type = n[3] || 0;
+    const target = n[4] || 0;
+
+    let spacing = 155;
+    let posX = 175;
+    if (mustHit) {
+        posX = 955;
+        if (settings.midscroll) {
+            posX = (1595 / 2) - (spacing * 1.5);
+        }
+    }
+    const x = posX + (lane * spacing);
+}
+
 let FNFplayer = null;
 let FNFplayer2 = null;
 let FNFopponent = null;
