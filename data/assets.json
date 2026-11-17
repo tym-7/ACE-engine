@@ -15,6 +15,76 @@
     "src": "assets/ui/images/bg-box.png"
   },
   { 
+    "type": "sound",
+    "name": "defaultblip",
+    "src": "assets/vn/sfx/blips/pixelText.mp3"
+  },
+  { 
+    "type": "sound",
+    "name": "boxenter",
+    "src": "assets/vn/sfx/blips/textboxClick.mp3"
+  },
+  {
+    "type": "sprite",
+    "name": "receptor_0",
+    "src": "assets/fnf/ui/notes/r0.png",
+    "options": {
+        "sliceX": 5,
+        "sliceY": 1,
+        "anims": {
+            "idle": 0,
+            "press": 1,
+            "hit": { "from": 2, "to": 3, "speed": 5, "loop": false },
+            "hold": { "from": 3, "to": 4, "speed": 24, "loop": true }
+        }
+    }
+},
+  {
+    "type": "sprite",
+    "name": "receptor_1",
+    "src": "assets/fnf/ui/notes/r1.png",
+    "options": {
+        "sliceX": 5,
+        "sliceY": 1,
+        "anims": {
+            "idle": 0,
+            "press": 1,
+            "hit": { "from": 2, "to": 3, "speed": 5, "loop": false },
+            "hold": { "from": 3, "to": 4, "speed": 24, "loop": true }
+        }
+    }
+},
+{
+    "type": "sprite",
+    "name": "receptor_2",
+    "src": "assets/fnf/ui/notes/r2.png",
+    "options": {
+        "sliceX": 5,
+        "sliceY": 1,
+        "anims": {
+            "idle": 0,
+            "press": 1,
+            "hit": { "from": 2, "to": 3, "speed": 5, "loop": false },
+            "hold": { "from": 3, "to": 4, "speed": 24, "loop": true }
+        }
+    }
+},
+  {
+    "type": "sprite",
+    "name": "receptor_3",
+    "src": "assets/fnf/ui/notes/r3.png",
+    "options": {
+        "sliceX": 5,
+        "sliceY": 1,
+        "anims": {
+            "idle": 0,
+            "press": 1,
+            "hit": { "from": 2, "to": 3, "speed": 5, "loop": false },
+            "hold": { "from": 3, "to": 4, "speed": 24, "loop": true }
+        }
+    }
+},
+  { 
     "type": "sprite",
     "name": "pico-neutral",
     "src": "assets/vn/sprites/pico/neutral.png"
