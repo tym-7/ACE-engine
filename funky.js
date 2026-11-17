@@ -824,11 +824,11 @@ let keybinds6K = [];
 function handleHit(rating) {
     if (rating === "sick") {
         if (settings.hardMode) {
-            hp = Math.min(maxHP, hp + 1);
+            hp = Math.min(maxHp, hp + 1);
             score += 500;
         }
         if (!settings.hardMode) {
-            hp = Math.min(maxHP, hp + 5);
+            hp = Math.min(maxHp, hp + 5);
             score += 350;
         }
         combo++;
