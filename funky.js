@@ -816,6 +816,10 @@ let inSong = false;
 let canPause = false;
 let blueBalled = false;
 
+let direction4K = ["left", "down", "up", "right"];
+let direction6K = ["left", "edit", "these", "values", "okay", "right"];
+let keybinds4K = [];
+let keybinds6K = [];
 
 function handleHit(rating) {
     if (rating === "sick") {
