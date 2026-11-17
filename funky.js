@@ -984,6 +984,17 @@ function renderFNFBg() {
     });
 }
 
+function getPage(page, animation, charId, char) {
+    let pages = charData[charId].pages;
+    for (let index = 0; index < pages.length; index++) {
+        char.sprite = pages[index];
+        if (char.hasAnim(animation)) {
+            return pages[index];
+        }
+    }
+}
+    
+
 function animate(char, charId, animation) {
     // figure out how to look up pages from charData
     // do animation things here
