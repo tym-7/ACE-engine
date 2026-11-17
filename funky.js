@@ -1012,14 +1012,33 @@ function spawnNote(n, mustHit) {
         }
     }
     const x = posX + (lane * spacing);
+    let y = 1099;
     let anchor = "top";
     if (settings.downscroll) {
-        anchor = "bottom";
+        anchor = "bot";
+        y = 0;
     }
     let sprite = `arrow_${lane}`;
     if (type === 1) {
         sprite = `arrow-poison_${lane}`;
     }
+    const note = kap.add([
+        kap.sprite(sprite),
+        kap.pos(x, y),
+        kap.anchor("center"),
+        kap.fixed(),
+        kap.z(51),
+        "note",
+        "head",
+        {
+            time: time,
+            lane: lane,
+            length: length,
+            type: type,
+            target: target,
+            mustHit: mustHit
+        }
+    ]);
     //
 }
 
