@@ -807,6 +807,9 @@ let songData = null;
 let inst = null;
 let voiceP = null;
 let voiceO = null;
+let instId = null;
+let voicePId = null;
+let voiceOId = null;
 
 let inSong = false;
 let canPause = false;
@@ -947,6 +950,7 @@ async function loadSong(song, difficulty) {
 async function startSong(song, difficulty) {
     await loadSong(song, difficulty);
     resetScore();
+    setAudio();
 }
 
 function playCutscene(src, finished) {
@@ -959,6 +963,22 @@ function playCutscene(src, finished) {
         if (finished) finished();
     };
 }
+
+// i wrote this on google docs im sorry this is so flat
+
+function setAudio () {
+instId = null;
+voicePId = null;
+voiceOId = null;
+instId = getAsset(`assets/fnf/songs/${songData.id}/inst.ogg`);
+voicePId = getAsset(`assets/fnf/songs/${songData.id}/voices.ogg`);
+if (!voicePId) {
+voicePId = getAsset(`assets/fnf/songs/${songData.id}/voices-${songData.player}.ogg`);
+voiceOId = getAsset(`assets/fnf/songs/${songData.id}/voices-${songData.opponent}.ogg`);
+}
+}
+
+
 
 function renderReceptors() {
     kap.destroyAll("receptor");
