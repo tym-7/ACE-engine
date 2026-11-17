@@ -1041,6 +1041,10 @@ function spawnNote(n, mustHit) {
     ]);
     if (length > 0) {
         let height = length * songData.scrollSpeed;
+        let endY = y + height;
+        if (settings.downscroll) {
+            endY = y - height;
+        }
         const body = kap.add([
             kap.sprite(`body_${lane}`, { width: 50, height: height, tiled: true }),
             kap.pos(x, y),
@@ -1059,7 +1063,7 @@ function spawnNote(n, mustHit) {
         ]);
         const end = kap.add([
             kap.sprite(`end_${lane}`, { flipY: settings.downscroll }),
-            kap.pos(x, y),
+            kap.pos(x, endY),
             kap.anchor(anchor),
             kap.fixed(),
             kap.z(51),
