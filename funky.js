@@ -1000,6 +1000,15 @@ function spawnNote(n, mustHit) {
         }
     }
     const x = posX + (lane * spacing);
+    let anchor = "top";
+    if (settings.downscroll) {
+        anchor = "bottom";
+    }
+    let sprite = `arrow_${lane}`;
+    if (type === 1) {
+        sprite = `arrow-poison_${lane}`;
+    }
+    //
 }
 
 let FNFplayer = null;
