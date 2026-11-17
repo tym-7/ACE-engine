@@ -122,14 +122,14 @@ function getFont() {
 }
 
 function getNoteSpeed() {
-    if (settings.speedNotes === 0) songData.speed = songData.speed;
-    if (settings.speedNotes === 1) songData.speed = 1;
-    if (settings.speedNotes === 2) songData.speed = 1.1;
-    if (settings.speedNotes === 3) songData.speed = 1.2;
-    if (settings.speedNotes === 4) songData.speed = 1.3;
-    if (settings.speedNotes === 5) songData.speed = 1.4;
-    if (settings.speedNotes === 6) songData.speed = 1.5;
-    if (settings.speedNotes === 7) songData.speed = 1.6;
+    if (settings.speedNotes === 0) songData.scrollSpeed = songData.scrollSpeed;
+    if (settings.speedNotes === 1) songData.scrollSpeed = 1;
+    if (settings.speedNotes === 2) songData.scrollSpeed = 1.1;
+    if (settings.speedNotes === 3) songData.scrollSpeed = 1.2;
+    if (settings.speedNotes === 4) songData.scrollSpeed = 1.3;
+    if (settings.speedNotes === 5) songData.scrollSpeed = 1.4;
+    if (settings.speedNotes === 6) songData.scrollSpeed = 1.5;
+    if (settings.speedNotes === 7) songData.scrollSpeed = 1.6;
     // continue the copy and paste job
 }
 
@@ -1027,7 +1027,7 @@ function spawnNote(n, mustHit) {
         kap.pos(x, y),
         kap.anchor("center"),
         kap.fixed(),
-        kap.z(51),
+        kap.z(52),
         "note",
         "head",
         {
@@ -1039,6 +1039,44 @@ function spawnNote(n, mustHit) {
             mustHit: mustHit
         }
     ]);
+    if (length > 0) {
+        let height = length * songData.scrollSpeed;
+        const body = kap.add([
+            kap.sprite(`body_${lane}`, { width: 50, height: height, tiled: true }),
+            kap.pos(x, y),
+            kap.anchor(anchor),
+            kap.fixed(),
+            kap.z(51),
+            "body",
+            "note",
+            {
+                time: time,
+                lane: lane,
+                length: length,
+                mustHit: mustHit,
+                parent: note
+            }
+        ]);
+        const end = kap.add([
+            kap.sprite(`end_${lane}`),
+            kap.pos(x, y),
+            kap.anchor(anchor),
+            kap.fixed(),
+            kap.z(51),
+            kap.flipY(settings.downscroll),
+            "end",
+            "note",
+            {
+                time: time,
+                lane: lane,
+                length: length,
+                mustHit: mustHit,
+                parent: note
+            }
+        ]);
+        note.body = body;
+        note.end = end;
+    }
     //
 }
 
