@@ -726,6 +726,8 @@ function renderVNUI() {
 }
 
 function removeKaplayVN() {
+    // i just learned tags exist, im thinking about adding everything with the tag VN and then doing
+    //kap.destroyAll("VN"); or i could be lazy asf and just destroy everything individually
 }
     
 document.addEventListener("keydown", (e) => {
@@ -941,8 +943,27 @@ function playCutscene(src, finished) {
     };
 }
 
+let FNFplayer = null;
+let FNFplayer2 = null;
+let FNFopponent = null;
+let FNFopponent2 = null;
+let FNFspeaker = null;
+
 function renderFNFSprite() {
-    
+    kap.destroyAll("FNFChar");
+    FNFplayer = null;
+    FNFplayer2 = null;
+    FNFopponent = null;
+    FNFopponent2 = null;
+    FNFspeaker = null;
+        FNFplayer = kap.add([
+            kap.sprite(songData.player, { anim: "idle", animSpeed: songData.bpm / 576 }),
+            kap.pos(songData.playerPosition),
+            kap.z(10),
+            "checkBPM",
+            "FNFChar",
+            { holdTimer: 0 }
+        ]);
 }
 
 function renderFNFBg() {
@@ -963,7 +984,9 @@ function renderFNFBg() {
     });
 }
 
-function animate(sprite, animation) {
+function animate(char, charId, animation) {
+    // figure out how to look up pages from charData
+    // do animation things here
 }
 
 function changeBPM(bpm) {
