@@ -805,6 +805,10 @@ let comboRank = "??";
 
 let songData = null;
 
+let inSong = false;
+let canPause = false;
+let blueBalled = false;
+
 
 function handleHit(rating) {
     if (rating === "sick") {
