@@ -130,6 +130,7 @@ function getNoteSpeed() {
 }
 
 function getOverlay() {
+    return settings.overlay / 10;
 }
 
 // save stuff idk
