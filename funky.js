@@ -941,6 +941,49 @@ function playCutscene(src, finished) {
     };
 }
 
+function renderReceptors() {
+    kap.destroyAll("receptor");
+
+    let spacing = 155;
+    let yPos = 125;
+    let xPosOpp = 175;
+    let xPosPla = 955;
+    
+    if (settings.downscroll) {
+    yPos = 1099 - 125;
+    }
+    let delay = songData.lanes;
+    if (songData.lanes === 4) {
+    if (settings.midscroll) {
+    xPosPla = (1595  / 2 ) - (spacing * 1.5);
+        delay = 0;
+        }
+        if (!settings.midscroll) {
+            for (let index = 0; index < 4; index++) {
+                const x = xPosOpp + (index * spacing);
+
+                const r = kap.add([
+                    kap.sprite(`receptor_${index}`),
+                    kap.pos(x, yPos),
+                    kap.anchor("center"),
+                    kap.opacity(0),
+                    kap.fixed(),
+                    kap.z(50),
+                    "receptor",
+                    "oppR"
+                ]);
+            kap.wait(index * 0.2, () => r.fadeIn(0.3));
+            }
+    }
+        // add player here later
+    }
+    if (songData.lanes === 6) {
+        // modders add stuff here or change it to 6 or 8k. i would also suggest changing the sprite direction
+        // to maybe something like 6k-receptor-${index}. keep in mind it'd be the name not the src
+    }
+    //
+}
+
 let FNFplayer = null;
 let FNFplayer2 = null;
 let FNFopponent = null;
