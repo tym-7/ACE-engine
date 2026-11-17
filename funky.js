@@ -963,7 +963,7 @@ function renderReceptors() {
                 const x = xPosOpp + (index * spacing);
 
                 const r = kap.add([
-                    kap.sprite(`receptor_${index}`),
+                    kap.sprite(`receptor_${index}`, { anim: "idle" }),
                     kap.pos(x, yPos),
                     kap.anchor("center"),
                     kap.opacity(0),
