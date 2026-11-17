@@ -989,6 +989,8 @@ function animate(char, charId, animation) {
     // do animation things here
 }
 
+// use onUpdate for gameloop
+
 function changeBPM(bpm) {
     songData.bpm = bpm;
     kap.get("checkBPM").forEach(a => {
