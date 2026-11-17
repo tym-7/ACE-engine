@@ -1171,6 +1171,50 @@ function renderFNFSprite() {
             "FNFChar",
             { holdTimer: 0 }
         ]);
+    if (songData.opponent) {
+        FNFopponent = kap.add([
+            kap.sprite(songData.opponent, { anim: "idle", animSpeed: songData.bpm / 576 }),
+            kap.pos(songData.opponentPosition),
+            kap.scale(charData[songData.opponent].scale),
+            kap.z(10),
+            "checkBPM",
+            "FNFChar",
+            { holdTimer: 0 }
+        ]);
+    }
+    if (songData.speaker) {
+        FNFspeaker = kap.add([
+            kap.sprite(songData.speaker, { anim: "idle", animSpeed: songData.bpm / 576 }),
+            kap.pos(songData.speakerPosition),
+            kap.scale(charData[songData.speaker].scale),
+            kap.z(9),
+            "checkBPM",
+            "FNFChar",
+            { holdTimer: 0 }
+        ]);
+    }
+    if (songData.player2) {
+    FNFplayer2 = kap.add([
+            kap.sprite(songData.player2, { anim: "idle", animSpeed: songData.bpm / 576 }),
+            kap.pos(songData.player2Position),
+            kap.scale(charData[songData.player2].scale),
+            kap.z(10),
+            "checkBPM",
+            "FNFChar",
+            { holdTimer: 0 }
+        ]);
+    }
+    if (songData.opponent2) {
+        FNFopponent2 = kap.add([
+            kap.sprite(songData.opponent2, { anim: "idle", animSpeed: songData.bpm / 576 }),
+            kap.pos(songData.opponent2Position),
+            kap.scale(charData[songData.opponent2].scale),
+            kap.z(10),
+            "checkBPM",
+            "FNFChar",
+            { holdTimer: 0 }
+        ]);
+    }
 }
 
 function renderFNFBg() {
