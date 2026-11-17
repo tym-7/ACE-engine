@@ -804,6 +804,9 @@ let grade = "??";
 let comboRank = "??";
 
 let songData = null;
+let inst = null;
+let voiceP = null;
+let voiceO = null;
 
 let inSong = false;
 let canPause = false;
