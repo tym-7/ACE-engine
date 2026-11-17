@@ -1249,8 +1249,67 @@ function getPage(animation, charId, char) {
 function animate(char, charId, animation) {
     if (!char) return;
     char.sprite = getPage(animation, charId, char);
-    // do animation things here
+    
+    if (animation === "idle") {
+        char.holdTimer = 0;
+        char.animSpeed = songData.bpm / 576;
+        char.tag("checkBPM");
+        char.play("idle", { loop: true });
+        return;
+    }
+
+    char.untag("checkBPM");
+    char.animSpeed = 1;
+    char.holdTimer = 0;
+
+    if (animation === "gameover-idle") {
+        char.holdTimer = 0;
+        char.play("gameover-idle", {loop: true});
+        return;
+    }
+    if (animation === "gameover-start") {
+        char.holdTimer = 0;
+        char.play("gameover-start");
+        return;
+    }
+    if (animation === "gameover-end") {
+        char.holdTimer = 0;
+        char.play("gameover-end");
+        return;
+    }
+    if (animation === "hit-left" || animation === "hit-right" || animation === "hit-up" || animation === "hit-down") {
+        char.holdTimer = 0.35;
+    }
+    if (animation === "miss-left" || animation === "miss-right" || animation === "miss-up" || animation === "miss-down") {
+        char.holdTimer = 0.5;
+    }
+    char.play(animation);
+    // search up on anim end play idle
 }
+
+kap.onUpdate("FNFChar", (character) => {
+    if (character.holdTimer > 0) {
+        character.holdTimer -= kap.dt();
+        if (character.holdTimer <= 0) {
+            character.holdTimer = 0;
+            if (character === FNFplayer) {
+                animate(character, songData.player, "idle");
+            }
+            if (character === FNFopponent) {
+                animate(character, songData.opponent, "idle");
+            }
+            if (character === FNFplayer2) {
+                animate(character, songData.player2, "idle");
+            }
+            if (character === FNFopponent2) {
+                animate(character, songData.opponent2, "idle");
+            }
+            if (character === FNFspeaker) {
+                animate(character, songData.speaker, "idle");
+            }
+        }
+    }
+});
 
 // use onUpdate for gameloop
 kap.onUpdate("head", (note) => {
