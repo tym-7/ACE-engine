@@ -951,7 +951,23 @@ async function startSong(song, difficulty) {
     await loadSong(song, difficulty);
     resetScore();
     setAudio();
+    if (songData.startCutscene) {
+        playCutscene(songData.startCutscene, part2Start);
+        return;
+    }
+    part2Start();
 }
+    function part2Start() {
+        // add more stuff here
+        setReceptors();
+    inst = kap.play(instId);
+    voiceP = kap.play(voicePId);
+    if (voiceOId) {
+        voiceO = kap.play(voiceOId);
+    }
+}
+
+
 
 function playCutscene(src, finished) {
     const cutscene = document.getElementById("cutscene");
@@ -960,6 +976,7 @@ function playCutscene(src, finished) {
     cutscene.play();
     cutscene.onended = () => {
         cutscene.style.display = "none";
+        cutscene.src = "";
         if (finished) finished();
     };
 }
