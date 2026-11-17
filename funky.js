@@ -1316,7 +1316,6 @@ kap.onUpdate("FNFChar", (character) => {
     }
 });
 
-// use onUpdate for gameloop
 kap.onUpdate("head", (note) => {
 });
 
