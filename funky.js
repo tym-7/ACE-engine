@@ -121,6 +121,18 @@ function getFont() {
     if (settings.fontSize === 2) text.style.fontSize = "32px";
 }
 
+function getNoteSpeed() {
+    if (settings.speedNotes === 0) songData.speed = songData.speed;
+    if (settings.speedNotes === 1) songData.speed = 1;
+    if (settings.speedNotes === 2) songData.speed = 1.1;
+    if (settings.speedNotes === 3) songData.speed = 1.2;
+    if (settings.speedNotes === 4) songData.speed = 1.3;
+    if (settings.speedNotes === 5) songData.speed = 1.4;
+    if (settings.speedNotes === 6) songData.speed = 1.5;
+    if (settings.speedNotes === 7) songData.speed = 1.6;
+    // continue the copy and paste job
+}
+
 // save stuff idk
 //
 // adding a lot of spaces bc they kinda look ugly copy and pasted like that
