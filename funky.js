@@ -1147,6 +1147,8 @@ function animate(char, charId, animation) {
 }
 
 // use onUpdate for gameloop
+kap.onUpdate("head", (note) => {
+});
 
 function changeBPM(bpm) {
     songData.bpm = bpm;
