@@ -1269,7 +1269,9 @@ function animate(char, charId, animation) {
     }
     if (animation === "gameover-start") {
         char.holdTimer = 0;
-        char.play("gameover-start");
+        char.play("gameover-start", {
+            onEnd: () => animate(char, charId, "gameover-idle"),
+        });
         return;
     }
     if (animation === "gameover-end") {
@@ -1283,8 +1285,11 @@ function animate(char, charId, animation) {
     if (animation === "miss-left" || animation === "miss-right" || animation === "miss-up" || animation === "miss-down") {
         char.holdTimer = 0.5;
     }
-    char.play(animation);
-    // search up on anim end play idle
+    char.play(animation, {
+        onEnd: () => {
+            animate(char, charId, "idle");
+        },
+    });
 }
 
 kap.onUpdate("FNFChar", (character) => {
