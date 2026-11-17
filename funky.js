@@ -632,7 +632,6 @@ function renderVNSprite() {
             kap.sprite(sprite),
             kap.pos(200,740),
             kap.anchor("botleft"),
-            kap.fixed(),
             kap.z(1),
             ]);
     } else {
@@ -671,7 +670,6 @@ function renderVNBg() {
         VNBg = kap.add([
             kap.sprite(bg),
             kap.pos(0,0),
-            kap.fixed(),
             kap.z(0),
             ]);
         return;
@@ -959,6 +957,7 @@ function renderFNFSprite() {
         FNFplayer = kap.add([
             kap.sprite(songData.player, { anim: "idle", animSpeed: songData.bpm / 576 }),
             kap.pos(songData.playerPosition),
+            kap.scale(charData[songData.player].scale),
             kap.z(10),
             "checkBPM",
             "FNFChar",
