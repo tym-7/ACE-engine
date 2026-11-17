@@ -950,6 +950,7 @@ async function loadSong(song, difficulty) {
 async function startSong(song, difficulty) {
     await loadSong(song, difficulty);
     resetScore();
+    getNoteSpeed();
     setAudio();
     if (songData.startCutscene) {
         playCutscene(songData.startCutscene, part2Start);
@@ -959,7 +960,7 @@ async function startSong(song, difficulty) {
 }
     function part2Start() {
         // add more stuff here
-        setReceptors();
+        renderReceptors();
     inst = kap.play(instId);
     voiceP = kap.play(voicePId);
     if (voiceOId) {
