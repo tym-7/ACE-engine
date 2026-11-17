@@ -804,6 +804,7 @@ let grade = "??";
 let comboRank = "??";
 
 let songData = null;
+
 let inst = null;
 let voiceP = null;
 let voiceO = null;
@@ -892,6 +893,7 @@ function timingController() {
 }
 
 function resetScore() {
+    hp = 100;
     sick = 0;
     good = 0;
     bad = 0;
@@ -952,6 +954,7 @@ async function startSong(song, difficulty) {
     resetScore();
     getNoteSpeed();
     setAudio();
+    timingController();
     if (songData.startCutscene) {
         playCutscene(songData.startCutscene, part2Start);
         return;
