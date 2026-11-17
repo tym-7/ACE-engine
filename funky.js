@@ -1032,7 +1032,21 @@ function renderReceptors() {
             kap.wait(index * 0.2, () => r.fadeIn(0.3));
             }
     }
-        // add player here later
+                for (let index = 0; index < 4; index++) {
+            const x = xPosPla + (index * spacing);
+
+            const r = kap.add([
+                kap.sprite(`receptor_${index}`, {anim: "idle"}),
+                kap.pos(x, yPos),
+                kap.anchor("center"),
+                kap.opacity(0),
+                kap.fixed(),
+                kap.z(50),
+                "receptor",
+                "plaR"
+            ]);
+            kap.wait((index + delay) * 0.2, () => r.fadeIn(0.3));
+        }
     }
     if (songData.lanes === 6) {
         // modders add stuff here or change it to 6 or 8k. i would also suggest changing the sprite direction
