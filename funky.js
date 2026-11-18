@@ -953,8 +953,19 @@ async function loadSong(song, difficulty) {
     songData = getSongData(data);
 }
 
+let maxBgWidth = 0;
+let maxBgHeight = 0;
+
+async function getBgData() {
+    const r = await fetch(`assets/fnf/${songData.week}/data.json`);
+    const data = await r.json();
+    maxBgWidth = data.width;
+    maxBgHeight = data.height;
+}
+
 async function startSong(song, difficulty) {
     await loadSong(song, difficulty);
+    await getBgData();
     resetScore();
     getNoteSpeed();
     setAudio();
