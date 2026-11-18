@@ -917,11 +917,16 @@ function timingController() {
 }
 
 window.addEventListener("keydown", (e) => {
+    let lane = -1;
     if (songData.lanes === 4) {
-    const lane = keybinds4K.indexOf(e.key.toUpperCase());
+        lane = keybinds4K.indexOf(e.key.toUpperCase());
     }
-    if (lane === -1 && !inSong) return;
+    if (lane === -1 || !inSong) return;
+    checkHit(lane);
 });
+
+function checkHit(lane) {
+}
 
 function resetScore() {
     hp = 100;
