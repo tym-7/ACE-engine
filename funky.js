@@ -968,7 +968,7 @@ async function startSong(song, difficulty) {
 }
     function part2Start() {
         // add more stuff here like countdown
-        changeBpm(baseBpm);
+        changeBPM(baseBpm);
         renderReceptors();
     inst = kap.play(instId);
     voiceP = kap.play(voicePId);
