@@ -930,6 +930,25 @@ window.addEventListener("keydown", (e) => {
 
 function checkHit(lane) {
     heldKeys.add(lane);
+    let hitTime = inst.currentTime * 1000;
+    const notes = kap.get("head");
+    let closestNote = null;
+    // find closest note, search it up
+    if (!closestNote) return;
+    let diff = Math.abs(hitTime - closestNote.time);
+    if (diff <= timing.sick) {
+        handleHit("sick");
+        kap.destroy(closestNote);
+    } else if (diff <= timing.good) {
+        handleHit("good");
+        kap.destroy(closestNote);
+    } else if (diff <= timing.bad) {
+        handleHit("bad");
+        kap.destroy(closestNote);
+    } else if (diff <= timing.shit) {
+        handleHit("shit");
+        kap.destroy(closestNote);
+    }
 }
 
 function resetScore() {
