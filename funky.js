@@ -1318,6 +1318,9 @@ kap.onUpdate("FNFChar", (character) => {
     }
 });
 
+function updateCamera(targetX, targetY, zoom = 1, zoomSpeed = 1, lerpSpeed = 1) {
+}
+
 kap.onUpdate("head", (note) => {
 });
 
