@@ -917,6 +917,7 @@ function timingController() {
 }
 
 window.addEventListener("keydown", (e) => {
+    if (e.repeat) return;
     let lane = -1;
     if (songData.lanes === 4) {
         lane = keybinds4K.indexOf(e.key.toUpperCase());
