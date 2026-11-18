@@ -1326,7 +1326,7 @@ function updateCamera(targetX, targetY, zoom = 1, zoomSpeed = 1, lerpSpeed = 1) 
     kap.setCamPos(newPos);
     
     let targetScale = kap.vec2(zoom, zoom);
-    let newScale = currentScale.lerp(targetScale, zoomSpeed * kap.dt());
+    let newScale = scale.lerp(targetScale, zoomSpeed * kap.dt());
     kap.setCamScale(newScale);
 }
 
