@@ -1114,7 +1114,7 @@ function spawnNote(n, mustHit) {
             endY = y - height;
         }
         const body = kap.add([
-            kap.sprite(`body_${lane}`, { width: 50, height: height, tiled: true }),
+            kap.sprite(`body_${lane}`, { width: 50, height: height }),
             kap.pos(x, y),
             kap.anchor(anchor),
             kap.fixed(),
