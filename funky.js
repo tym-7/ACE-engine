@@ -803,6 +803,12 @@ let accuracy = "100.00";
 let grade = "??";
 let comboRank = "??";
 
+let targetX = 0;
+let targetY = 0;
+let zoom = 0;
+let zoomSpeed = 3;
+let lerpSpeed = 3;
+
 let songData = null;
 
 let inst = null;
@@ -1338,10 +1344,17 @@ function setCamera() {
     let startX = kap.clamp(songData.cameraX, halfW, Math.max(halfW, maxBgWidth - halfW));
     let startY = kap.clamp(songData.cameraY, halfH, Math.max(halfH, maxBgHeight - halfH));
     kap.setCamPos(kap.vec2(startX, startY));
+    targetX = startX;
+    targetY = startY; 
+    zoom = startZoom;
 }
 
+kap.onUpdate(() => {
+if (!inSong) return;
+    updateCamera(targetX, targetY, zoom, zoomSpeed, lerpSpeed);
+});
 
-function updateCamera(targetX, targetY, zoom = 1, zoomSpeed = 1, lerpSpeed = 1) {
+function updateCamera(targetX, targetY, zoom = 1, zoomSpeed = 3, lerpSpeed = 3) {
     let pos = kap.getCamPos();
     let scale = kap.getCamScale();
     let targetScale = kap.vec2(zoom, zoom);
