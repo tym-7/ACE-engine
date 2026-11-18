@@ -163,7 +163,6 @@ function saveDialogue() {
     };
     localStorage.setItem(shownSave, JSON.stringify(shownData));
 }
-    loadShown();
 
 function loadGame(data) {
     if (!data) return;
@@ -247,6 +246,10 @@ function loadSettings() {
     }
     //updateSettings();
 }
+
+    loadShown();
+    load4Keybinds();
+    loadSettings();
 
 // 
 //
@@ -835,8 +838,8 @@ let blueBalled = false;
 
 let direction4K = ["left", "down", "up", "right"];
 let direction6K = ["left", "edit", "these", "values", "okay", "right"];
-let keybinds4K = [];
-let keybinds6K = [];
+let keybinds4K = ["D", "F", "J", "K"];
+let keybinds6K = ["S", "D", "F", "J", "K", "L"];
 
 function handleHit(rating) {
     if (rating === "sick") {
