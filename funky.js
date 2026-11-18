@@ -981,6 +981,7 @@ async function startSong(song, difficulty) {
         // add more stuff here like countdown
         changeBPM(baseBpm);
         renderReceptors();
+        setCamera();
     inst = kap.play(instId);
     voiceP = kap.play(voicePId);
     if (voiceOId) {
@@ -1328,6 +1329,17 @@ kap.onUpdate("FNFChar", (character) => {
         }
     }
 });
+
+function setCamera() {
+    let startZoom = songData.cameraZoom;
+    kap.setCamScale(kap.vec2(startZoom, startZoom));
+    let halfW = (kap.width() / 2) / startZoom;
+    let halfH = (kap.height() / 2) / startZoom;
+    let startX = kap.clamp(songData.cameraX, halfW, Math.max(halfW, maxBgWidth - halfW));
+    let startY = kap.clamp(songData.cameraY, halfH, Math.max(halfH, maxBgHeight - halfH));
+    kap.setCamPos(kap.vec2(startX, startY));
+}
+
 
 function updateCamera(targetX, targetY, zoom = 1, zoomSpeed = 1, lerpSpeed = 1) {
     let pos = kap.getCamPos();
