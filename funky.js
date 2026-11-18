@@ -916,6 +916,8 @@ function timingController() {
     }
 }
 
+let heldKeys = new Set();
+
 window.addEventListener("keydown", (e) => {
     if (e.repeat) return;
     let lane = -1;
@@ -927,6 +929,7 @@ window.addEventListener("keydown", (e) => {
 });
 
 function checkHit(lane) {
+    heldKeys.add(lane);
 }
 
 function resetScore() {
