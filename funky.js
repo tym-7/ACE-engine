@@ -959,6 +959,7 @@ async function startSong(song, difficulty) {
     getNoteSpeed();
     setAudio();
     timingController();
+    baseBpm = songData.bpm;
     if (songData.startCutscene) {
         playCutscene(songData.startCutscene, part2Start);
         return;
@@ -966,7 +967,8 @@ async function startSong(song, difficulty) {
     part2Start();
 }
     function part2Start() {
-        // add more stuff here
+        // add more stuff here like countdown
+        changeBpm(baseBpm);
         renderReceptors();
     inst = kap.play(instId);
     voiceP = kap.play(voicePId);
@@ -1318,6 +1320,8 @@ kap.onUpdate("FNFChar", (character) => {
 
 kap.onUpdate("head", (note) => {
 });
+
+let baseBpm = 0;
 
 function changeBPM(bpm) {
     songData.bpm = bpm;
