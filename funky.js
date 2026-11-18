@@ -140,6 +140,7 @@ function getOverlay() {
 let shownDialogue = new Set();
 
 const settingsSave = 'fnf_dark_minds_settings';
+const keybinds4KSave = 'fnf_dark_minds_keybinds';
 const shownSave = 'fnf_dark_minds_shown';
 const chapterSave = 'fnf_dark_minds_chapter_save';
 const sceneSave = 'fnf_dark_minds_scene_save';
@@ -172,6 +173,16 @@ function loadGame(data) {
     currentChapter = data.currentChapter || 1;
 }
 
+function save4Keybinds() {
+    localStorage.setItem(keybinds4KSave, JSON.stringify(keybinds4K));
+}
+
+function load4Keybinds() {
+    const key4Data = localStorage.getItem(keybinds4KSave);
+    if (key4Data) {
+        keybinds4K = JSON.parse(key4Data);
+    }
+}
 
 function getGame(sceneName, lineId = null) {
     return {
