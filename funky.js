@@ -1332,13 +1332,18 @@ kap.onUpdate("FNFChar", (character) => {
 function updateCamera(targetX, targetY, zoom = 1, zoomSpeed = 1, lerpSpeed = 1) {
     let pos = kap.getCamPos();
     let scale = kap.getCamScale();
-    let targetPos = kap.vec2(targetX, targetY);
-    let newPos = pos.lerp(targetPos, lerpSpeed * kap.dt());
-    kap.setCamPos(newPos);
-    
     let targetScale = kap.vec2(zoom, zoom);
     let newScale = scale.lerp(targetScale, zoomSpeed * kap.dt());
     kap.setCamScale(newScale);
+    
+    let halfW = (kap.width() / 2) / newScale.x;
+    let halfH = (kap.height() / 2) / newScale.y;
+    let targetPos = kap.vec2(targetX, targetY);
+    let newPos = pos.lerp(targetPos, lerpSpeed * kap.dt());
+    
+    newPos.x = kap.clamp(newPos.x, halfW, Math.max(halfW, maxBgWidth - halfW));
+    newPos.y = kap.clamp(newPos.y, halfH, Math.max(halfH, maxBgHeight - halfH));
+    kap.setCamPos(newPos);
 }
 
 kap.onUpdate("head", (note) => {
