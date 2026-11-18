@@ -84,6 +84,21 @@
         }
     }
 },
+  {
+    "type": "sprite",
+    "name": "splash",
+    "src": "assets/fnf/ui/notes/splashes.png",
+    "options": {
+        "sliceX": 3,
+        "sliceY": 4,
+        "anims": {
+            "0": { "from": 0, "to": 2, "speed": 24, "loop": false },
+            "1": { "from": 3, "to": 5, "speed": 24, "loop": false },
+            "2": { "from": 6, "to": 8, "speed": 24, "loop": false },
+            "3": { "from": 9, "to": 11, "speed": 24, "loop": false }
+        }
+    }
+},
   { 
     "type": "sprite",
     "name": "pico-neutral",
