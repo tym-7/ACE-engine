@@ -916,6 +916,13 @@ function timingController() {
     }
 }
 
+window.addEventListener("keydown", (e) => {
+    if (songData.lanes === 4) {
+    const lane = keybinds4K.indexOf(e.key.toUpperCase());
+    }
+    if (lane === -1 && !inSong) return;
+});
+
 function resetScore() {
     hp = 100;
     sick = 0;
