@@ -1487,12 +1487,12 @@ kap.onUpdate("head", (note) => {
     if (!inSong) return;
     let diff = note.time - (inst.time() * 1000);
     if (settings.downscroll) {
-    note.pos.y = 924 + (diff * 300 * songData.scrollSpeed);
+    note.pos.y = 924 - (diff * 0.3 * songData.scrollSpeed);
     }
     if (!settings.downscroll) {
-    note.pos.y = 175 - (diff * 300 * songData.scrollSpeed);
+    note.pos.y = 175 + (diff * 0.3 * songData.scrollSpeed);
     }
-    if (diff > timing.shit) {
+    if (diff < -timing.shit) {
         kap.destroy(note);
         miss++;
         combo = 0;
