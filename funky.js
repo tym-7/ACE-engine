@@ -849,11 +849,9 @@ function handleHit(rating) {
     updateHp(rating);
     if (rating === "sick") {
         if (settings.hardMode) {
-            hp = Math.min(maxHp, hp + 1);
             score += 500;
         }
         if (!settings.hardMode) {
-            hp = Math.min(maxHp, hp + 5);
             score += 350;
         }
         combo++;
@@ -861,11 +859,9 @@ function handleHit(rating) {
     }
     if (rating === "good") {
         if (settings.hardMode) {
-            hp = Math.max(0, hp - 5);
             score += 0;
         }
         if (!settings.hardMode) {
-            hp = Math.min(maxHp, hp + 2);
             score += 200;
         }
         good++;
@@ -873,12 +869,10 @@ function handleHit(rating) {
     }
     if (rating === "bad") {
         if (settings.hardMode) {
-            hp = Math.max(0, hp - 10);
             score -= 150;
             combo = 0;
         }
         if (!settings.hardMode) {
-            hp = Math.max(0, hp + 0);
             score += 100;
             combo++;
         }
@@ -886,11 +880,9 @@ function handleHit(rating) {
     }
     if (rating === "shit") {
         if (settings.hardMode) {
-            hp = Math.max(0, hp - 15);
             score -= 300;
         }
         if (!settings.hardMode) {
-            hp = Math.max(0, hp + 0);
             score += 50;
         }
         shit++;
@@ -901,7 +893,31 @@ function handleHit(rating) {
 
 function updateHp(rating) {
     if (hpDraining) return;
-    // man im not going to make so many if checks in handle hit ill move it here later
+    let table = null;
+    if (settings.hardMode) {
+        const hardTable = { sick: 1, good: -5, bad: -10, shit: -15, miss: -50};
+        table = hardTable;
+    }
+    if (!settings.hardMode) {
+        const normalTable = {sick: 5, good: 2, bad: 0, shit: 0, miss: -8 };
+        table = normalTable;
+    }
+    let num = table[rating];
+    hp = Math.min(maxHp, hp + num);
+}
+
+function calculateAccuracy() {
+    totalHit = sick + good + bad + shit + miss;
+    if (totalHit === 0) return "??";
+    let pts = sick + (good * 0.75) + (bad * 0.5) + (shit * 0.25) + (miss * 0);
+    let acc = (pts / totalHit) * 100;
+    return Number(accuracy.toFixed(2));
+}
+
+function calculateGrade() {
+}
+
+function calculateComboRank() {
 }
 
 function timingController() {
@@ -974,6 +990,9 @@ function checkHit(lane) {
         handleHit("shit");
         kap.destroy(closestNote);
     }
+    grade = calculateGrade();
+    accuracy = calculateAccuracy();
+    comboRank = calculateComboRank();
     
     let direction = null;
     if (songData.lanes === 4) {
