@@ -1484,13 +1484,27 @@ function updateCamera(targetX, targetY, zoom = 1, zoomSpeed = 3, lerpSpeed = 3) 
 }
 
 kap.onUpdate("head", (note) => {
-    let diff = inst.time() - note.time;
+    if (!inSong) return;
+    let diff = note.time - (inst.time() * 1000);
     if (settings.downscroll) {
-    note.pos.y = 125 + (diff * 300 * songData.scrollSpeed);
+    note.pos.y = 924 + (diff * 300 * songData.scrollSpeed);
     }
     if (!settings.downscroll) {
-    note.pos.y = 125 + (diff * 300 * songData.scrollSpeed);
+    note.pos.y = 175 - (diff * 300 * songData.scrollSpeed);
     }
+    if (diff > timing.shit) {
+        kap.destroy(note);
+        miss++;
+        combo = 0;
+    }
+});
+
+kap.onUpdate("body", (note) => {
+if (!inSong) return;
+});
+
+kap.onUpdate("end", (note) => {
+if (!inSong) return;
 });
 
 kap.onUpdate("invis", (note) => {
