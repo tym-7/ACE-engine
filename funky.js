@@ -1178,6 +1178,7 @@ function spawnNote(n, mustHit) {
         kap.anchor("center"),
         kap.fixed(),
         kap.z(52),
+        kap.opacity(1),
         "note",
         "head",
         {
