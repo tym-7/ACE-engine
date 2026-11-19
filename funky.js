@@ -841,7 +841,12 @@ let direction6K = ["left", "edit", "these", "values", "okay", "right"];
 let keybinds4K = ["D", "F", "J", "K"];
 let keybinds6K = ["S", "D", "F", "J", "K", "L"];
 
+let hpDraining = false;
+let invisNotes = false;
+// add back poison mechanics later
+
 function handleHit(rating) {
+    updateHp(rating);
     if (rating === "sick") {
         if (settings.hardMode) {
             hp = Math.min(maxHp, hp + 1);
@@ -894,6 +899,11 @@ function handleHit(rating) {
     //
 }
 
+function updateHp(rating) {
+    if (hpDraining) return;
+    // man im not going to make so many if checks in handle hit ill move it here later
+}
+
 function timingController() {
     if (!settings.hardMode) {
         let normalTiming = {
@@ -933,9 +943,24 @@ function checkHit(lane) {
     let hitTime = inst.time() * 1000;
     const notes = kap.get("head");
     let closestNote = null;
-    // find closest note, search it up how to do it
+    
+    for (let index = 0; index < notes.length; index++) {
+        let note = notes[index];
+        if (note.lane === lane && note.mustHit) {
+            if (!closestNote) {
+                closestNote = note;
+            } else if (note.time < closestNote.time) {
+                closestNote = note;
+            }
+        }
+    }
+    
     if (!closestNote) return;
     let diff = Math.abs(hitTime - closestNote.time);
+    if (diff > timing.shit) {
+        ghostTap(lane);
+        return;
+    }
     if (diff <= timing.sick) {
         handleHit("sick");
         kap.destroy(closestNote);
@@ -964,6 +989,9 @@ function checkHit(lane) {
     if (closestNote.target === 0) {
         animate(FNFplayer, songData.player, path);
     }
+}
+
+function ghostTap(lane) {
 }
 
 function resetScore() {
@@ -1465,7 +1493,7 @@ function changeBPM(bpm) {
 }
 
 // things charData should do: contain icon src and name eg "neutral" "losing" "winning" "special", triggering special icons could be modded here
-// contain pages of spritesheets, character scale, idk what else is that it
+// contain pages of spritesheets, character scale, idk what else is that it colored hp
 
-function updateHP() {
+function updateHealthbar() {
 }
