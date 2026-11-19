@@ -1518,9 +1518,9 @@ kap.onUpdate("head", (note) => {
     if (!settings.downscroll) {
     note.pos.y = 175 + (diff * 0.3 * songData.scrollSpeed);
     }
-    if (diff < -timing.shit) {
+    if (diff < -timing.shit && note.mustHit) {
         kap.destroy(note);
-        handleHit(miss);
+        handleHit("miss");
     }
 });
 
