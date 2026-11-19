@@ -933,7 +933,7 @@ function checkHit(lane) {
     let hitTime = inst.currentTime * 1000;
     const notes = kap.get("head");
     let closestNote = null;
-    // find closest note, search it up
+    // find closest note, search it up how to do it
     if (!closestNote) return;
     let diff = Math.abs(hitTime - closestNote.time);
     if (diff <= timing.sick) {
@@ -948,6 +948,21 @@ function checkHit(lane) {
     } else if (diff <= timing.shit) {
         handleHit("shit");
         kap.destroy(closestNote);
+    }
+    
+    let direction = null;
+    if (songData.lanes === 4) {
+        direction = direction4K[lane];
+    }
+    if (songData.lanes === 6) {
+        direction = direction6K[lane];
+    }
+    let path = `hit-${direction}`;
+    if (closestNote.target === 1) {
+        animate(FNFplayer2, songData.player2, path);
+    }
+    if (closestNote.target === 0) {
+        animate(FNFplayer, songData.player, path);
     }
 }
 
