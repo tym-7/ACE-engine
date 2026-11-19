@@ -1413,6 +1413,8 @@ function animate(char, charId, animation) {
     }
     if (animation === "hit-left" || animation === "hit-right" || animation === "hit-up" || animation === "hit-down") {
         char.holdTimer = 0.35;
+        char.play(animation);
+        return;
     }
     if (animation === "miss-left" || animation === "miss-right" || animation === "miss-up" || animation === "miss-down") {
         char.holdTimer = 0.5;
@@ -1429,13 +1431,13 @@ kap.onUpdate("FNFChar", (character) => {
         character.holdTimer -= kap.dt();
         if (character.holdTimer <= 0) {
             character.holdTimer = 0;
-            if (character === FNFplayer) {
+            if (character === FNFplayer && heldKeys.size === 0) {
                 animate(character, songData.player, "idle");
             }
             if (character === FNFopponent) {
                 animate(character, songData.opponent, "idle");
             }
-            if (character === FNFplayer2) {
+            if (character === FNFplayer2 && heldKeys.size === 0) {
                 animate(character, songData.player2, "idle");
             }
             if (character === FNFopponent2) {
