@@ -1484,6 +1484,13 @@ function updateCamera(targetX, targetY, zoom = 1, zoomSpeed = 3, lerpSpeed = 3) 
 }
 
 kap.onUpdate("head", (note) => {
+    let diff = inst.time() - note.time;
+    if (settings.downscroll) {
+    note.pos.y = 125 + (diff * 300 * songData.scrollSpeed);
+    }
+    if (!settings.downscroll) {
+    note.pos.y = 125 + (diff * 300 * songData.scrollSpeed);
+    }
 });
 
 kap.onUpdate("invis", (note) => {
