@@ -930,7 +930,7 @@ window.addEventListener("keydown", (e) => {
 
 function checkHit(lane) {
     heldKeys.add(lane);
-    let hitTime = inst.currentTime * 1000;
+    let hitTime = inst.time() * 1000;
     const notes = kap.get("head");
     let closestNote = null;
     // find closest note, search it up how to do it
