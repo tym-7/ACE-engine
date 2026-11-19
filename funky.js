@@ -1446,3 +1446,9 @@ function changeBPM(bpm) {
         a.animSpeed = songData.bpm / 576;
     });
 }
+
+// things charData should do: contain icon src and name eg "neutral" "losing" "winning" "special", triggering special icons could be modded here
+// contain pages of spritesheets, character scale, idk what else is that it
+
+function updateHP() {
+}
