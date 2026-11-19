@@ -1472,11 +1472,11 @@ kap.onUpdate("invis", (note) => {
     let distance = 0;
     let strumline = 0;
     if (settings.downscroll) {
-        strumline = 1099 - 100;
+        strumline = 1099 - 175;
         distance = strumline - note.pos.y;
     }
     if (!settings.downscroll) {
-        strumline = 100;
+        strumline = 175;
         distance = note.pos.y - strumline;
     }
     let opacity = Math.max(0, distance/length);
