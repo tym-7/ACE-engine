@@ -895,7 +895,7 @@ function updateHp(rating) {
     if (hpDraining) return;
     let table = null;
     if (settings.hardMode) {
-        const hardTable = { sick: 1, good: -5, bad: -10, shit: -15, miss: -50};
+        const hardTable = { sick: 1, good: -3, bad: -10, shit: -15, miss: -50};
         table = hardTable;
     }
     if (!settings.hardMode) {
