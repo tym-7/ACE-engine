@@ -888,6 +888,10 @@ function handleHit(rating) {
         shit++;
         combo = 0;
     }
+    if (rating === "miss") {
+        miss++;
+        combo = 0;
+    }
     //
 }
 
@@ -946,12 +950,32 @@ let heldKeys = new Set();
 
 window.addEventListener("keydown", (e) => {
     if (e.repeat) return;
+    if (!inSong) return;
     let lane = -1;
     if (songData.lanes === 4) {
         lane = keybinds4K.indexOf(e.key.toUpperCase());
     }
-    if (lane === -1 || !inSong) return;
+    if (songData.lanes === 6) {
+        lane = keybinds6K.indexOf(e.key.toUpperCase());
+    }
+    if (lane === -1) return;
     checkHit(lane);
+});
+
+window.addEventListener("keyup", (e) => {
+    if (!inSong) return;
+    let lane = -1;
+    if (songData.lanes === 4) {
+        lane = keybinds4K.indexOf(e.key.toUpperCase());
+    }
+    if (lane === -1) return;
+    heldKeys.delete(lane);
+    if (FNFplayer.holdTimer <= 0 && heldKeys.size === 0) {
+        animate(FNFplayer, songData.player, "idle");
+    }
+    if (FNFplayer2 && FNFplayer2.holdTimer <= 0 && heldKeys.size === 0) {
+        animate(FNFplayer2, songData.player2, "idle");
+    }
 });
 
 function checkHit(lane) {
@@ -1496,8 +1520,7 @@ kap.onUpdate("head", (note) => {
     }
     if (diff < -timing.shit) {
         kap.destroy(note);
-        miss++;
-        combo = 0;
+        handleHit(miss);
     }
 });
 
