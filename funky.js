@@ -1438,6 +1438,22 @@ function updateCamera(targetX, targetY, zoom = 1, zoomSpeed = 3, lerpSpeed = 3) 
 kap.onUpdate("head", (note) => {
 });
 
+kap.onUpdate("invis", (note) => {
+    const length = 1099 - 100;
+    let distance = 0;
+    let strumline = 0;
+    if (settings.downscroll) {
+        strumline = 1099 - 100;
+        distance = strumline - note.pos.y;
+    }
+    if (!settings.downscroll) {
+        strumline = 100;
+        distance = note.pos.y - strumline;
+    }
+    let opacity = Math.max(0, distance/length);
+    note.opacity = opacity;
+});
+
 let baseBpm = 0;
 
 function changeBPM(bpm) {
