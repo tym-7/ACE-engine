@@ -14,7 +14,7 @@ let assets = [];
 // MIDSCROLL ALSO EXISTS adjust some code if needed omg i forgot aaaa
 
 // to do:
-//  choices for VN, handleEvents(time), overlay for receptors
+//  choices for VN, overlay for receptors, adding back features
 
 async function addAssets() {
     const r = await fetch("data/assets.json");
@@ -557,7 +557,12 @@ function handleBranch(branchs) {
 }
 
 function showChoices(choices) {
-    alert("Empty function | showChoices");
+    for (let index = 0; index < choices.length; index++) {
+        let choice = choices[index];
+        if (choice.type === "thing") {
+        }
+    }
+    alert("Empty function | showChoices"); // add on later
 }
 
 function handleChoice(selected) {
