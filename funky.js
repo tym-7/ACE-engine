@@ -984,7 +984,14 @@ window.addEventListener("keyup", (e) => {
     if (songData.lanes === 4) {
         lane = keybinds4K.indexOf(e.key.toUpperCase());
     }
+    if (songData.lanes === 6) {
+        lane = keybinds6K.indexOf(e.key.toUpperCase());
+    }
     if (lane === -1) return;
+    releaseLane(lane);
+});
+
+function releaseLane(lane) {
     heldKeys.delete(lane);
     animateReceptor("plaR", lane, "idle");
     if (FNFplayer.holdTimer <= 0 && heldKeys.size === 0) {
@@ -993,7 +1000,7 @@ window.addEventListener("keyup", (e) => {
     if (FNFplayer2 && FNFplayer2.holdTimer <= 0 && heldKeys.size === 0) {
         animate(FNFplayer2, songData.player2, "idle");
     }
-});
+}
 
 function checkHit(lane) {
     heldKeys.add(lane);
