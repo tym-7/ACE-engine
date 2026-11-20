@@ -1148,6 +1148,9 @@ async function startSong(song, difficulty) {
         // add more stuff here like countdown
         changeBPM(baseBpm);
         renderReceptors();
+        if (mobileControls) {
+        renderLanes();
+        }
         setCamera();
     inst = kap.play(instId);
     voiceP = kap.play(voicePId);
@@ -1185,6 +1188,29 @@ voicePId = getAsset(`assets/fnf/songs/${songData.id}/voices-${songData.player}.o
 voiceOId = getAsset(`assets/fnf/songs/${songData.id}/voices-${songData.opponent}.ogg`);
 }
 }
+
+function renderLanes() {
+    alert("Empty function | renderLanes");
+}
+
+kap.onTouchStart((pos, t) => {
+    const l = kap.get("lane");
+    for (let index = 0; index < l.length; index++) {
+        let lane = l[index];
+        if (lane.hasPoint(pos)) {
+            checkHit(lane.lane);
+        }
+    }
+});
+kap.onTouchEnd((pos, t) => {
+    const l = kap.get("lane");
+    for (let index = 0; index < l.length; index++) {
+        let lane = l[index];
+        if (lane.hasPoint(pos)) {
+            releaseLane(lane.lane);
+        }
+    }
+});
 
 function renderReceptors() {
     kap.destroyAll("receptor");
