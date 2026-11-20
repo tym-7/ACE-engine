@@ -463,6 +463,11 @@ function renderLine(line) {
     if (currentLine.newChapter) {
         currentChapter++;
     }
+    if (currentLine.choices) {
+        if (currentLine.choices.when === "start") {
+        showChoices(currentLine.choices);
+        }
+    }
     if (currentLine.triggers) {
         currentLine.triggers.forEach(event => {
             if (event.when === "start") handleTrigger(event);
@@ -482,6 +487,11 @@ function renderLine(line) {
             currentLine.triggers.forEach(event => {
                 if (event.when === "finish") handleTrigger(event);
             });
+        }
+        if (currentLine.choices) {
+            if (currentLine.choices.when === "finish") {
+                showChoices(currentLine.choices);
+            }
         }
     });
     //
