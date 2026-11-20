@@ -1242,6 +1242,7 @@ function spawnNote(n, mustHit) {
     if (type === 1) {
         sprite = `arrow-poison_${lane}`;
     }
+    // do something like opacity = 1 if settings.midscroll && !mustHit = 0
     const note = kap.add([
         kap.sprite(sprite),
         kap.pos(x, y),
@@ -1272,6 +1273,7 @@ function spawnNote(n, mustHit) {
             kap.anchor(anchor),
             kap.fixed(),
             kap.z(51),
+            kap.opacity(1),
             "body",
             "note",
             {
@@ -1288,6 +1290,7 @@ function spawnNote(n, mustHit) {
             kap.anchor(anchor),
             kap.fixed(),
             kap.z(51),
+            kap.opacity(1),
             "end",
             "note",
             {
