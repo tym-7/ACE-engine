@@ -1787,7 +1787,24 @@ kap.onUpdate("invis", (note) => {
 });
 
 function handleEvent(time) {
-    alert("Empty function | handleEvent");
+    if (!songData.events) return;
+    for (let index = 0; index < songData.events.length; index++) {
+        let event = songData.events[index];
+        if (!event.happened && time >= event.time) {
+            event.happened = true;
+            if (event.animation) {
+            }
+            if (event.hpDrain) {
+                hpDraining = true;
+            }
+            if (event.camera) {
+            }
+            if (event.BPMChange) {
+                changeBPM(event.bpm);
+            }
+            //
+        }
+    }
 }
 
 let baseBpm = 0;
