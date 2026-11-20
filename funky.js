@@ -1471,9 +1471,10 @@ function getPage(animation, charId, char) {
 }
     
 // find every anim and change them so hold timer is passed else where instead of here
-function animate(char, charId, animation, hold) {
+function animate(char, charId, animation, hold = 0) {
     if (!char) return;
     char.sprite = getPage(animation, charId, char);
+    char.holdTimer = hold;
     
     if (animation === "idle") {
         char.holdTimer = 0;
@@ -1485,32 +1486,26 @@ function animate(char, charId, animation, hold) {
 
     char.untag("checkBPM");
     char.animSpeed = 1;
-    char.holdTimer = 0;
 
     if (animation === "gameover-idle") {
-        char.holdTimer = 0;
         char.play("gameover-idle", {loop: true});
         return;
     }
     if (animation === "gameover-start") {
-        char.holdTimer = 0;
         char.play("gameover-start", {
             onEnd: () => animate(char, charId, "gameover-idle"),
         });
         return;
     }
     if (animation === "gameover-end") {
-        char.holdTimer = 0;
         char.play("gameover-end");
         return;
     }
     if (animation === "hit-left" || animation === "hit-right" || animation === "hit-up" || animation === "hit-down") {
-        char.holdTimer = 0.35;
         char.play(animation);
         return;
     }
     if (animation === "miss-left" || animation === "miss-right" || animation === "miss-up" || animation === "miss-down") {
-        char.holdTimer = 0.5;
     }
     char.play(animation, {
         onEnd: () => {
@@ -1612,7 +1607,6 @@ function updateCamera(targetX, targetY, zoom = 1, zoomSpeed = 3, lerpSpeed = 3) 
     newPos.y = kap.clamp(newPos.y, halfH, Math.max(halfH, maxBgHeight - halfH));
     kap.setCamPos(newPos);
 }
-// delete body & end if it has it for miss
 kap.onUpdate("head", (note) => {
     if (!inSong) return;
     let diff = note.time - (inst.time() * 1000);
@@ -1624,6 +1618,8 @@ kap.onUpdate("head", (note) => {
     }
     if (diff < -timing.shit && note.mustHit) {
         let missPath = `miss-${getDirection(note.lane)}`;
+        kap.destroy(note.end);
+        kap.destroy(note.body);
         kap.destroy(note);
         handleHit("miss");
         // anim player later
@@ -1632,11 +1628,13 @@ kap.onUpdate("head", (note) => {
     if (diff <= 0 && !note.mustHit) {
         kap.destroy(note);
         animateReceptor("oppR", note.lane, "hit");
+        if (note.length === 0) {
         if (note.target === 0) {
             animate(FNFopponent, songData.opponent, path, 0.35);
         }
         if (note.target === 1) {
             animate(FNFopponent2, songData.opponent2, path, 0.35);
+        }
         }
     }
 });
