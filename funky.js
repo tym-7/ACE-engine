@@ -809,10 +809,13 @@ document.addEventListener("keydown", (e) => {
 });
 
 // making it into a separate function for idk mobile support
-function handleDialogue() {
+function handleDialogue(handled = false) {
     const enter = getAsset(`assets/vn/sfx/blips/textboxClick.mp3`);
     if (typeId) {
         finishTyping();
+        return;
+    }
+    if (currentLine.choices && !handled) {
         return;
     }
     if (nextScene) {
