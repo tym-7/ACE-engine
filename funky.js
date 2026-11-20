@@ -1497,6 +1497,8 @@ function setCamera() {
     zoom = startZoom;
 }
 
+// im making this the onUpdate that has FNF game loop stuff
+
 kap.onUpdate(() => {
 if (!inSong) return;
     updateCamera(targetX, targetY, zoom, zoomSpeed, lerpSpeed);
