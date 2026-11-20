@@ -87,6 +87,17 @@ async function addCharacterData() {
     charData = data;
 }
 
+let mobileControls = false;
+
+function detectControls() {
+    const isMobile = navigator.maxTouchPoints > 0;
+    if (isMobile) {
+        showPrompt();
+    }
+}
+function showPrompt() {
+}
+
 //addCharacterData();
 
 //i want to add translation support, but i don't have any plans to get translators bc no one is going to translate so much dialogue
