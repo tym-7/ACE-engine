@@ -1513,10 +1513,10 @@ kap.onUpdate("head", (note) => {
     if (!inSong) return;
     let diff = note.time - (inst.time() * 1000);
     if (settings.downscroll) {
-    note.pos.y = 924 - (diff * 0.3 * songData.scrollSpeed);
+    note.pos.y = 974 - (diff * 0.3 * songData.scrollSpeed);
     }
     if (!settings.downscroll) {
-    note.pos.y = 175 + (diff * 0.3 * songData.scrollSpeed);
+    note.pos.y = 125 + (diff * 0.3 * songData.scrollSpeed);
     }
     if (diff < -timing.shit && note.mustHit) {
         kap.destroy(note);
@@ -1537,11 +1537,11 @@ kap.onUpdate("invis", (note) => {
     let distance = 0;
     let strumline = 0;
     if (settings.downscroll) {
-        strumline = 1099 - 175;
+        strumline = 1099 - 125;
         distance = strumline - note.pos.y;
     }
     if (!settings.downscroll) {
-        strumline = 175;
+        strumline = 125;
         distance = note.pos.y - strumline;
     }
     let opacity = Math.max(0, distance/length);
