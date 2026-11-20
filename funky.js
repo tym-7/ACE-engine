@@ -901,7 +901,6 @@ function handleHit(rating) {
 }
 
 function updateHp(rating) {
-    if (hpDraining) return;
     let table = null;
     if (settings.hardMode) {
         const hardTable = { sick: 1, good: -3, bad: -10, shit: -15, miss: -50};
@@ -912,6 +911,7 @@ function updateHp(rating) {
         table = normalTable;
     }
     let num = table[rating];
+    if (hpDraining && num > 0) return;
     hp = Math.min(maxHp, hp + num);
 }
 
