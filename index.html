@@ -48,6 +48,29 @@ a,
             z-index: 9999;
         }
 
+.shaky {
+    display: inline-block;
+    animation: shake 0.1s infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(0px, 0px); }
+    25% { transform: translate(2px, -1px); }
+    50% { transform: translate(-1px, 2px); }
+    75% { transform: translate(1px, -2px); }
+    100% { transform: translate(0px, 0px); }
+}
+
+.wave {
+    display: inline-block;
+    animation: wavv 1.5s infinite ease-in-out;
+}
+
+@keyframes wavv {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
         #dialogue-box {
   display: none;
   position: absolute;
