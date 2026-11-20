@@ -508,7 +508,9 @@ function renderBox(style) {
 }
 
 function applyEffect(text) {
-    alert("Empty function | applyEffect");
+    if (currentLine.effect === 'shaky') {
+        text.classList.add('shaky');
+    }
 }
 
 function handleBranch(branchs) {
