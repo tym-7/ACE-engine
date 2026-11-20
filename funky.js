@@ -1671,7 +1671,7 @@ if (!inSong) return;
         }
     }
     if (note.mustHit) {
-        if (heldKeys.has(note.lane)) {
+        if (heldKeys.has(note.lane) || bodyTime <= allowedRelease)
             handleSustain(note);
             note.pos.y = strumline;
             note.height = Math.max(0, bodyTime * 0.3 * songData.scrollSpeed);
