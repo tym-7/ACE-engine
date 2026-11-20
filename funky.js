@@ -1792,14 +1792,14 @@ function handleEvent(time) {
         let event = songData.events[index];
         if (!event.happened && time >= event.time) {
             event.happened = true;
-            if (event.animation) {
+            if (event.type === "animation") {
             }
-            if (event.hpDrain) {
+            if (event.type === "hpDrain") {
                 hpDraining = true;
             }
-            if (event.camera) {
+            if (event.type === "camera") {
             }
-            if (event.BPMChange) {
+            if (event.type === "BPMChange") {
                 changeBPM(event.bpm);
             }
             //
