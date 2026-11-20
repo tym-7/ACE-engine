@@ -565,7 +565,7 @@ function showChoices(choices) {
     alert("Empty function | showChoices"); // add on later
 }
 
-// probably do forEach add some buttons, "text" "timer" "onClick" "onEnd" "condition", "conditionvalue"
+// probably do forEach add some buttons, "text" "timer" "onClick" "onEnd" "condition", "conditionvalue" "when"
 // add onclick listener, which reads
 //  "sfx" "scene" "flag" "flagvalue" "meter" "metervalue" "item" "item value"
 
