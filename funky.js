@@ -13,6 +13,9 @@ let assets = [];
 // IM BEING SERIOUS IF YOUR GAME CRASHES ITS PROBABLY CUZ ITS NOT THERE - note to future selves
 // MIDSCROLL ALSO EXISTS adjust some code if needed omg i forgot aaaa
 
+// to do:
+// spawnSplash(lane), choices for VN, handleEvents(time), overlay for receptors
+
 async function addAssets() {
     const r = await fetch("data/assets.json");
     assets = await r.json();
