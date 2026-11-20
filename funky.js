@@ -1578,12 +1578,12 @@ kap.onUpdate("head", (note) => {
     note.pos.y = 125 + (diff * 0.3 * songData.scrollSpeed);
     }
     if (diff < -timing.shit && note.mustHit) {
-        let missPath = `miss-${getDirection(lane)}`;
+        let missPath = `miss-${getDirection(note.lane)}`;
         kap.destroy(note);
         handleHit("miss");
         // anim player later
     }
-    let path = `hit-${getDirection(lane)}`;
+    let path = `hit-${getDirection(note.lane)}`;
     if (diff <= 0 && !note.mustHit) {
         kap.destroy(note);
         animateReceptor("oppR", note.lane, "hit");
