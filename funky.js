@@ -1492,8 +1492,16 @@ function animateReceptor(tag, lane, anim) {
     for (let index = 0; index < recept.length; index++) {
         let receptor = recept[index];
         if (receptor.lane === lane) {
+            if (tag === "oppR" && anim === "hit") {
+                receptor.play(anim, {
+                    onEnd: () => {
+                        receptor.play("idle");
+                    },
+                });
+            } else {
             receptor.play(anim);
         }
+    }
     }
 }
 
