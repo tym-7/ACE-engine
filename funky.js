@@ -975,6 +975,7 @@ window.addEventListener("keyup", (e) => {
     }
     if (lane === -1) return;
     heldKeys.delete(lane);
+    animateReceptor("plaR", lane, "idle");
     if (FNFplayer.holdTimer <= 0 && heldKeys.size === 0) {
         animate(FNFplayer, songData.player, "idle");
     }
@@ -1000,10 +1001,14 @@ function checkHit(lane) {
         }
     }
     
-    if (!closestNote) return;
+    if (!closestNote) {
+        animateReceptor("plaR", lane, "press");
+        return;
+    }
     let diff = Math.abs(hitTime - closestNote.time);
     if (diff > timing.shit) {
         ghostTap(lane);
+        animateReceptor("plaR", lane, "press");
         return;
     }
     if (diff <= timing.sick) {
@@ -1022,7 +1027,7 @@ function checkHit(lane) {
     grade = calculateGrade();
     accuracy = calculateAccuracy();
     comboRank = calculateComboRank();
-    
+    animateReceptor("plaR", lane, "hit");
     let direction = null;
     if (songData.lanes === 4) {
         direction = direction4K[lane];
