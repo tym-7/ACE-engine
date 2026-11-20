@@ -1360,6 +1360,7 @@ function spawnNote(n, mustHit) {
         ]);
         note.body = body;
         note.end = end;
+        body.end = end;
     }
     //
 }
@@ -1469,8 +1470,8 @@ function getPage(animation, charId, char) {
     }
 }
     
-
-function animate(char, charId, animation) {
+// find every anim and change them so hold timer is passed else where instead of here
+function animate(char, charId, animation, hold) {
     if (!char) return;
     char.sprite = getPage(animation, charId, char);
     
@@ -1611,7 +1612,7 @@ function updateCamera(targetX, targetY, zoom = 1, zoomSpeed = 3, lerpSpeed = 3) 
     newPos.y = kap.clamp(newPos.y, halfH, Math.max(halfH, maxBgHeight - halfH));
     kap.setCamPos(newPos);
 }
-
+// delete body & end if it has it for miss
 kap.onUpdate("head", (note) => {
     if (!inSong) return;
     let diff = note.time - (inst.time() * 1000);
@@ -1632,17 +1633,83 @@ kap.onUpdate("head", (note) => {
         kap.destroy(note);
         animateReceptor("oppR", note.lane, "hit");
         if (note.target === 0) {
-            animate(FNFopponent, songData.opponent, path);
+            animate(FNFopponent, songData.opponent, path, 0.35);
         }
         if (note.target === 1) {
-            animate(FNFopponent2, songData.opponent2, path);
+            animate(FNFopponent2, songData.opponent2, path, 0.35);
         }
     }
 });
 
+const allowedRelease = 500;
+
 kap.onUpdate("body", (note) => {
 if (!inSong) return;
+    let time = inst.time() * 1000;
+    let diff = note.time - time;
+    let strumline = 125;
+    let bodyTime = (note.time + note.length) - time;
+    if (settings.downscroll) {
+        strumline = 974;
+    }
+    if (diff > 0) {
+        if (settings.downscroll) {
+            note.pos.y = strumline - (diff * 0.3 * songData.scrollSpeed);
+        } 
+        if (!settings.downscroll) {
+            note.pos.y = strumline + (diff * 0.3 * songData.scrollSpeed);
+        }
+        return;
+    }
+    if (!note.mustHit) {
+        handleSustain(note);
+        note.pos.y = strumline;
+        note.height = Math.max(0, bodyTime * 0.3 * songData.scrollSpeed);
+        if (bodyTime <= 0) {
+            animateReceptor("oppR", note.lane, "idle");
+            kap.destroy(note);
+        }
+    }
+    if (note.mustHit) {
+        if (heldKeys.has(note.lane)) {
+            handleSustain(note);
+            note.pos.y = strumline;
+            note.height = Math.max(0, bodyTime * 0.3 * songData.scrollSpeed);
+        }
+        if (!heldKeys.has(note.lane) && bodyTime > allowedRelease && !note.missed) {
+            kap.destroy(note.end);
+            kap.destroy(note);
+            note.missed = true;
+            handleHit("miss");
+                let missPath = `miss-${getDirection(note.lane)}`;
+                if (note.target === 0) animate(FNFplayer, songData.player, missPath, 0.5);
+                if (note.target === 1) animate(FNFplayer2, songData.player2, missPath, 0.5);
+        }
+        if (bodyTime <= 0) {
+            if (heldKeys.has(note.lane)) {
+                animateReceptor("plaR", note.lane, "press");
+            }
+            kap.destroy(note);
+        }
+    }
 });
+
+function handleSustain(note) {
+    if (note.handled) return;
+    note.handled = true;
+    if (!note.mustHit) {
+    animateReceptor("oppR", note.lane, "hold");
+    let path = `hit-${getDirection(note.lane)}`;
+        if (note.target === 0) animate(FNFopponent, songData.opponent, path, note.length/1000);
+        if (note.target === 1) animate(FNFopponent2, songData.opponent2, path, note.length/1000);
+    }
+    if (note.mustHit) {
+        animateReceptor("plaR", note.lane, "hold");
+        let path = `hit-${getDirection(note.lane)}`;
+            if (note.target === 0) animate(FNFplayer, songData.player, path, note.length/1000);
+            if (note.target === 1) animate(FNFplayer2, songData.player2, path, note.length/1000);
+    }
+}
 
 kap.onUpdate("end", (note) => {
 if (!inSong) return;
