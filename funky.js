@@ -1474,6 +1474,16 @@ kap.onUpdate("FNFChar", (character) => {
     }
 });
 
+function animateReceptor(tag, lane, anim) {
+    let recept = kap.get(tag);
+    for (let index = 0; index < recept.length; index++) {
+        let receptor = recept[index];
+        if (receptor.lane === lane) {
+            receptor.play(anim);
+        }
+    }
+}
+
 function setCamera() {
     let startZoom = songData.cameraZoom;
     kap.setCamScale(kap.vec2(startZoom, startZoom));
