@@ -1300,6 +1300,8 @@ function spawnNote(n, mustHit) {
                 time: time,
                 lane: lane,
                 length: length,
+                type: type,
+                target: target,
                 mustHit: mustHit,
                 parent: note
             }
@@ -1317,6 +1319,8 @@ function spawnNote(n, mustHit) {
                 time: time,
                 lane: lane,
                 length: length,
+                type: type,
+                target: target,
                 mustHit: mustHit,
                 parent: note
             }
