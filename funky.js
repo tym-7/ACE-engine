@@ -14,7 +14,7 @@ let assets = [];
 // MIDSCROLL ALSO EXISTS adjust some code if needed omg i forgot aaaa
 
 // to do:
-// spawnSplash(lane), choices for VN, handleEvents(time), overlay for receptors
+//  choices for VN, handleEvents(time), overlay for receptors
 
 async function addAssets() {
     const r = await fetch("data/assets.json");
@@ -554,6 +554,13 @@ function handleBranch(branchs) {
     }
 }
 
+function showChoices(choices) {
+    alert("Empty function | showChoices");
+}
+
+function handleChoice(selected) {
+    alert("Empty function | handleChoice");
+}
 
 function handleTrigger(event) {
     if (event.type === "sfx") {
@@ -1051,11 +1058,13 @@ function checkHit(lane) {
     comboRank = calculateComboRank();
     animateReceptor("plaR", lane, "hit");
     let path = `hit-${getDirection(lane)}`;
+    if (closestNote.length === 0) {
     if (closestNote.target === 1) {
         animate(FNFplayer2, songData.player2, path);
     }
     if (closestNote.target === 0) {
         animate(FNFplayer, songData.player, path);
+    }
     }
 }
 
@@ -1190,7 +1199,51 @@ voiceOId = getAsset(`assets/fnf/songs/${songData.id}/voices-${songData.opponent}
 }
 
 function renderLanes() {
-    alert("Empty function | renderLanes");
+    if (songData.lanes === 4) {
+        const lane1 = kap.add([
+            kap.rect(350, 1099),
+            kap.pos(95, 0),
+            kap.area(),
+            kap.fixed(),
+            kap.color(244, 175, 55),
+            kap.opacity(0.10),
+            "lane",
+            { lane: 0 }
+        ]);
+
+        const lane2 = kap.add([
+            kap.rect(350, 1099),
+            kap.pos(445, 0),
+            kap.area(),
+            kap.fixed(),
+            kap.color(47, 96, 192),
+            kap.opacity(0.10),
+            "lane",
+            { lane: 1 }
+        ]);
+
+        const lane3 = kap.add([
+            kap.rect(350, 1099),
+            kap.pos(795, 0),
+            kap.area(),
+            kap.fixed(),
+            kap.color(40, 189, 138),
+            kap.opacity(0.10),
+            "lane",
+            { lane: 2 }
+        ]);
+
+        const lane4 = kap.add([
+            kap.rect(350, 1099),
+            kap.pos(1145, 0),
+            kap.area(),
+            kap.fixed(),
+            kap.color(209, 34, 92),
+            kap.opacity(0.10),
+            "lane",
+            { lane: 3 }
+        ]);
+    }
 }
 
 kap.onTouchStart((pos, t) => {
@@ -1295,14 +1348,17 @@ function spawnNote(n, mustHit) {
     if (type === 1) {
         sprite = `arrow-poison_${lane}`;
     }
-    // do something like opacity = 1 if settings.midscroll && !mustHit = 0
+    let opacity = 1;
+    if (settings.midscroll && !mustHit) {
+        opacity = 0;
+    }
     const note = kap.add([
         kap.sprite(sprite),
         kap.pos(x, y),
         kap.anchor("center"),
         kap.fixed(),
         kap.z(52),
-        kap.opacity(1),
+        kap.opacity(opacity),
         "note",
         "head",
         {
@@ -1326,7 +1382,7 @@ function spawnNote(n, mustHit) {
             kap.anchor(anchor),
             kap.fixed(),
             kap.z(51),
-            kap.opacity(1),
+            kap.opacity(opacity),
             "body",
             "note",
             {
@@ -1345,7 +1401,7 @@ function spawnNote(n, mustHit) {
             kap.anchor(anchor),
             kap.fixed(),
             kap.z(51),
-            kap.opacity(1),
+            kap.opacity(opacity),
             "end",
             "note",
             {
@@ -1470,14 +1526,12 @@ function getPage(animation, charId, char) {
     }
 }
     
-// find every anim and change them so hold timer is passed else where instead of here
 function animate(char, charId, animation, hold = 0) {
     if (!char) return;
     char.sprite = getPage(animation, charId, char);
     char.holdTimer = hold;
     
     if (animation === "idle") {
-        char.holdTimer = 0;
         char.animSpeed = songData.bpm / 576;
         char.tag("checkBPM");
         char.play("idle", { loop: true });
@@ -1575,6 +1629,7 @@ kap.onUpdate(() => {
 if (!inSong) return;
     let time = inst.time() * 1000;
     updateCamera(targetX, targetY, zoom, zoomSpeed, lerpSpeed);
+    handleEvent(time);
     for (let index = 0; index < songData.playerNotes.length; index++) {
         let note = songData.playerNotes[index];
         if (!note.spawned && note.time < time + 2000) {
@@ -1729,6 +1784,10 @@ kap.onUpdate("invis", (note) => {
     note.opacity = opacity;
 });
 
+function handleEvent(time) {
+    alert("Empty function | handleEvent");
+}
+
 let baseBpm = 0;
 
 function changeBPM(bpm) {
@@ -1736,6 +1795,35 @@ function changeBPM(bpm) {
     kap.get("checkBPM").forEach(a => {
         a.animSpeed = songData.bpm / 576;
     });
+}
+
+function spawnSplash(lane) {
+    if (songData.lanes === 4) {
+        const spacing = 155;
+        let x = 955;
+        let y = 125;
+        if (settings.downscroll) {
+            y = 1099 - 125;
+        }
+        if (settings.midscroll) {
+            x = (1595 / 2) * (spacing * 1.5);
+        }
+        let index = lane * spacing;
+        const splash = add([
+        sprite("splashes", { anim: lane }),
+        pos(x + index, y),
+        anchor("center"),
+    ]);
+    splash.onAnimEnd(() => destroy(splash));
+    }
+}
+
+function spawnRating(rating) {
+    alert("Empty function | spawnRating");
+}
+
+function spawnCombo(combo) {
+    alert("Empty function | spawnCombo");
 }
 
 // things charData should do: contain icon src and name eg "neutral" "losing" "winning" "special", triggering special icons could be modded here
@@ -1776,7 +1864,7 @@ function renderHealthbar() {
                 kap.fixed(),
                 kap.z(70),
             ]);
-    // add stuff here idk man i gotta search stuff up
+    // add stuff here idk man i gotta search stuff up also hp bar width is 930 black part width is 7 inside is 916px
 }
 
 function updateHealthbar() {
