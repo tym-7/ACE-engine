@@ -1275,7 +1275,7 @@ function spawnNote(n, mustHit) {
         }
     ]);
     if (length > 0) {
-        let height = length * songData.scrollSpeed;
+        let height = length * 0.3 * songData.scrollSpeed;
         let endY = y + height;
         if (settings.downscroll) {
             endY = y - height;
