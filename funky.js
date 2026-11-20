@@ -1511,14 +1511,14 @@ if (!inSong) return;
     updateCamera(targetX, targetY, zoom, zoomSpeed, lerpSpeed);
     for (let index = 0; index < songData.playerNotes.length; index++) {
         let note = songData.playerNotes[index];
-        if (!note.spawned && note < time + 2000) {
+        if (!note.spawned && note.time < time + 2000) {
         spawnNote(note, true);
         note.spawned = true;
         }
     }
     for (let index = 0; index < songData.opponentNotes.length; index++) {
         let note = songData.opponentNotes[index];
-        if (!note.spawned && note < time + 2000) {
+        if (!note.spawned && note.time < time + 2000) {
         spawnNote(note, false);
         note.spawned = true;
         }
