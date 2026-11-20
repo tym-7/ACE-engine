@@ -320,6 +320,7 @@ function closeDialog() {
 }
 
 function gameOver() {
+    alert("Empty function | gameOver");
 }
 
 // i wanna add a transition sec for backgrounds too
@@ -507,6 +508,7 @@ function renderBox(style) {
 }
 
 function applyEffect(text) {
+    alert("Empty function | applyEffect");
 }
 
 function handleBranch(branchs) {
@@ -935,9 +937,11 @@ function calculateAccuracy() {
 }
 
 function calculateGrade() {
+    alert("Empty function | calculateGrade");
 }
 
 function calculateComboRank() {
+    alert("Empty function | calculateComboRank");
 }
 
 function timingController() {
@@ -1056,6 +1060,7 @@ function checkHit(lane) {
 }
 
 function ghostTap(lane) {
+    alert("Empty function | ghostTap");
 }
 
 function resetScore() {
@@ -1151,7 +1156,9 @@ async function startSong(song, difficulty) {
     }
 }
 
-
+function restartSong() {
+    alert("Empty function | restartSong");
+}
 
 function playCutscene(src, finished) {
     const cutscene = document.getElementById("cutscene");
@@ -1682,4 +1689,5 @@ function renderHealthbar() {
 }
 
 function updateHealthbar() {
+    alert("Empty function | updateHealthbar");
 }
