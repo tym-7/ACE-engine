@@ -1560,6 +1560,17 @@ kap.onUpdate("head", (note) => {
         kap.destroy(note);
         handleHit("miss");
     }
+    let path = null;
+    if (diff <= 0 && !note.mustHit) {
+        kap.destroy(note);
+        animateReceptor("oppR", note.lane, "hit");
+        if (note.target === 0) {
+            animate(FNFopponent, songData.opponent, path);
+        }
+        if (note.target === 1) {
+            animate(FNFopponent2, songData.opponent2, path);
+        }
+    }
 });
 
 kap.onUpdate("body", (note) => {
