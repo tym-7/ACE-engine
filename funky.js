@@ -1159,8 +1159,6 @@ voiceOId = getAsset(`assets/fnf/songs/${songData.id}/voices-${songData.opponent}
 }
 }
 
-
-
 function renderReceptors() {
     kap.destroyAll("receptor");
 
@@ -1234,11 +1232,11 @@ function spawnNote(n, mustHit) {
         }
     }
     const x = posX + (lane * spacing);
-    let y = 1099;
+    let y = 1099 + 200;
     let anchor = "top";
     if (settings.downscroll) {
         anchor = "bot";
-        y = 0;
+        y = -200;
     }
     let sprite = `arrow_${lane}`;
     if (type === 1) {
@@ -1502,7 +1500,22 @@ function setCamera() {
 
 kap.onUpdate(() => {
 if (!inSong) return;
+    let time = inst.time() * 1000;
     updateCamera(targetX, targetY, zoom, zoomSpeed, lerpSpeed);
+    for (let index = 0; index < songData.playerNotes.length; index++) {
+        let note = songData.playerNotes[index];
+        if (!note.spawned && note < time + 2000) {
+        spawnNote(note, true);
+        note.spawned = true;
+        }
+    }
+    for (let index = 0; index < songData.opponentNotes.length; index++) {
+        let note = songData.opponentNotes[index];
+        if (!note.spawned && note < time + 2000) {
+        spawnNote(note, false);
+        note.spawned = true;
+        }
+    }
 });
 
 function updateCamera(targetX, targetY, zoom = 1, zoomSpeed = 3, lerpSpeed = 3) {
