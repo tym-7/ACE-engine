@@ -1028,14 +1028,7 @@ function checkHit(lane) {
     accuracy = calculateAccuracy();
     comboRank = calculateComboRank();
     animateReceptor("plaR", lane, "hit");
-    let direction = null;
-    if (songData.lanes === 4) {
-        direction = direction4K[lane];
-    }
-    if (songData.lanes === 6) {
-        direction = direction6K[lane];
-    }
-    let path = `hit-${direction}`;
+    let path = `hit-${getDirection(lane)}`;
     if (closestNote.target === 1) {
         animate(FNFplayer2, songData.player2, path);
     }
@@ -1402,6 +1395,15 @@ function renderFNFBg() {
     });
 }
 
+function getDirection(lane) {
+    if (songData.lanes === 4) {
+        return direction4K[lane];
+    }
+    if (songData.lanes === 6) {
+        return direction6K[lane];
+    }
+}
+
 function getPage(animation, charId, char) {
     let pages = charData[charId].pages;
     for (let index = 0; index < pages.length; index++) {
@@ -1557,10 +1559,12 @@ kap.onUpdate("head", (note) => {
     note.pos.y = 125 + (diff * 0.3 * songData.scrollSpeed);
     }
     if (diff < -timing.shit && note.mustHit) {
+        let missPath = `miss-${getDirection(lane)}`;
         kap.destroy(note);
         handleHit("miss");
+        // anim player later
     }
-    let path = null;
+    let path = `hit-${getDirection(lane)}`;
     if (diff <= 0 && !note.mustHit) {
         kap.destroy(note);
         animateReceptor("oppR", note.lane, "hit");
