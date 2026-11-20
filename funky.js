@@ -602,6 +602,7 @@ function getAsset(path) {
             return assets[index].name;
         }
     }
+        alert("Missing asset:" + path);
     return;
 }
 
