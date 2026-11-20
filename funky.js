@@ -1569,6 +1569,44 @@ function changeBPM(bpm) {
 
 // things charData should do: contain icon src and name eg "neutral" "losing" "winning" "special", triggering special icons could be modded here
 // contain pages of spritesheets, character scale, idk what else is that it colored hp
+let hpbar = null;
+let plaBar = null;
+let oppBar = null;
+let plaIcon = null;
+let oppIcon = null;
+
+function renderHealthbar() {
+    let y = 0;
+    if (settings.downscroll) {
+        y = 1099 - 980;
+    }
+    if (!settings.downscroll) {
+        y = 980;
+    }
+    if (hpbar) {
+        kap.destroy(hpbar);
+        hpbar = null;
+    }
+    if (plaBar) {
+        kap.destroy(plaBar);
+        plaBar = null;
+    }
+    if (oppBar) {
+        kap.destroy(oppBar);
+        oppBar = null;
+    }
+    let bar = getAsset(`assets/fnf/ui/healthbar/healthbar.png`);
+    let pColor = charData[songData.player].color;
+    let oColor = charData[songData.opponent].color;
+     hpbar = kap.add([
+                kap.sprite(bar),
+                kap.pos(797, y),
+                kap.anchor("center"),
+                kap.fixed(),
+                kap.z(70),
+            ]);
+    // add stuff here idk man i gotta search stuff up
+}
 
 function updateHealthbar() {
 }
