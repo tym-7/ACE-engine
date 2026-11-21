@@ -54,7 +54,8 @@ allows the player to save if they get to a line with an id, without it, only sce
 ### Speaker
 the visual display name
 ### Char
-the internal id to pull sprites from + their blip sfx. folder pathing = “assets/vn/sprites/${char}/${mood}.png”. 
+the internal id to pull sprites from + their blip sfx. folder pathing = “assets/vn/sprites/${char}/${mood}.png”. <br>
+blip sfx and data are found in assets/vn/sfx/blips
 ### Mood
 changes which sprite is used. folder pathing = “assets/vn/sprites/${char}/${mood}.png”
 ### Position
@@ -68,9 +69,9 @@ modifies the box. currently modifies color, border color, box overlay, and the s
 ### Speed
 modifies how fast or slow a line is spoken. used on a 1.1x 0.9x 1x 0.5x 1.5x scale (1.1x = faster 0.9x = slower) any number values accepted
 ### Muted
-mutes the blips for the line (for if you want just a sfx to play, a moment of silence, etc)
+mutes the blips for the line (for if you want just a sfx to play, a moment of silence, etc). write as true/false (they are defaulted to false so there's no need to specify false)
 ### Effect
-modifies how the text is rendered. current effects: none add some later
+modifies how the text is rendered. current effects: "shaky"
 ### Background
 changes the background. folder pathing = “assets/vn/backgrounds/${background}.png”
 ### SpriteShader
