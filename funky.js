@@ -1846,7 +1846,7 @@ function spawnSplash(lane) {
             y = 1099 - 125;
         }
         if (settings.midscroll) {
-            x = (1595 / 2) * (spacing * 1.5);
+            x = (1595 / 2) - (spacing * 1.5);
         }
         let index = lane * spacing;
         const splash = add([
