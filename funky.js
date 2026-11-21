@@ -80,11 +80,15 @@ async function addRandomData() {
 addRandomData();
 
 let charData = {};
+let charBlip = {};
 
 async function addCharacterData() {
     const r = await fetch('assets/fnf/sprites/characters.json');
-    const data = await r.json();
-    charData = data;
+    const rdata = await r.json();
+    const bl = await fetch('assets/vn/sfx/blips/data.json');
+    const bldata = await bl.json();
+    charData = rdata;
+    charBlip = bldata;
 }
 
 let mobileControls = false;
@@ -353,11 +357,6 @@ function getLine(data) {
         choices: line.choices || []
     }));
 }
-
-   const charBlip = {
-    pico: "assets/vn/sfx/blips/pixelText.mp3",
-    default: "assets/vn/sfx/blips/pixelText.mp3"
-};
 
 let i = 0;
 let finish = null;
