@@ -118,7 +118,7 @@ increases the current chapter by 1. just does currentChapter++. mark only once i
 ### Choices
 NOT ADDED <br>
 logic, however, will be: <br>
-shows options on screen for players to choose from. before having the options array, the values for choices are "when" "timer" and "onEnd". "when" decides the choices should be seen, either as "start", at the beginning, or on "finish", when the text finishes typing. if a timer is included, "onEnd" is required to decide the action when the timer is done. timers use ms, so 1.5s = 1500, you would write "timer": 1500, after 1.5s of not pressing an option, onEnd will fire. you would write an "onEnd" the same way as an option, so we'll get to that later. <br>
+shows options on screen for players to choose from. before having the options array, the values for choices are "when" "timer" and "onEnd". "when" decides the choices should be seen, either as "start", at the beginning, or on "finish", when the text finishes typing. if a timer is included, "onEnd" is required to decide the action when the timer is done. timers use ms, so 1.5s = 1500, you would write "timer": 1500, after 1.5s of not pressing an option, onEnd will fire. you would write an "onEnd" the same way as something in an option, so we'll get to that later. <br>
 options: values are "text" "condition" "conditionvalue" "onClick" <br>
 onClick / onEnd: <br>
 
