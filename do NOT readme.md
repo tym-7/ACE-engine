@@ -92,9 +92,9 @@ addItem adds an item. requires "value" which is the item name, and "amount" the 
 removeItem removes an item. requires "value" which is the item name, and "amount". amount should be a positive number <br>
 example: <br>
 "triggers": [ <br>
-{ "type": "sfx" "when": "start", "value": "assets/vn/sfx/gunshot.mp3" }, <br>
+{ "type": "sfx", "when": "start", "value": "assets/vn/sfx/gunshot.mp3" }, <br>
 { "type": "silence", "when": "finish" }, <br>
-{ "type": "removeItem", "when": "start", "value": 1 } <br>
+{ "type": "removeItem", "when": "start", "value": "bullet", "amount": 1 } <br>
 ] <br>
 ### HasFlag
 shows the line if the player has the flag. usage “hasFlag”: “didSomething”
