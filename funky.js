@@ -1868,6 +1868,9 @@ function spawnCombo(combo) {
 
 // things charData should do: contain icon src and name eg "neutral" "losing" "winning" "special", triggering special icons could be modded here
 // contain pages of spritesheets, character scale, idk what else is that it colored hp
+// i think a good idea would also be "group" to combine stuff like "bf" "bf-christmas" "bf-holding-gf" idk what theyre actually called, for stuff like death anim
+// or pause and game over src but also i could just repeat them over in them
+
 let hpbar = null;
 let plaBar = null;
 let oppBar = null;
