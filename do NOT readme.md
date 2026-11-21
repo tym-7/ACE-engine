@@ -80,7 +80,7 @@ yeah
 ### ScreenShader
 yeah
 ### Ambience
-plays music on loop. pathing = "assets/vn/sounds/${ambience}". -mp3 not included, so .wav .ogg are also accepted
+plays music on loop. pathing = "assets/vn/sounds/${ambience}". -mp3 not included, so .wav .ogg, etc, any type are also accepted
 ### Track
 plays music on loop. identical to ambience. ambience is supposed to be used as like background noise like chatter, traffic, but you can use in track too, track is supposed to be music one would actually listen to, playing in the background
 ### Triggers
@@ -103,8 +103,9 @@ example: <br>
 "branches": [<br>
     { "type": "flag", “value”: “didX”, "needed": true, "scene": "scene1" },<br>
     { "type": "meter", “value”: “love”: "min": 30, "max": 40, "scene": "scene2" },<br>
-    { "type": "inv", “value”: “gun” FIGURE OUT "scene": "scene3" },<br>
-    { "type": "fallback", "scene": "scene4"} <br>
+    { "type": "inv", “value”: “gun”, "needed": true, "scene": "scene3" },<br>
+    { "type": "inv", “value”: “coins”, "min": 20, max "100", "scene": "scene4" },<br>
+    { "type": "fallback", "scene": "scene5"} <br>
   ]<br>
 ### NewChapter
 increases the current chapter by 1. just does currentChapter++. mark only once in a dialogue array, preferably the very top
