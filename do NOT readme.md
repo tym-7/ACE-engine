@@ -90,6 +90,12 @@ sfx requires a "value" which is the src of the sfx you want to play. folder path
 silence mutes both ambience and track if they are playing. requires no other values <br>
 addItem adds an item. requires "value" which is the item name, and "amount" the amount <br>
 removeItem removes an item. requires "value" which is the item name, and "amount". amount should be a positive number <br>
+example: <br>
+"triggers": [ <br>
+{ "type": "sfx" "when": "start", "value": "assets/vn/sfx/gunshot.mp3" }, <br>
+{ "type": "silence", "when": "finish" }, <br>
+{ "type": "removeItem", "when": "start", "value": 1 } <br>
+] <br>
 ### HasFlag
 shows the line if the player has the flag. usage “hasFlag”: “didSomething”
 ### HasNoFlag
@@ -102,9 +108,9 @@ finally, fallback sends the player to the scene if all else fails. the function 
 example: <br>
 "branches": [<br>
     { "type": "flag", “value”: “didX”, "needed": true, "scene": "scene1" },<br>
-    { "type": "meter", “value”: “love”: "min": 30, "max": 40, "scene": "scene2" },<br>
+    { "type": "meter", “value”: “love”, "min": 30, "max": 40, "scene": "scene2" },<br>
     { "type": "inv", “value”: “gun”, "needed": true, "scene": "scene3" },<br>
-    { "type": "inv", “value”: “coins”, "min": 20, max: "100", "scene": "scene4" },<br>
+    { "type": "inv", “value”: “coins”, "min": 20, "max": "100", "scene": "scene4" },<br>
     { "type": "fallback", "scene": "scene5"} <br>
   ]<br>
 ### NewChapter
