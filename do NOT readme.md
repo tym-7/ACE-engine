@@ -115,7 +115,7 @@ example: <br>
     { "type": "fallback", "scene": "scene5"} <br>
   ]<br>
 ### NewChapter
-increases the current chapter by 1. just does currentChapter++. mark only once in a dialogue array, preferably the very top
+increases the current chapter by 1. just does currentChapter++. mark only once in a dialogue array, as true, preferably the very top
 ### Choices
 NOT ADDED <br>
 logic, however, will be: <br>
