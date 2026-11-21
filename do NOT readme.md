@@ -104,7 +104,7 @@ example: <br>
     { "type": "flag", “value”: “didX”, "needed": true, "scene": "scene1" },<br>
     { "type": "meter", “value”: “love”: "min": 30, "max": 40, "scene": "scene2" },<br>
     { "type": "inv", “value”: “gun”, "needed": true, "scene": "scene3" },<br>
-    { "type": "inv", “value”: “coins”, "min": 20, max "100", "scene": "scene4" },<br>
+    { "type": "inv", “value”: “coins”, "min": 20, max: "100", "scene": "scene4" },<br>
     { "type": "fallback", "scene": "scene5"} <br>
   ]<br>
 ### NewChapter
