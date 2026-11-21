@@ -22,7 +22,7 @@ do not have commas at the end of arrays for example: <br>
 
 if you were to add another piece of dialogue, you would add a comma on the } "}," and let the new last piece of dialogue end without a comma <br>
 the first and last character should be a [ and ] add stuff within it <br>
-keep things lowercase when entering the first value (eg "speaker" "mood" "style") as that's how they are accepted (for multiple word ones they are accepted as "hasFlag", "spriteShader"
+keep things lowercase when entering the first value (eg "speaker" "mood" "style", they are NOT "Speaker" "Mood" "Style") as that's how they are accepted (for multiple word ones they are accepted as "hasFlag", "spriteShader"
 ## Visual Novel
 All Values: <br>
 * [Id](#id)
