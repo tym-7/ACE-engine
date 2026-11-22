@@ -83,11 +83,11 @@ let charData = {};
 let charBlip = {};
 
 async function addCharacterData() {
-    const r = await fetch('assets/fnf/sprites/characters.json');
-    const rdata = await r.json();
+    //const r = await fetch('assets/fnf/sprites/characters.json');
+    //const rdata = await r.json();
     const bl = await fetch('assets/vn/sfx/blips/data.json');
     const bldata = await bl.json();
-    charData = rdata;
+    //charData = rdata;
     charBlip = bldata;
 }
 
@@ -102,7 +102,7 @@ function detectControls() {
 function showPrompt() {
 }
 
-//addCharacterData();
+addCharacterData();
 
 //i want to add translation support, but i don't have any plans to get translators bc no one is going to translate so much dialogue
 // when each week will have over tens of thousands of words
