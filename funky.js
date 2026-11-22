@@ -1174,6 +1174,9 @@ async function startSong(song, difficulty) {
         playCutscene(songData.startCutscene, part2Start);
         return;
     }
+    renderFNFBg();
+    renderFNFSprite();
+    renderHealthbar();
     part2Start();
 }
     async function part2Start() {
