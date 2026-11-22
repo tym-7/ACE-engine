@@ -428,12 +428,8 @@ function finishTyping() {
 
 function renderLine(line) {
     const text = document.getElementById("dialogue-text");
-    const box = document.getElementById("dialogue-box");
-    const sprite = document.getElementById("dialogue-sprite");
-    const bg = document.getElementById("dialogue-background");
-    const tag = document.getElementById("speaker-tag");
     const speaker = document.getElementById("dialogue-speaker");
-    // idk how many of these are useless go figure it out and remove later
+    // keeping just these for now
     
     currentLine = line;
 
@@ -566,11 +562,23 @@ function handleBranch(branchs) {
 }
 
 function showChoices(choices) {
-    for (let index = 0; index < choices.length; index++) {
-        let choice = choices[index];
-        if (choice.type === "thing") {
-        }
+    let cTimerId = null;
+    // make container here
+    if (choices.timer) {
+        cTimerId = setTimeout(() => {
+            handleChoice(choices.onEnd);
+        }, choices.timer);
     }
+    choices.forEach(option => {
+        if (option.options.condition) {
+            if (option.options.condition === "flag" && !gameFlags[option.options.conditionvalue]) return;
+            if (option.options.condition === "inv" && inventory.get(option.options.conditionvalue) < option.options.min && inventory.get(option.options.conditionvalue) > options.options.max) return;
+            if (option.options.condtition === "meter" && meters[option.options.conditionvalue] < option.options.min && meters[option.options.conditionvalue] > option.options.max) return;
+            // this was genuinely cancer to write out
+            // create button & onclick handleChoice(option.options.onClick) and clear timeoutcTimerId
+            // append to container
+        }
+            
     alert("Empty function | showChoices"); // add on later
 }
 
@@ -578,7 +586,20 @@ function showChoices(choices) {
 // add onclick listener, which reads
 //  "sfx" "scene" "flag" "flagvalue" "meter" "metervalue" "item" "item value"
 
-function handleChoice(selected) {
+function handleChoice(action) {
+    if (action.sfx) {
+        const sfx = getAsset(action.sfx);
+        kap.play(sfx);
+    }
+    if (action.scene) {
+        loadDialogue(action.scene);
+    }
+    if (!action.scene) {
+        handleDialogue(true);
+    }
+    if (action.gameOver) {
+        gameOver();
+    }
     alert("Empty function | handleChoice");
 }
 
@@ -882,6 +903,7 @@ let voicesOId = null;
 
 let inSong = false;
 let canPause = false;
+let isPaused = false;
 let blueBalled = false;
 
 let direction4K = ["left", "down", "up", "right"];
