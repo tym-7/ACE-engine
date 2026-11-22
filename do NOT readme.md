@@ -63,7 +63,7 @@ changes which sprite is used. folder pathing = “assets/vn/sprites/${char}/${mo
 ### Position
  puts the sprite somewhere on the box. accepts “left” “center” “right”. if you don’t like those options, (maybe you wanna put a sprite in the air or something idk) add a custom one in renderVNSprite()
 ### Text
-what the character says
+what the character says. to leave the box empty, write "text": "null" with quotes around null.
 ### Translation
 for if a character speaks in a language other than english for a moment. translated text is displayed in a different box when settings are enabled & a line has a translation
 ### Style
