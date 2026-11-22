@@ -1790,12 +1790,24 @@ function handleSustain(note) {
 kap.onUpdate("end", (note) => {
     if (!inSong) return;
     let body = note.parent.body;
-
+    let time = inst.time() * 1000;
+    let strumline = 125;
+    if (settings.downscroll) {
+        strumline = 974;
+    }
     if (settings.downscroll) {
         note.pos.y = body.pos.y - body.height;
     }
     if (!settings.downscroll) {
         note.pos.y = body.pos.y + body.height;
+    }
+    if (settings.downscroll && note.pos.y >= strumline) {
+        note.pos.y = strumline;
+        note.height = Math.max(0, note.height - (0.3 * songData.scrollSpeed * kap.dt() * 1000));
+    }
+    if (!settings.downscroll && note.pos.y <= strumline) {
+        note.pos.y = strumline;
+        note.height = Math.max(0, note.height - (0.3 * songData.scrollSpeed * kap.dt() * 1000));
     }
 });
 
