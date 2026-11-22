@@ -595,6 +595,9 @@ function showChoices(choices) {
             if (!option.style) {
         btn.classList.add("choice-btn");
             }
+            if (option.style) {
+                btn.classList.add(action.style);
+            }
         btn.onclick = () => {
             canceled = true;
             clearTimeout(cTimerId);
