@@ -1176,24 +1176,51 @@ async function startSong(song, difficulty) {
     }
     part2Start();
 }
-    function part2Start() {
-        // add more stuff here like countdown
+    async function part2Start() {
         changeBPM(baseBpm);
         renderReceptors();
         if (mobileControls) {
         renderLanes();
         }
         setCamera();
+        await startCountdown();
     inst = kap.play(instId);
     voiceP = kap.play(voicePId);
     if (voiceOId) {
         voiceO = kap.play(voiceOId);
     }
+        canPause = true;
 }
 
 function restartSong() {
     alert("Empty function | restartSong");
 }
+
+async function startCountdown() {
+    const cd = ["3", "2", "1", "go"];
+    for (let index = 0; index < cd.length; index++) {
+        let step = cd[index];
+        let img = getAsset(`assets/fnf/ui/countdown/${step}.png`);
+        let audio = getAsset(`assets/fnf/ui/countdown/${step}.mp3`);
+        kap.play(audio);
+        const sImg = kap.add([
+            kap.sprite(img),
+            kap.pos(450, 800),
+            kap.anchor("center"),
+            kap.opacity(1),
+            kap.z(80),
+            "countdown",
+            ]);
+        await kap.wait(0.5);
+    }
+}
+
+kap.onUpdate("countdown", (step) => {
+    step.opacity = step.opacity - kap.dt() * 2;
+    if (step.opacity <= 0.05) {
+        kap.destroy(step);
+    }
+});
 
 function playCutscene(src, finished) {
     const cutscene = document.getElementById("cutscene");
@@ -1219,6 +1246,16 @@ if (!voicePId) {
 voicePId = getAsset(`assets/fnf/songs/${songData.id}/voices-${songData.player}.ogg`);
 voiceOId = getAsset(`assets/fnf/songs/${songData.id}/voices-${songData.opponent}.ogg`);
 }
+}
+
+function checkAudio (time) {
+    const allowedDiff = 0.02;
+    if (voicesP) {
+        let diff = voicesP.time - (time/1000);
+    }
+    if (voicesO) {
+        let diff = voicesO.time - (time/1000);
+    }
 }
 
 function renderLanes() {
