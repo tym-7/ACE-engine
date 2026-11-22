@@ -14,7 +14,7 @@ let assets = [];
 // MIDSCROLL ALSO EXISTS adjust some code if needed omg i forgot aaaa
 
 // to do:
-//  choices for VN, overlay for receptors, adding back features
+// overlay for receptors, adding back features
 
 async function addAssets() {
     const r = await fetch("data/assets.json");
@@ -598,10 +598,6 @@ function showChoices(choices) {
     });
 }
 
-// probably do forEach add some buttons, "text" "timer" "onClick" "onEnd" "condition", "conditionvalue" "when"
-// add onclick listener, which reads
-//  "sfx" "scene" "flag" "flagvalue" "meter" "metervalue" "item" "item value"
-
 function handleChoice(action) {
     const container = document.getElementById("choice-container");
     container.innerHTML = "";
@@ -625,7 +621,7 @@ function handleChoice(action) {
             giveItem(action.item, action.itemvalue);
         }
         if (action.itemvalue < 0) {
-            removeItem(action.item, -action.itemvalue);
+            removeItem(action.item, -(action.itemvalue));
         }
     }
     if (action.scene) {
