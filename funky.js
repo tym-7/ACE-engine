@@ -432,6 +432,7 @@ function renderLine(line) {
     // keeping just these for now
     
     currentLine = line;
+    checkHybrid();
 
     if (currentLine.hasFlag && !gameFlags[currentLine.hasFlag]) {
         renderLine(dialogueQueue.shift());
@@ -637,6 +638,11 @@ function handleTrigger(event) {
         removeItem(event.value, event.amount);
     }
     //
+}
+
+function checkHybrid() {
+    // i think to set it forever do if (x && y) { flag = true;
+    // while set to true only if its true should be gameFlag.flag = (x && y);
 }
 
 function translateText() {
