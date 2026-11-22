@@ -564,6 +564,8 @@ function handleBranch(branchs) {
 function showChoices(choices) {
     let cTimerId = null;
     const container = document.getElementById("choice-container");
+    container.display = "flex";
+    container.innerHTML = "";
     if (choices.timer) {
         cTimerId = setTimeout(() => {
             handleChoice(choices.onEnd);
@@ -584,8 +586,6 @@ function showChoices(choices) {
         };
         container.appendChild(btn);
     });
-            
-    alert("Empty function | showChoices"); // add on later
 }
 
 // probably do forEach add some buttons, "text" "timer" "onClick" "onEnd" "condition", "conditionvalue" "when"
@@ -593,6 +593,9 @@ function showChoices(choices) {
 //  "sfx" "scene" "flag" "flagvalue" "meter" "metervalue" "item" "item value"
 
 function handleChoice(action) {
+    const container = document.getElementById("choice-container");
+    container.innerHTML = "";
+    container.display = "none";
     if (action.sfx) {
         const sfx = getAsset(action.sfx);
         kap.play(sfx);
