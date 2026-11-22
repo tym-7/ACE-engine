@@ -592,7 +592,9 @@ function showChoices(choices) {
             if (canceled) return;
         const btn = document.createElement("button");
         btn.innerHTML = option.text;
+            if (!option.style) {
         btn.classList.add("choice-btn");
+            }
         btn.onclick = () => {
             canceled = true;
             clearTimeout(cTimerId);
