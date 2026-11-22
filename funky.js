@@ -1180,6 +1180,9 @@ async function startSong(song, difficulty) {
     part2Start();
 }
     async function part2Start() {
+        kap.get("changeBPM").forEach(sprite => {
+            sprite.play("idle");
+        });
         changeBPM(baseBpm);
         renderReceptors();
         if (mobileControls) {
