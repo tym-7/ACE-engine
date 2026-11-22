@@ -478,6 +478,10 @@ function renderLine(line) {
     if (currentLine.next) {
         nextScene = currentLine.next;
     }
+    if (currentLine.text === "null") {
+        text.innerHTML = "";
+        return;
+    }
     
     startTyping(currentLine.text, () => {
         if (currentLine.triggers) {
