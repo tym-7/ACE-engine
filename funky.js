@@ -614,13 +614,26 @@ function handleChoice(action) {
         gameOver();
         return;
     }
+    if (action.flag) {
+        gameFlags[action.flag] = action.flagvalue;
+    }
+    if (action.meter) {
+        meters[action.meter] += action.metervalue;
+    }
+    if (action.item) {
+        if (action.itemvalue > 0) {
+            giveItem(action.item, action.itemvalue);
+        }
+        if (action.itemvalue < 0) {
+            removeItem(action.item, -action.itemvalue);
+        }
+    }
     if (action.scene) {
         loadDialogue(action.scene);
     }
     if (!action.scene) {
         handleDialogue(true);
     }
-    alert("Empty function | handleChoice");
 }
 
 function handleTrigger(event) {
