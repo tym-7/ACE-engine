@@ -1252,9 +1252,27 @@ function checkAudio (time) {
     const allowedDiff = 0.02;
     if (voicesP) {
         let diff = voicesP.time - (time/1000);
+        if (diff < -allowedDiff) {
+            voicesP.speed = 1.02;
+        }
+        if (diff > allowedDiff) {
+            voicesP.speed = 0.98;
+        }
+        if (diff >= -allowedDiff && diff <= allowedDiff) {
+            voicesP.speed = 1;
+        }
     }
     if (voicesO) {
         let diff = voicesO.time - (time/1000);
+        if (diff < -allowedDiff) {
+            voicesO.speed = 1.02;
+        }
+        if (diff > allowedDiff) {
+            voicesO.speed = 0.98;
+        }
+        if (diff >= -allowedDiff && diff <= allowedDiff) {
+            voicesO.speed = 1;
+        }
     }
 }
 
@@ -1690,6 +1708,7 @@ if (!inSong) return;
     let time = inst.time() * 1000;
     updateCamera(targetX, targetY, zoom, zoomSpeed, lerpSpeed);
     handleEvent(time);
+    checkAudio(time);
     for (let index = 0; index < songData.playerNotes.length; index++) {
         let note = songData.playerNotes[index];
         if (!note.spawned && note.time < time + 2000) {
