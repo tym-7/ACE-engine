@@ -580,7 +580,7 @@ function showChoices(choices) {
         btn.classList.add("choice-btn");
         btn.onclick = () => {
             clearTimeout(cTimerId);
-            handleAction(option.onClick);
+            handleChoice(option.onClick);
         };
         container.appendChild(btn);
     });
