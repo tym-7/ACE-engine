@@ -611,6 +611,9 @@ function handleChoice(action) {
         gameOver();
         return;
     }
+    if (action.custom) {
+        customChoice(action.custom);
+    }
     if (action.flag) {
         gameFlags[action.flag] = action.flagvalue;
     }
@@ -653,6 +656,13 @@ function handleTrigger(event) {
 function checkHybrid() {
     // i think to set it forever do if (x && y) { flag = true;
     // while set to true only if its true should be gameFlag.flag = (x && y);
+}
+
+function customChoice(choice) {
+    if (choice === "id") {
+        // custom logic stuff like idk you want to subtract more than 1 item
+        // both of these will get worked on as i actually write the game
+    }
 }
 
 function translateText() {
