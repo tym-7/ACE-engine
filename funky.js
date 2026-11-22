@@ -668,13 +668,13 @@ function giveItem(item, amount){
 }
 
 function removeItem(item, amount){
+    if (amount === "all") {
+        inventory.set(item, 0);
+        return;
+    }
     const currentCount = inventory.get(item) || 0;
-    inventory.set(item, currentCount - amount);
+    inventory.set(item, Math.max(0, currentCount - amount));
 }
-// i would add a check so that it cant go under 0 but im too stupid and lazy for that
-// ngl it shouldnt realistically happen like for example
-// if i wrote you buy something with 5 coins, it wouldve only decreased it if u had over 5 anyway
-
 
 //// kaplay stuff idk
 ///
