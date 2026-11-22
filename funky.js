@@ -563,21 +563,27 @@ function handleBranch(branchs) {
 
 function showChoices(choices) {
     let cTimerId = null;
-    // make container here
+    const container = document.getElementById("choice-container");
     if (choices.timer) {
         cTimerId = setTimeout(() => {
             handleChoice(choices.onEnd);
         }, choices.timer);
     }
-    choices.forEach(option => {
-        if (option.options.condition) {
-            if (option.options.condition === "flag" && !gameFlags[option.options.conditionvalue]) return;
-            if (option.options.condition === "inv" && inventory.get(option.options.conditionvalue) < option.options.min && inventory.get(option.options.conditionvalue) > options.options.max) return;
-            if (option.options.condtition === "meter" && meters[option.options.conditionvalue] < option.options.min && meters[option.options.conditionvalue] > option.options.max) return;
-            // this was genuinely cancer to write out
-            // create button & onclick handleChoice(option.options.onClick) and clear timeoutcTimerId
-            // append to container
+    choices.options.forEach(option => {
+        if (option.condition) {
+            if (option.condition === "flag" && !gameFlags[option.conditionvalue]) return;
+            if (option.condition === "inv" && (inventory.get(option.conditionvalue) < option.min || inventory.get(option.conditionvalue) > option.max)) return;
+            if (option.condition === "meter" && (meters[option.conditionvalue] < option.min || meters[option.conditionvalue] > option.max)) return;
         }
+        const btn = document.createElement("button");
+        btn.innerHTML = option.text;
+        btn.classList.add("choice-btn");
+        btn.onclick = () => {
+            clearTimeout(cTimerId);
+            handleAction(option.onClick);
+        };
+        container.appendChild(btn);
+    });
             
     alert("Empty function | showChoices"); // add on later
 }
@@ -591,14 +597,15 @@ function handleChoice(action) {
         const sfx = getAsset(action.sfx);
         kap.play(sfx);
     }
+    if (action.gameOver) {
+        gameOver();
+        return;
+    }
     if (action.scene) {
         loadDialogue(action.scene);
     }
     if (!action.scene) {
         handleDialogue(true);
-    }
-    if (action.gameOver) {
-        gameOver();
     }
     alert("Empty function | handleChoice");
 }
