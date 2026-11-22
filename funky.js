@@ -353,6 +353,7 @@ function getLine(data) {
         hasNoFlag: line.hasNoFlag || null,
         next: line.next || null,
         branches: line.branches || null,
+        gameOver: line.gameOver || false,
         newChapter: line.newChapter || false,
         choices: line.choices || []
     }));
@@ -867,6 +868,10 @@ function handleDialogue(handled = false) {
     const enter = getAsset(`assets/vn/sfx/blips/textboxClick.mp3`);
     if (typeId) {
         finishTyping();
+        return;
+    }
+    if (currentLine.gameOver) {
+        gameOver();
         return;
     }
     if (currentLine.choices && !handled) {
