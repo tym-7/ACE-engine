@@ -129,9 +129,9 @@ choices are far more complex than branches or triggers written out<br>
 example: <br>
 ### Other Features
 Removing Items<br>
-text<br>
+(Only accepted in triggers, likely adding support in choices later) You can pass "all" as an amount in trigger type "removeItem" instead of something like 9999 to remove the player's items. If an item goes below 0, it gets capped at 0.<br>
 Hybrids<br>
-text<br>
+If you were looking into choices or branches wishing multiple types of conditions could be accepted to build better customization, set the type to flag, add a new flag, and head over to checkHybrid() to add whatever conditions you wish to have, example: gameFlags.trusted = (meters.trust > 50 && gameFlags.killedBoss && inventory.get("key") > 0).<br>
 
 ## Point And Click
 Engine Not Finished Yet
