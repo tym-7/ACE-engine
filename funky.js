@@ -830,7 +830,7 @@ function renderVNBg() {
 
 function renderVNUI() {
     // render the tag and the bg box here cuz they use images too okay now just the tag
-
+    // honestly what im thinking to render full screen images is just overlaying an image on screen z(10) and set text to null so no dialogue plays instead of hiding the box
     if (!VNColor) {
         VNColor = kap.add([
             kap.rect(1180,240),
