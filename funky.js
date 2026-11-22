@@ -563,8 +563,9 @@ function handleBranch(branchs) {
 
 function showChoices(choices) {
     let cTimerId = null;
+    let canceled = false;
     const container = document.getElementById("choice-container");
-    container.display = "flex";
+    container.style.display = "flex";
     container.innerHTML = "";
     if (choices.timer) {
         cTimerId = setTimeout(() => {
@@ -572,19 +573,27 @@ function showChoices(choices) {
         }, choices.timer);
     }
     choices.options.forEach(option => {
+        let delay = 0;
+        if (option.delay) {
+            delay = options.delay;
+        }
         if (option.condition) {
             if (option.condition === "flag" && !gameFlags[option.conditionvalue]) return;
             if (option.condition === "inv" && (inventory.get(option.conditionvalue) < option.min || inventory.get(option.conditionvalue) > option.max)) return;
             if (option.condition === "meter" && (meters[option.conditionvalue] < option.min || meters[option.conditionvalue] > option.max)) return;
         }
+        setTimeout(() => {
+            if (canceled) return;
         const btn = document.createElement("button");
         btn.innerHTML = option.text;
         btn.classList.add("choice-btn");
         btn.onclick = () => {
+            canceled = true;
             clearTimeout(cTimerId);
             handleChoice(option.onClick);
         };
-        container.appendChild(btn);
+            container.appendChild(btn);
+        }, delay);
     });
 }
 
@@ -595,7 +604,7 @@ function showChoices(choices) {
 function handleChoice(action) {
     const container = document.getElementById("choice-container");
     container.innerHTML = "";
-    container.display = "none";
+    container.style.display = "none";
     if (action.sfx) {
         const sfx = getAsset(action.sfx);
         kap.play(sfx);
