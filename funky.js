@@ -874,11 +874,11 @@ let lerpSpeed = 3;
 let songData = null;
 
 let inst = null;
-let voiceP = null;
-let voiceO = null;
+let voicesP = null;
+let voicesO = null;
 let instId = null;
-let voicePId = null;
-let voiceOId = null;
+let voicesPId = null;
+let voicesOId = null;
 
 let inSong = false;
 let canPause = false;
@@ -1191,9 +1191,9 @@ async function startSong(song, difficulty) {
         setCamera();
         await startCountdown();
     inst = kap.play(instId);
-    voiceP = kap.play(voicePId);
-    if (voiceOId) {
-        voiceO = kap.play(voiceOId);
+    voicesP = kap.play(voicesPId);
+    if (voicesOId) {
+        voicesO = kap.play(voicesOId);
     }
         canPause = true;
 }
@@ -1244,13 +1244,13 @@ function playCutscene(src, finished) {
 
 function setAudio () {
 instId = null;
-voicePId = null;
-voiceOId = null;
+voicesPId = null;
+voicesOId = null;
 instId = getAsset(`assets/fnf/songs/${songData.id}/inst.ogg`);
-voicePId = getAsset(`assets/fnf/songs/${songData.id}/voices.ogg`);
-if (!voicePId) {
-voicePId = getAsset(`assets/fnf/songs/${songData.id}/voices-${songData.player}.ogg`);
-voiceOId = getAsset(`assets/fnf/songs/${songData.id}/voices-${songData.opponent}.ogg`);
+voicesPId = getAsset(`assets/fnf/songs/${songData.id}/voices.ogg`);
+if (!voicesPId) {
+voicesPId = getAsset(`assets/fnf/songs/${songData.id}/voices-${songData.player}.ogg`);
+voicesOId = getAsset(`assets/fnf/songs/${songData.id}/voices-${songData.opponent}.ogg`);
 }
 }
 
