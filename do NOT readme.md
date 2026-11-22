@@ -47,8 +47,10 @@ All Values: <br>
 * [HasNoFlag](#hasnoflag)
 * [Next](#next)
 * [Branches](#branches)
+* [GameOver](#gameover)
 * [NewChapter](#newchapter)
 * [Choices](#choices)
+* [Other Features](#other-features)
 ### Id
 allows the player to save if they get to a line with an id, without it, only scene autosaving and chapter autosaving works, as linesaving & manual saving grabs the id of the current line
 ### Speaker
@@ -111,17 +113,25 @@ example: <br>
     { "type": "flag", “value”: “didX”, "needed": true, "scene": "scene1" },<br>
     { "type": "meter", “value”: “love”, "min": 30, "max": 40, "scene": "scene2" },<br>
     { "type": "inv", “value”: “gun”, "needed": true, "scene": "scene3" },<br>
-    { "type": "inv", “value”: “coins”, "min": 20, "max": "100", "scene": "scene4" },<br>
+    { "type": "inv", “value”: “coins”, "min": 20, "max": 100, "scene": "scene4" },<br>
     { "type": "fallback", "scene": "scene5"} <br>
   ]<br>
+### GameOver
+shows the gameover screen after the player presses enter during the line. accepted as true/false
 ### NewChapter
 increases the current chapter by 1. just does currentChapter++. mark only once in a dialogue array, as true, preferably the very top
 ### Choices
-NOT ADDED <br>
-logic, however, will be: <br>
 shows options on screen for players to choose from. before having the options array, the values for choices are "when" "timer" and "onEnd". "when" decides the choices should be seen, either as "start", at the beginning, or on "finish", when the text finishes typing. if a timer is included, "onEnd" is required to decide the action when the timer is done. timers use ms, so 1.5s = 1500, you would write "timer": 1500, after 1.5s of not pressing an option, onEnd will fire. you would write an "onEnd" the same way as something in an option, so we'll get to that later. <br>
-options: values are "text" "condition" "conditionvalue" "onClick" <br>
+options: values are "text" "condition" "conditionvalue" "onClick" "delay" <br>
 onClick / onEnd: <br>
+values are "sfx" "item" "itemvalue" "flag" "flagvalue" "meter" "metervalue" "gameOver" and "scene". this is the exception to my naming rule, i just felt like it to write value lowercase. for sfx, you would write "sfx": "audio.mp3" CHANGING THE AUDIO PATHING EDIT LATER. for item, you would write "item": "coins", "itemvalue": 5. item value can be negative. for flags, you would write "flag": "killedBoss", "flagvalue": true. for meters, you would write "meter": "love", "metervalue": 5. for scene, the pathing follows just like branches or next. "scene": "castle". if you want an immediate game over, set "gameOver": true. for delayed game over, just set the scene to something like "badending" and a few lines later have "gameOver": true on the base level. <br>
+choices are far more complex than branches or triggers written out<br>
+example: <br>
+### Other Features
+Removing Items<br>
+text<br>
+Hybrids<br>
+text<br>
 
 ## Point And Click
 Engine Not Finished Yet
