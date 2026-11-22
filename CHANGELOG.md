@@ -1,13 +1,15 @@
-# 2026-11-11  [v0.0.0-build.1]
-- Redid a lot of the folder pathing
-- Reworked the old function that sorted out line data "getLine()"
-# 2026-11-13  [v0.0.0-build.2]
-- Added a lot of functions back into the visual novel side of the engine
-- Reworked how branches worked from the old
-- Added being able to use shaders on sprites
-- Changed how images render (now using kaplay's functions)
-# 2026-11-15  [v0.0.0-build.3]
-- Added translation feature
+# 2026-11-22 [v0.0.0-build5]
+- Added receptor rendering
+- Made edits to how BPM changing works
+- Added sprite animation
+- Added the camera
+- Added keybinds and hit detection logic (still needs keybind changing support)
+- Balancing hardMode to decrease hp from -5 to -3
+- Mobile control support in the works
+- Added choice logic for the visual novel side of the engine
+- Added note movement and note removal logic
+- Added note splash and countdown logic
+- removeItem now accepts "all" string, removes all items, also now caps to 0 instead of allowing negative items
 # 2026-11-16 [v0.0.0-build.4]
 Finally keeping 100% track of all features being added
 - instant dialogue speed now calls finishTyping() before it calls type(), preventing an issue where it would've typed a character, than finish
@@ -37,3 +39,13 @@ sick 30ms +1 hp <br>
 good 60ms -5 hp <br>
 bad 90 ms -10 hp <br>
 shit 166ms -15 hp <br>
+# 2026-11-15  [v0.0.0-build.3]
+- Added translation feature
+# 2026-11-13  [v0.0.0-build.2]
+- Added a lot of functions back into the visual novel side of the engine
+- Reworked how branches worked from the old
+- Added being able to use shaders on sprites
+- Changed how images render (now using kaplay's functions)
+# 2026-11-11  [v0.0.0-build.1]
+- Redid a lot of the folder pathing
+- Reworked the old function that sorted out line data "getLine()"
