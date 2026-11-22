@@ -575,7 +575,7 @@ function showChoices(choices) {
     choices.options.forEach(option => {
         let delay = 0;
         if (option.delay) {
-            delay = options.delay;
+            delay = option.delay;
         }
         if (option.condition) {
             if (option.condition === "flag" && !gameFlags[option.conditionvalue]) return;
