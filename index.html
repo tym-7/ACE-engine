@@ -70,6 +70,19 @@ a,
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
 }
+        #choice-container {
+            display: none;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            position: absolute;
+            z-index: 15;
+        }
+        .choice-btn {
+            font-family: 'Blue Winter';
+            color: white;
+            font-size: 25px;
+        }
 
         #dialogue-box {
   display: none;
@@ -107,6 +120,8 @@ a,
         </div>
 
         <video id="cutscene" preload="auto" playsinline></video>
+
+        <div id="choice-container"></div>
         
     <div id ="dialogue-background"></div>
     <img id ="dialogue-sprite" class ="sprite">
