@@ -1788,7 +1788,15 @@ function handleSustain(note) {
 }
 
 kap.onUpdate("end", (note) => {
-if (!inSong) return;
+    if (!inSong) return;
+    let body = note.parent.body;
+
+    if (settings.downscroll) {
+        note.pos.y = body.pos.y - body.height;
+    }
+    if (!settings.downscroll) {
+        note.pos.y = body.pos.y + body.height;
+    }
 });
 
 kap.onUpdate("invis", (note) => {
