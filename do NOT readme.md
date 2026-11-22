@@ -123,7 +123,7 @@ increases the current chapter by 1. just does currentChapter++. mark only once i
 ### Choices
 shows options on screen for players to choose from. before having the options array, the values for choices are "when" "timer" and "onEnd". "when" decides the choices should be seen, either as "start", at the beginning, or on "finish", when the text finishes typing. if a timer is included, "onEnd" is required to decide the action when the timer is done. timers use ms, so 1.5s = 1500, you would write "timer": 1500, after 1.5s of not pressing an option, onEnd will fire. you would write an "onEnd" the same way as onClick in an option, so we'll get to that later. <br>
 options: <br>
-values are "text" "condition" "conditionvalue" "onClick" "delay" <br>
+values are "text" "condition" "conditionvalue" "onClick" "delay" "min" "max" "style" <br>
 onClick / onEnd: <br>
 values are "sfx" "item" "itemvalue" "flag" "flagvalue" "meter" "metervalue" "custom" "gameOver" and "scene". this is the exception to my naming rule, i just felt like it to write value lowercase. for sfx, you would write "sfx": "audio.mp3" CHANGING THE AUDIO PATHING EDIT LATER. for item, you would write "item": "coins", "itemvalue": 5. item value can be negative. for flags, you would write "flag": "killedBoss", "flagvalue": true. for meters, you would write "meter": "love", "metervalue": 5. for scene, the pathing follows just like branches or next. "scene": "castle". if you want an immediate game over, set "gameOver": true. for delayed game over, just set the scene to something like "badending" and a few lines later have "gameOver": true on the base level. make your own custom logic in customChoice()<br>
 choices are far more complex than branches or triggers written out<br>
