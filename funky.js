@@ -345,6 +345,7 @@ function getLine(data) {
         position: line.position || 'center',
         text: line.text || '',
         translation: line.translation || '',
+        alt: line.alt || '',
         style: line.style || 'default',
         speed: line.speed || 1,
         muted: line.muted || false,
