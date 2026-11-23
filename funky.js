@@ -821,20 +821,18 @@ function renderVNBg() {
     if (!currentLine.background) return;
     const bg = getAsset(`assets/vn/backgrounds/${currentLine.background}.png`);
     if (!VNBg) {
-        VNBg = kap.add([
-            kap.sprite(bg),
-            kap.pos(0,0),
-            kap.z(0),
-            ]);
-        return;
-    }
-    if (VNBg) {
-        VNBg.use(kap.sprite(bg));
+    VNBg = kap.add([
+        kap.sprite(bg),
+        kap.pos(0, 0),
+        kap.z(0),
+    ]);
+    } else {
+    VNBg.use(kap.sprite(bg));
     }
     if (currentLine.bgShader) {
         VNBg.use(kap.shader(currentLine.bgShader));
     } else {
-        VNBG.unuse("shader");
+        VNBg.unuse("shader");
     }
     //
 }
