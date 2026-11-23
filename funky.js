@@ -47,6 +47,9 @@ kap.setBackground(0,0,0);
 
 kap.loadFont("Doiscallme", "fonts/docallismeonstreet.otf");
 
+window.onerror = (msg, src, line) => {
+    alert(`Error: ${msg}\nLine: ${line}`);
+};
 
 let version = "0.0.0";
 
