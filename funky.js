@@ -2085,3 +2085,8 @@ function renderHealthbar() {
 function updateHealthbar() {
     alert("Empty function | updateHealthbar");
 }
+
+setTimeout(() => {
+    loadDialogue("test");
+}, 10000);
+
