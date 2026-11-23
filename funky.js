@@ -415,7 +415,6 @@ function type() {
 }
     
 function finishTyping() {
-    alert("2");
     if (typeId) {
     clearTimeout(typeId);
     typeId = null;
@@ -433,7 +432,6 @@ function finishTyping() {
         applyEffect(span);
         dialogueText.appendChild(span);
     }
-    alert("3");
     if (finish) finish();
 }
 
@@ -894,7 +892,6 @@ document.addEventListener("keydown", (e) => {
 
 // making it into a separate function for idk mobile support
 function handleDialogue(handled = false) {
-    alert("1");
     const enter = getAsset(`assets/vn/sfx/blips/textboxClick.mp3`);
     if (finishId) {
         clearTimeout(finishId);
