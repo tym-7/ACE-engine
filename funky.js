@@ -360,7 +360,7 @@ function getLine(data) {
         branches: line.branches || null,
         gameOver: line.gameOver || false,
         newChapter: line.newChapter || false,
-        choices: line.choices || []
+        choices: line.choices || null
     }));
 }
 
@@ -894,26 +894,21 @@ document.addEventListener("keydown", (e) => {
 function handleDialogue(handled = false) {
     const enter = getAsset(`assets/vn/sfx/blips/textboxClick.mp3`);
     if (finishId) {
-        alert("Error 1");
         clearTimeout(finishId);
         finishId = null;
     }
     if (typeId) {
         finishTyping();
-        alert("Error 2");
         return;
     }
     if (currentLine.gameOver) {
-        alert("Error 3");
         gameOver();
         return;
     }
     if (currentLine.choices && !handled) {
-        alert("Error 4");
         return;
     }
     if (nextScene) {
-        alert("Error 5");
         loadDialogue(nextScene);
         kap.play(enter);
         return;
