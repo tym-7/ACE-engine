@@ -281,6 +281,7 @@ let currentLine = null;
 let currentId = null;
 let dialogueQueue = [];
 let typeId = null;
+let finishId = null;
 let fullText = "";
 let nextScene = null;
 
@@ -414,7 +415,11 @@ function finishTyping() {
     clearTimeout(typeId);
     typeId = null;
     }
-    
+    if (settings.autoplay) {
+        finishId = setTimeout(() => {
+            handleDialogue();
+        }, 1000 );
+    }
     const dialogueText = document.getElementById("dialogue-text");
     dialogueText.innerHTML = "";
     for (let index = 0; index < fullText.length; index++) {
@@ -885,6 +890,9 @@ document.addEventListener("keydown", (e) => {
 // making it into a separate function for idk mobile support
 function handleDialogue(handled = false) {
     const enter = getAsset(`assets/vn/sfx/blips/textboxClick.mp3`);
+    if (finishId) {
+        finishId = null;
+    }
     if (typeId) {
         finishTyping();
         return;
