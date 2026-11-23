@@ -596,7 +596,7 @@ function showChoices(choices) {
         btn.classList.add("choice-btn");
             }
             if (option.style) {
-                btn.classList.add(action.style);
+                btn.classList.add(option.style);
             }
         btn.onclick = () => {
             canceled = true;
