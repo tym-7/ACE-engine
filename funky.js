@@ -124,6 +124,7 @@ let settings = {
     hardMode: false,
   skipPrologue: false,
     muteBlips: false,
+    autoplay: false,
   showFPS: false
 };
 
@@ -891,6 +892,7 @@ document.addEventListener("keydown", (e) => {
 function handleDialogue(handled = false) {
     const enter = getAsset(`assets/vn/sfx/blips/textboxClick.mp3`);
     if (finishId) {
+        clearTimeout(finishId);
         finishId = null;
     }
     if (typeId) {
