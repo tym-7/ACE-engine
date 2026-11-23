@@ -671,7 +671,7 @@ function handleTrigger(event) {
 }
 
 function checkHybrid() {
-    // i think to set it forever do if (x && y) { flag = true;
+    // i think to set it forever do if (x && y) flag = true; deleting that bracket bc it gives me a heart attack when theyre not even
     // while set to true only if its true should be gameFlag.flag = (x && y);
 }
 
