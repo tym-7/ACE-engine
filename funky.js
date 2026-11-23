@@ -15,6 +15,7 @@ let assets = [];
 
 // to do:
 // overlay for receptors, ui button stuff for vn part, changing keybinds
+// im trying to think how i'd do a backlog. maybe make an array and use "unshift"?
 
 async function addAssets() {
     const r = await fetch("data/assets.json");
@@ -458,6 +459,7 @@ function renderLine(line) {
     renderVNSprite();
     renderVNUI();
     renderBox(currentLine.style);
+    addBacklog();
 
     if (currentLine.translation && settings.translate) {
         translateText();
@@ -686,6 +688,20 @@ function customChoice(choice) {
 function translateText() {
     const transBox = document.getElementById("translation-box");
     transBox.innerHTML = currentLine.translation;
+}
+// make a box in html later
+let backlog = [];
+
+function addBacklog() {
+    let txt = "";
+    if (!currentLine.alt) {
+        txt = `${currentLine.speaker}: ${currentLine.text}`;
+    }
+    if (currentLine.alt) {
+        txt = `${currentLine.alt}`;
+    }
+    backlog.unshift(`${txt}`);
+    // add some feature like idk if it gets over 100 lines the last line gets deleted
 }
 
 document.getElementById("dialogue-text").addEventListener("mouseenter", () => {
