@@ -267,6 +267,7 @@ function loadSettings() {
     if (settingData) {
         settings = JSON.parse(settingData);
     }
+    settings.autoplay = false; // autoplay is not a real setting i am only grouping it up there for ease
     //updateSettings();
 }
 
