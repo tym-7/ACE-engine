@@ -88,11 +88,12 @@ plays music on loop. pathing = "assets/vn/sounds/${ambience}". -mp3 not included
 plays music on loop. identical to ambience. ambience is supposed to be used as like background noise like chatter, traffic, but you can use in track too, track is supposed to be music one would actually listen to, playing in the background
 ### Triggers
 small things to spice up dialogue. just like branches, it requires an array, looking for "type" "when" and other values. "when" requires a stated time, either "start" or "finish". the event will either trigger at the start of the dialogue, or when they finish speaking.<br>
-current triggers: sfx, silence, addItem, removeItem <br>
+current triggers: sfx, silence, animation, addItem, removeItem <br>
 sfx requires a "value" which is the src of the sfx you want to play. folder pathing = "" <br>
 silence mutes both ambience and track if they are playing. requires no other values <br>
 addItem adds an item. requires "value" which is the item name, and "amount" the amount <br>
 removeItem removes an item. requires "value" which is the item name, and "amount". amount should be a positive number <br>
+animation animates the dialogue sprite. requires "animation" i might change it to "value" later, and "loop". example: "animation": "wave", "loop": true
 example: <br>
 "triggers": [ <br>
 { "type": "sfx", "when": "start", "value": "assets/vn/sfx/gunshot.mp3" }, <br>
