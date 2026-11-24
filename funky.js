@@ -308,12 +308,14 @@ async function loadDialogue(sceneName, lineId = null) {
             dialogueQueue = getLine(data);
             document.getElementById("dialogue-box").style.display = "block";
     document.getElementById("dialogue-background").style.display = "block";
-    
-    if (lineId) {
-        while (dialogueQueue.length > 0 && dialogueQueue[0].id !== lineId) {
-            dialogueQueue.shift();
-        }
-    }
+            const l = dialogueQueue.length;
+            if (lineId) {
+                for (let index = 0; index < l; index++) {
+                    if (dialogueQueue[0].id !== lineId) {
+                        dialogueQueue.shift();
+                    }
+                }
+            }
     if (dialogueQueue.length > 0) {
         renderLine(dialogueQueue.shift());
     }
