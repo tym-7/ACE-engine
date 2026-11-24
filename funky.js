@@ -530,6 +530,11 @@ function renderLine(line) {
 }
 
 // i think i could add a setTimeout (handleTrigger, event.delay, event) to add more customization to triggers
+// i havent done that yet bc some ppl might spam skip thro dialogue so like if i code when: start delay 2000
+// skippers are gonna see it happen a couple lines later
+// plus different speed settings
+// delay might have to be a percentage and use 'i' which i think is what is used for typing to be like
+// delay 50% (or 0.5), if i / full text.length > delay do trigger
 
 function renderBox(style) {
     const box = document.getElementById("dialogue-box");
