@@ -195,6 +195,18 @@ function loadGame(data) {
     currentChapter = data.currentChapter || 1;
 }
 
+function resetGame() {
+    inventory.forEach((amount, item) => {
+        inventory.set(item, 0);
+    });
+    inventory.set(guns, 2);
+    inventory.set(ammo, 1); // check which it was called
+    for (const flag in gameFlags) {
+        gameFlag[flag] = false;
+    }
+    meters = {}; // add later
+}
+
 function save4Keybinds() {
     localStorage.setItem(keybinds4KSave, JSON.stringify(keybinds4K));
 }
