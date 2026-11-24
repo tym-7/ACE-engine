@@ -183,6 +183,10 @@ function loadShown() {
 }
 
 function loadScores() {
+    const scores = localStorage.getItem(scoresSave);
+    if (scores) {
+        songScores = JSON.parse(scores);
+    }
 }
 
 function saveDialogue() {
@@ -190,6 +194,10 @@ function saveDialogue() {
     shownDialogue: Array.from(shownDialogue),
     };
     localStorage.setItem(shownSave, JSON.stringify(shownData));
+}
+
+function saveScores() {
+    localStorage.setItem(scoresSave, JSON.stringify(songScores));
 }
 
 function loadGame(data) {
@@ -289,6 +297,7 @@ function loadSettings() {
 }
 
     loadShown();
+    loadScores();
     load4Keybinds();
     loadSettings();
 
@@ -1423,6 +1432,14 @@ function checkAudio (time) {
         if (diff >= -allowedDiff && diff <= allowedDiff) {
             voicesO.speed = 1;
         }
+    }
+}
+
+function updateHighscores(song, score) {
+    const oldScore = songScores[song] || 0;
+    if (score > oldScore) {
+        songScores[song] = score;
+        saveScores();
     }
 }
 
