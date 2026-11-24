@@ -492,8 +492,9 @@ function renderLine(line) {
     }
     
     if (currentLine.id) {
-        saveLine(currentScene, currentLine.id);
-                 }
+        currentId = currentLine.id;
+        saveLine(currentScene, currentId);
+            }
     if (currentLine.choices) {
         if (currentLine.choices.when === "start") {
         showChoices(currentLine.choices);
