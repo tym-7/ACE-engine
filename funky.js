@@ -199,12 +199,12 @@ function resetGame() {
     inventory.forEach((amount, item) => {
         inventory.set(item, 0);
     });
-    inventory.set(guns, 2);
-    inventory.set(ammo, 1); // check which it was called
+    inventory.set("guns", 2);
+    inventory.set("ammo", 1);
     for (const flag in gameFlags) {
         gameFlag[flag] = false;
     }
-    meters = {}; // add later
+    meters = {stamina: 100, picolove: 50, keithlove: 50, sanity: 100, lv: 0, approval: 0};
 }
 
 function save4Keybinds() {
