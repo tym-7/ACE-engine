@@ -838,6 +838,11 @@ function renderVNSprite() {
         //
 }
 
+function animateVNSprite() {
+    if (!VNSprite) return;
+    // figuring out if it should be a trigger or add new line to getLine
+}
+
 function renderVNBg() {
     if (!currentLine.background) return;
     const bg = getAsset(`assets/vn/backgrounds/${currentLine.background}.png`);
