@@ -15,6 +15,7 @@ let assets = [];
 
 // to do:
 //  ui button stuff for vn part, changing keybinds
+// does freeplay need to block item gaining flag stuff anymore if saves load what is read from the loaded saves itself? look into it
 
 async function addAssets() {
     const r = await fetch("data/assets.json");
