@@ -850,9 +850,15 @@ function renderVNSprite() {
         //
 }
 
-function animateVNSprite() {
+function animateVNSprite(anim) {
     if (!VNSprite) return;
-    // figuring out if it should be a trigger or add new line to getLine
+    if (currentLine.triggers.anim !== anim) return;
+    if (!currentLine.triggers.loop) {
+    VNSprite.play(anim);
+    }
+    if (currentLine.triggers.loop) {
+        VNSprite.play(anim, {loop: true});
+    }
 }
 
 function renderVNBg() {
