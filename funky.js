@@ -678,6 +678,9 @@ function handleTrigger(event) {
     if (event.type === "silence") {
         stopVNMusic();
     }
+    if (event.type === "anim") {
+        animateVNSprite(event);
+    }
     if (event.type === "addItem") {
         giveItem(event.value, event.amount);
     }
@@ -850,13 +853,15 @@ function renderVNSprite() {
         //
 }
 
-function animateVNSprite(anim) {
+function animateVNSprite(trigger) {
     if (!VNSprite) return;
-    if (currentLine.triggers.anim !== anim) return;
-    if (!currentLine.triggers.loop) {
+    
+    if (!trigger.loop) {
+        let anim = trigger.animation;
     VNSprite.play(anim);
     }
-    if (currentLine.triggers.loop) {
+    if (trigger.loop) {
+        let anim = trigger.animation;
         VNSprite.play(anim, {loop: true});
     }
 }
