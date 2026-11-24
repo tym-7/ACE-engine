@@ -116,7 +116,7 @@ addCharacterData();
 
 // i made "i" as a global variable so idk if "i" can be used anymore in a "for" loop, use index for the meanwhile 
 
-let currentChapter = 0;
+let currentChapter = 0; // with metadata.json what is this even for now 🥀
 let settings = {
   fontSize: 1,
   speedDialogue: 1,
