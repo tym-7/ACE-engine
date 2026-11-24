@@ -14,7 +14,7 @@ let assets = [];
 // MIDSCROLL ALSO EXISTS adjust some code if needed omg i forgot aaaa
 
 // to do:
-//  ui button stuff for vn part, changing keybinds
+//  ui button stuff for vn part, changing keybinds, id jumping for next, branches, choices
 // does freeplay need to block item gaining flag stuff anymore if saves load what is read from the loaded saves itself? look into it
 
 async function addAssets() {
