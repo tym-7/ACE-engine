@@ -418,7 +418,15 @@ function type() {
         i++;
         applyEffect(span);
         document.getElementById("dialogue-text").appendChild(span);
-        
+        if (currentLine.triggers) {
+            currentLine.triggers.forEach(event => {
+                if (event.when === "middle") {
+                    if (event.delay <= (i / fullText.length)) {
+                    handleTrigger(event);
+                    }
+                }
+            });
+        }
         if (!currentLine.muted && !settings.mutedBlips && c !== " ") {
             kap.play(blip, {volume: 0.5});
         }
@@ -682,6 +690,8 @@ function handleChoice(action) {
 }
 
 function handleTrigger(event) {
+    if (event.handled) return;
+    event.handled = true;
     if (event.type === "sfx") {
         const sfx = getAsset(event.value);
         kap.play(sfx);
