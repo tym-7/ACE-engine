@@ -116,7 +116,6 @@ addCharacterData();
 
 // i made "i" as a global variable so idk if "i" can be used anymore in a "for" loop, use index for the meanwhile 
 
-let currentChapter = 0; // with metadata.json what is this even for now 🥀
 let settings = {
   fontSize: 1,
   speedDialogue: 1,
@@ -231,7 +230,6 @@ function getGame(sceneName, lineId = null) {
         flags: { ...gameFlags },
         meters: { ...meters },
         inventory: Object.fromEntries(inventory),
-        currentChapter: currentChapter,
         timestamp: new Date().toLocaleString('en-US', {
             month: 'short',
             day: 'numeric',
@@ -382,7 +380,6 @@ function getLine(data) {
         next: line.next || null,
         branches: line.branches || null,
         gameOver: line.gameOver || false,
-        newChapter: line.newChapter || false,
         choices: line.choices || null
     }));
 }
@@ -497,9 +494,6 @@ function renderLine(line) {
     if (currentLine.id) {
         saveLine(currentScene, currentLine.id);
                  }
-    if (currentLine.newChapter) {
-        currentChapter++;
-    }
     if (currentLine.choices) {
         if (currentLine.choices.when === "start") {
         showChoices(currentLine.choices);
