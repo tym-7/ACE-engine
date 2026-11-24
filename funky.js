@@ -200,14 +200,6 @@ function saveScores() {
     localStorage.setItem(scoresSave, JSON.stringify(songScores));
 }
 
-function loadGame(data) {
-    if (!data) return;
-    gameFlags = data.flags;
-    meters = data.meters;
-    inventory = new Map(Object.entries(data.inventory));
-    currentChapter = data.currentChapter || 1;
-}
-
 function resetGame() {
     inventory.forEach((amount, item) => {
         inventory.set(item, 0);
@@ -248,7 +240,7 @@ function getGame(sceneName, lineId = null) {
         })
     };
 }
-
+// THIS IS BECOMING DEFUNCT. DELETE LATER
 document.addEventListener("keydown", (event) => {
     if (event.key === "1") {
         saveSlot1(currentScene, currentId); 
@@ -279,8 +271,8 @@ function saveScene(sceneName) {
     localStorage.setItem(sceneSave, JSON.stringify(getGame(sceneName)));
 }
 
-function saveChapter(sceneName, lineId) {
-    localStorage.setItem(chapterSave, JSON.stringify(getGame(sceneName, lineId)));
+function saveChapter(sceneName) {
+    localStorage.setItem(chapterSave, JSON.stringify(getGame(sceneName)));
 }
 
 function saveSettings() {
