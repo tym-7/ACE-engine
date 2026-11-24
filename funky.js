@@ -14,7 +14,7 @@ let assets = [];
 // MIDSCROLL ALSO EXISTS adjust some code if needed omg i forgot aaaa
 
 // to do:
-// overlay for receptors, ui button stuff for vn part, changing keybinds
+//  ui button stuff for vn part, changing keybinds
 
 async function addAssets() {
     const r = await fetch("data/assets.json");
