@@ -15,7 +15,6 @@ let assets = [];
 
 // to do:
 // overlay for receptors, ui button stuff for vn part, changing keybinds
-// im trying to think how i'd do a backlog. maybe make an array and use "unshift"?
 
 async function addAssets() {
     const r = await fetch("data/assets.json");
@@ -702,7 +701,9 @@ function addBacklog() {
         txt = `${currentLine.alt}`;
     }
     backlog.unshift(`${txt}`);
-    // add some feature like idk if it gets over 100 lines the last line gets deleted
+    if (backlog.length > 99) {
+        backlog.pop();
+    }
 }
 
 document.getElementById("dialogue-text").addEventListener("mouseenter", () => {
