@@ -1504,11 +1504,12 @@ kap.onTouchEnd((pos, t) => {
 
 function renderReceptors() {
     kap.destroyAll("receptor");
-
+    kap.destroyAll("overlay");
     let spacing = 155;
     let yPos = 125;
     let xPosOpp = 175;
     let xPosPla = 955;
+    let opacity = (settings.overlay / 10);
     
     if (settings.downscroll) {
     yPos = 1099 - 125;
@@ -1519,7 +1520,16 @@ function renderReceptors() {
     xPosPla = (1595  / 2 ) - (spacing * 1.5);
         delay = 0;
         }
+            
         if (!settings.midscroll) {
+            const oppOverlay = kap.add([
+                kap.rect(615, 1099),
+                kap.pos(xPosOpp - 75, 0),
+                kap.fixed(),
+                kap.color(0,0,0),
+                kap.opacity(opacity),
+                "overlay"
+                ]);
             for (let index = 0; index < 4; index++) {
                 const x = xPosOpp + (index * spacing);
 
@@ -1536,6 +1546,14 @@ function renderReceptors() {
             kap.wait(index * 0.2, () => r.fadeIn(0.3));
             }
     }
+        const plaOverlay = kap.add([
+                kap.rect(615, 1099),
+                kap.pos(xPosPla - 75, 0),
+                kap.fixed(),
+                kap.color(0,0,0),
+                kap.opacity(opacity),
+                "overlay"
+                ]);
                 for (let index = 0; index < 4; index++) {
             const x = xPosPla + (index * spacing);
 
