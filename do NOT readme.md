@@ -93,7 +93,7 @@ sfx requires a "value" which is the src of the sfx you want to play. folder path
 silence mutes both ambience and track if they are playing. requires no other values <br>
 addItem adds an item. requires "value" which is the item name, and "amount" the amount <br>
 removeItem removes an item. requires "value" which is the item name, and "amount". amount should be a positive number <br>
-animation animates the dialogue sprite. requires "animation" i might change it to "value" later, and "loop". example: "animation": "wave", "loop": true
+animation animates the dialogue sprite. requires "animation" i might change it to "value" later, and "loop". example: "animation": "wave", "loop": true <br>
 example: <br>
 "triggers": [ <br>
 { "type": "sfx", "when": "start", "value": "assets/vn/sfx/gunshot.mp3" }, <br>
