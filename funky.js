@@ -161,10 +161,12 @@ function getOverlay() {
 // adding a lot of spaces bc they kinda look ugly copy and pasted like that
 
 let shownDialogue = new Set();
+let songScores = {};
 
 const settingsSave = 'fnf_dark_minds_settings';
 const keybinds4KSave = 'fnf_dark_minds_keybinds';
 const shownSave = 'fnf_dark_minds_shown';
+const scoresSave = 'fnf_dark_minds_scores';
 const chapterSave = 'fnf_dark_minds_chapter_save';
 const sceneSave = 'fnf_dark_minds_scene_save';
 const lineSave = 'fnf-dark-minds_line_save';
@@ -178,6 +180,9 @@ function loadShown() {
         const dialogueData = JSON.parse(shown); 
         shownDialogue = new Set(dialogueData.shownDialogue || []);
     }
+}
+
+function loadScores() {
 }
 
 function saveDialogue() {
