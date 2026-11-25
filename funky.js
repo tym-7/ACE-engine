@@ -749,8 +749,6 @@ document.getElementById("dialogue-text").addEventListener("mouseleave", () => {
     }
 });
 
-        
-
 function giveItem(item, amount){
     const currentCount = inventory.get(item) || 0;
     inventory.set(item, currentCount + amount);
@@ -817,6 +815,7 @@ let VNBg = null;
 let VNBox = null;
 let VNTag = null;
 let VNColor = null;
+let VNCG = null;
 
 function renderVNSprite() {
     if (VNSprite) {
@@ -878,6 +877,11 @@ function animateVNSprite(trigger) {
 
 function renderVNBg() {
     if (!currentLine.background) return;
+    if (currentLine.background === "null") {
+        VNBg.destroy();
+        VNBg = null;
+        return;
+    }
     const bg = getAsset(`assets/vn/backgrounds/${currentLine.background}.png`);
     let opacity = 1;
     let obg = null;
@@ -949,6 +953,12 @@ function renderVNUI() {
         kap.usePostEffect(currentLine.screenShader);
     } else {
         kap.usePostEffect(null);
+    }
+    if (currentLine.cg) {
+    }
+    if (!currentLine.cg) {
+        VNCG.destroy();
+        VNCG = null;
     }
 //
 }
