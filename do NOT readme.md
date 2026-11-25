@@ -59,11 +59,11 @@ the visual display name
 the internal id to pull sprites from + their blip sfx. folder pathing = “assets/vn/sprites/${char}/${mood}.png”. <br>
 blip sfx and data are found in assets/vn/sfx/blips
 ### Mood
-changes which sprite is used. folder pathing = “assets/vn/sprites/${char}/${mood}.png”
+changes which sprite is used. folder pathing = “assets/vn/sprites/${char}/${mood}.png”. if you want to not have a sprite on screen eg for narration, you must leave BOTH char and mood blank.
 ### Position
  puts the sprite somewhere on the box. accepts “left” “center” “right”. if you don’t like those options, (maybe you wanna put a sprite in the air or something idk) add a custom one in renderVNSprite()
 ### Text
-what the character says. to leave the box empty, write "text": "null" with quotes around null.
+what the character says. to leave the box empty, write "text": "null" with quotes around null. of course, im sure leaving the text section empty also works, but setting it to "null" with quotes signals intention for your future self
 ### Translation
 for if a character speaks in a language other than english for a moment. translated text is displayed in a different box when settings are enabled & a line has a translation
 ### Style
@@ -75,7 +75,7 @@ mutes the blips for the line (for if you want just a sfx to play, a moment of si
 ### Effect
 modifies how the text is rendered. current effects: "shaky"
 ### Background
-changes the background. folder pathing = “assets/vn/backgrounds/${background}.png”
+changes the background. folder pathing = “assets/vn/backgrounds/${background}.png”. to remove the background, set it to "null" with quotes
 ### SpriteShader
 i need to learn shaders
 ### BgShader
