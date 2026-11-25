@@ -815,7 +815,7 @@ let VNBg = null;
 let VNBox = null;
 let VNTag = null;
 let VNColor = null;
-let VNCG = null;
+let VNCg = null;
 
 function renderVNSprite() {
     if (VNSprite) {
@@ -957,8 +957,8 @@ function renderVNUI() {
     if (currentLine.cg) {
     }
     if (!currentLine.cg) {
-        VNCG.destroy();
-        VNCG = null;
+        VNCg.destroy();
+        VNCg = null;
     }
 //
 }
