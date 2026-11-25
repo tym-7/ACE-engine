@@ -1291,7 +1291,7 @@ function resetScore() {
 // name is just the display
 // week should be for bg pathing assets/fnf/${songData.week}/images.png
 
-function getSongData(data) {
+function getSong(data) {
     return {
         id: data.id || null,
         name: data.name || "Song",
@@ -1327,7 +1327,7 @@ function getSongData(data) {
 async function loadSong(song, difficulty) {
     const r = await fetch (`assets/fnf/data/${song}/chart-${difficulty}.json`);
     const data = await r.json();
-    songData = getSongData(data);
+    songData = getSong(data);
 }
 
 let maxBgWidth = 0;
