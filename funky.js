@@ -395,6 +395,7 @@ function startTyping(text, onFinish = null) {
         typeId = null;
     }
     resetColors();
+    text = replaceText(text);
     fullText = text;
     finish = onFinish;
     const dialogueText = document.getElementById("dialogue-text");
@@ -499,6 +500,10 @@ function colorText(letter, next, span) {
         return true;
     }
     return false;
+}
+function replaceText(text) {
+    text = text.replaceAll("{variable}", variable);
+    return text;
 }
 
 function renderLine(line) {
