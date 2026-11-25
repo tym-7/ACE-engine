@@ -129,6 +129,52 @@ onClick / onEnd: <br>
 values are "sfx" "item" "itemvalue" "flag" "flagvalue" "meter" "metervalue" "custom" "gameOver" and "scene". this is the exception to my naming rule, i just felt like it to write value lowercase. for sfx, you would write "sfx": "audio.mp3" CHANGING THE AUDIO PATHING EDIT LATER. for item, you would write "item": "coins", "itemvalue": 5. item value can be negative. for flags, you would write "flag": "killedBoss", "flagvalue": true. for meters, you would write "meter": "love", "metervalue": 5. for scene, the pathing follows just like branches or next. "scene": "castle". if you want an immediate game over, set "gameOver": true. for delayed game over, just set the scene to something like "badending" and a few lines later have "gameOver": true on the base level. make your own custom logic in customChoice()<br>
 choices are far more complex than branches or triggers written out<br>
 example: <br>
+"choices": { <br>
+"when": "start", <br>
+"timer": 2000, <br>
+"onEnd": { <br>
+"sfx": "click.mp3", <br>
+"scene": "path1" <br>
+},<br>
+"options": [<br>
+{<br>
+"text": "Here's a key.",<br>
+"condition": "inv",<br>
+"conditionvalue": "key",<br>
+"min": 1,<br>
+"max": 99,<br>
+"onClick": {<br>
+"scene": "path2",<br>
+"item": "key",<br>
+"itemvalue": -1<br>
+}<br>
+},<br>
+{<br>
+"text": "I actually know the CEO",<br>
+"condition": "flag",<br>
+"conditionvalue": "knowCEO",<br>
+"onClick": {<br>
+"scene": "path3"<br>
+}<br>
+},<br>
+{<br>
+"text": "Can you please let me in?",<br>
+"onClick": {<br>
+"scene": "path4"<br>
+}<br>
+},<br>
+{<br>
+"text": "Punch the guy",<br>
+"delay": 1000,<br>
+"style": "punch",<br>
+"onClick": {<br>
+"scene": "path5",<br>
+"meter": "hp",<br>
+"metervalue": -20<br>
+} <-- closes onclick of the last option<br>
+} <-- closes the last option<br>
+] <-- closes options<br>
+} <-- closes choices<br>
 ### Other Features
 Removing Items<br>
 (Only accepted in triggers, likely adding support in choices later) You can pass "all" as an amount in trigger type "removeItem" instead of something like 9999 to remove the player's items. If an item goes below 0, it gets capped at 0.<br>
