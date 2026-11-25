@@ -32,11 +32,14 @@ All Values: <br>
 * [Position](#position)
 * [Text](#text)
 * [Translation](#translation)
+* [Alt](#alt)
 * [Style](#style)
 * [Speed](#speed)
 * [Muted](#muted)
 * [Effect](#effect)
 * [Background](#background)
+* [Transition](#transition)
+* #[CG](#cg)
 * [SpriteShader](#spriteshader)
 * [BgShader](#bgshader)
 * [ScreenShader](#screenshader)
@@ -48,7 +51,6 @@ All Values: <br>
 * [Next](#next)
 * [Branches](#branches)
 * [GameOver](#gameover)
-* [NewChapter](#newchapter)
 * [Choices](#choices)
 * [Other Features](#other-features)
 ### Id
@@ -66,6 +68,8 @@ changes which sprite is used. folder pathing = “assets/vn/sprites/${char}/${mo
 what the character says. to leave the box empty, write "text": "null" with quotes around null. of course, im sure leaving the text section empty also works, but setting it to "null" with quotes signals intention for your future self
 ### Translation
 for if a character speaks in a language other than english for a moment. translated text is displayed in a different box when settings are enabled & a line has a translation
+### Alt
+ddd
 ### Style
 modifies the box. currently modifies color, border color, box overlay, and the speaker container (referred to as tag/speaker tag). for a custom overlay, folder pathing = “assets/ui/images/{style}-overlay.png”. recommended overlay size is 1190x240. for adding new styles or wanting a style to modify new things (eg font), go to renderBox()
 ### Speed
@@ -76,6 +80,10 @@ mutes the blips for the line (for if you want just a sfx to play, a moment of si
 modifies how the text is rendered. current effects: "shaky"
 ### Background
 changes the background. folder pathing = “assets/vn/backgrounds/${background}.png”. to remove the background, set it to "null" with quotes
+### Transition
+ddd
+### CG
+ddd
 ### SpriteShader
 i need to learn shaders
 ### BgShader
@@ -119,8 +127,6 @@ example: <br>
   ]<br>
 ### GameOver
 shows the gameover screen after the player presses enter during the line. accepted as true/false
-### NewChapter
-increases the current chapter by 1. just does currentChapter++. mark only once in a dialogue array, as true, preferably the very top
 ### Choices
 shows options on screen for players to choose from. before having the options array, the values for choices are "when" "timer" and "onEnd". "when" decides the choices should be seen, either as "start", at the beginning, or on "finish", when the text finishes typing. if a timer is included, "onEnd" is required to decide the action when the timer is done. timers use ms, so 1.5s = 1500, you would write "timer": 1500, after 1.5s of not pressing an option, onEnd will fire. you would write an "onEnd" the same way as onClick in an option, so we'll get to that later. <br>
 options: <br>
