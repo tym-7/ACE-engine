@@ -39,7 +39,7 @@ All Values: <br>
 * [Effect](#effect)
 * [Background](#background)
 * [Transition](#transition)
-* #[CG](#cg)
+* [CG](#cg)
 * [SpriteShader](#spriteshader)
 * [BgShader](#bgshader)
 * [ScreenShader](#screenshader)
