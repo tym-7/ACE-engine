@@ -352,8 +352,6 @@ function gameOver() {
     alert("Empty function | gameOver");
 }
 
-// i wanna add a transition sec for backgrounds too
-
 function getLine(data) {
     return data.map(line => ({
         id: line.id || null,
@@ -369,6 +367,8 @@ function getLine(data) {
         muted: line.muted || false,
         effect: line.effect || null,
         background: line.background || null,
+        transition: line.transition || null,
+        cg: line.cg || null,
         spriteShader: line.spriteShader || null,
         bgShader: line.bgShader || null,
         screenShader: line.screenShader || null,
@@ -532,13 +532,6 @@ function renderLine(line) {
     });
     //
 }
-
-// i think i could add a setTimeout (handleTrigger, event.delay, event) to add more customization to triggers
-// i havent done that yet bc some ppl might spam skip thro dialogue so like if i code when: start delay 2000
-// skippers are gonna see it happen a couple lines later
-// plus different speed settings
-// delay might have to be a percentage and use 'i' which i think is what is used for typing to be like
-// delay 50% (or 0.5), if i / full text.length > delay do trigger
 
 function renderBox(style) {
     const box = document.getElementById("dialogue-box");
@@ -886,19 +879,37 @@ function animateVNSprite(trigger) {
 function renderVNBg() {
     if (!currentLine.background) return;
     const bg = getAsset(`assets/vn/backgrounds/${currentLine.background}.png`);
+    let opacity = 1;
+    let obg = null;
+    if (currentLine.transition === "fadeOut") {
+        obg = VNBg;
+        obg.z = 0.6;
+        VNBg = null;
+    }
+    if (currentLine.transition === "fadeIn") {
+        opacity = 0;
+    }
     if (!VNBg) {
     VNBg = kap.add([
         kap.sprite(bg),
         kap.pos(0, 0),
-        kap.z(0),
+        kap.z(0.5),
+        kap.opacity(opacity),
     ]);
+        if (currentLine.transition === "fadeIn") {
+        VNBg.fadeIn(1);
+        }
     } else {
     VNBg.use(kap.sprite(bg));
+        VNBg.opacity = opacity;
     }
     if (currentLine.bgShader) {
         VNBg.use(kap.shader(currentLine.bgShader));
     } else {
         VNBg.unuse("shader");
+    }
+    if (currentLine.transition === "fadeOut") {
+        obg.fadeOut(1).onEnd(() => kap.destroy(obg));
     }
     //
 }
@@ -906,6 +917,7 @@ function renderVNBg() {
 function renderVNUI() {
     // render the tag and the bg box here cuz they use images too okay now just the tag
     // honestly what im thinking to render full screen images is just overlaying an image on screen z(10) and set text to null so no dialogue plays instead of hiding the box
+    // i was going to want to make this a trigger but since triggers isnt passed i can afford just ahving it
     if (!VNColor) {
         VNColor = kap.add([
             kap.rect(1180,240),
