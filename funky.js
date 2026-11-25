@@ -117,10 +117,11 @@ addCharacterData();
 // i made "i" as a global variable so idk if "i" can be used anymore in a "for" loop, use index for the meanwhile 
 
 let info = {
-    p = { h: 25, d: 8, z: 5 },
-    mm = { h: 100, d: 10, z: 0 },
-    dd = { h: 140, d: 16, z: 0 },
-    h = { h: 32, d: 5, z: 0 }
+    p: { h: 25, d: 8, z: 5 },
+    mm: { h: 100, d: 10, z: 0 },
+    dd: { h: 140, d: 16, z: 0 },
+    gd: { h: 225, d: 20, z: 0 },
+    h: { h: 32, d: 5, z: 0 }
 };
 let states = {
     fd: null,
