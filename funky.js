@@ -394,6 +394,7 @@ function startTyping(text, onFinish = null) {
         clearTimeout(typeId);
         typeId = null;
     }
+    resetColors();
     fullText = text;
     finish = onFinish;
     const dialogueText = document.getElementById("dialogue-text");
@@ -413,6 +414,12 @@ function type() {
         const next = fullText.charAt(i+1);
         const span = document.createElement('span');
         span.textContent = c;
+        let hasColor = colorText(c, next, span);
+        if (hasColor) {
+            i += 2;
+            type();
+            return;
+        }
         i++;
         applyEffect(span);
         document.getElementById("dialogue-text").appendChild(span);
@@ -447,6 +454,7 @@ function finishTyping() {
     clearTimeout(typeId);
     typeId = null;
     }
+    resetColors();
     if (settings.autoplay) {
         finishId = setTimeout(() => {
             handleDialogue();
@@ -455,12 +463,42 @@ function finishTyping() {
     const dialogueText = document.getElementById("dialogue-text");
     dialogueText.innerHTML = "";
     for (let index = 0; index < fullText.length; index++) {
+        const c = fullText[index];
+        const next = fullText[index+1];
         const span = document.createElement("span");
+        let hasColor = colorText(c, next, span);
+        if (hasColor) {
+            index++;
+            continue;
+        }
         span.textContent = fullText[index];
         applyEffect(span);
         dialogueText.appendChild(span);
     }
     if (finish) finish();
+}
+let colors = {
+    red: false,
+    blue: false,
+    green: false
+};
+function resetColors() {
+    for (const color in colors) {
+        colors[color] = false;
+    }
+}
+function colorText(letter, next, span) {
+    if (letter === "r" && next === "^") {
+        span.innerHTML = "";
+        colors.red = true;
+        return true;
+    }
+    if (letter === "^" && next === "r") {
+        span.innerHTML = "";
+        colors.red = false;
+        return true;
+    }
+    return false;
 }
 
 function renderLine(line) {
@@ -552,6 +590,7 @@ function renderBox(style) {
 }
 
 function applyEffect(text) {
+    // apply colors here
     if (currentLine.effect === 'shaky') {
         text.classList.add('shaky');
     }
