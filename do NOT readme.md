@@ -133,7 +133,7 @@ example: <br>
 "when": "start", <br>
 "timer": 2000, <br>
 "onEnd": { <br>
-"sfx": "click.mp3", <br>
+"sfx": "denied.mp3", <br>
 "scene": "path1" <br>
 },<br>
 "options": [<br>
