@@ -1012,10 +1012,18 @@ function renderVNUI() {
         kap.usePostEffect(null);
     }
     if (currentLine.cg) {
+        const cg = getAsset(`assets/vn/backgrounds/${currentLine.cg}.png`);
+        VNCg = kap.add([
+            kap.sprite(cg),
+            kap.pos(0,0),
+            kap.z(10),
+        ]);
     }
     if (!currentLine.cg) {
+        if (VNCg) {
         VNCg.destroy();
         VNCg = null;
+        }
     }
 //
 }
