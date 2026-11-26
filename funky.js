@@ -1211,13 +1211,13 @@ function handleHit(rating) {
 }
 
 function updateHp(rating) {
-    let table = null; // should i code hold: {somehpvalue} and call updateHp(hold) inside of the hold handling lowk
+    let table = null;
     if (settings.hardMode) {
-        const hardTable = { sick: 1, good: -3, bad: -10, shit: -15, miss: -50};
+        const hardTable = { sick: 1, good: -3, bad: -10, shit: -15, miss: -50, hold: 0.016};
         table = hardTable;
     }
     if (!settings.hardMode) {
-        const normalTable = {sick: 5, good: 2, bad: 0, shit: 0, miss: -8 };
+        const normalTable = {sick: 5, good: 2, bad: 0, shit: 0, miss: -8, hold: 0.12 };
         table = normalTable;
     }
     let num = table[rating];
@@ -2118,6 +2118,7 @@ if (!inSong) return;
             handleSustain(note);
             note.pos.y = strumline;
             note.height = Math.max(0, bodyTime * 0.3 * songData.scrollSpeed);
+            updateHp(hold);
         }
         if (!heldKeys.has(note.lane) && bodyTime > allowedRelease && !note.missed) {
             kap.destroy(note.end);
