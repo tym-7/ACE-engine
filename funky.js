@@ -1387,6 +1387,7 @@ function getSong(data) {
         week: data.week || null,
         mix: data.mix || null,
         lanes: data.lanes || 4,
+        difficulty: data.difficulty || 1,
         composer: data.composer || "john music",
         charter: data.charter || "john charter",
         bpm: data.bpm || 120,
