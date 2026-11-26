@@ -1211,7 +1211,7 @@ function handleHit(rating) {
 }
 
 function updateHp(rating) {
-    let table = null;
+    let table = null; // should i code hold: {somehpvalue} and call updateHp(hold) inside of the hold handling lowk
     if (settings.hardMode) {
         const hardTable = { sick: 1, good: -3, bad: -10, shit: -15, miss: -50};
         table = hardTable;
