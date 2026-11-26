@@ -1361,6 +1361,7 @@ function getSong(data) {
         id: data.id || null,
         name: data.name || "Song",
         week: data.week || null,
+        mix: data.mix || null,
         lanes: data.lanes || 4,
         composer: data.composer || "john music",
         charter: data.charter || "john charter",
@@ -1489,12 +1490,22 @@ function setAudio () {
 instId = null;
 voicesPId = null;
 voicesOId = null;
+    if (!songData.mix) {
 instId = getAsset(`assets/fnf/songs/${songData.id}/inst.ogg`);
 voicesPId = getAsset(`assets/fnf/songs/${songData.id}/voices.ogg`);
 if (!voicesPId) {
 voicesPId = getAsset(`assets/fnf/songs/${songData.id}/voices-${songData.player}.ogg`);
 voicesOId = getAsset(`assets/fnf/songs/${songData.id}/voices-${songData.opponent}.ogg`);
 }
+    }
+    if (songData.mix) {
+        instId = getAsset(`assets/fnf/songs/${songData.id}/inst-${songData.mix}.ogg`);
+        voicesPId = getAsset(`assets/fnf/songs/${songData.id}/voices-${songData.mix}.ogg`);
+        if (!voicesPId) {
+            voicesPId = getAsset(`assets/fnf/songs/${songData.id}/voices-${songData.player}-${songData.mix}.ogg`);
+            voicesOId = getAsset(`assets/fnf/songs/${songData.id}/voices-${songData.opponent}-${songData.mix}.ogg`);
+        }
+    }
 }
 
 function checkAudio (time) {
