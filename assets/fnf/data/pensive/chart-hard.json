@@ -1,0 +1,11 @@
+  {
+    "id": "pensive",
+    "name": "Pensive",
+    "week": "week2",
+    "composer": "Kimmy",
+    "charter": "IGP",
+    "bpm": 160,
+    "scrollSpeed": 2.2,
+    "player": "pico",
+    "opponent": "bf"
+  }
