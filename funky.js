@@ -225,6 +225,30 @@ function resetGame() {
     meters = {stamina: 100, picolove: 50, keithlove: 50, sanity: 100, lv: 0, approval: 0};
 }
 
+let rebinding = false;
+let rebindLane = null;
+let rebindIndex = null;
+let newKey = null;
+document.addEventListener("keydown", (e) => {
+    if (!rebinding) return;
+  newKey = e.key.toUpperCase();
+    if (rebindLane === 4) {
+        keybinds4K[rebindIndex] =  newKey;
+    }
+    quitRebind();
+});
+function rebind(k, index) {
+    rebinding = true;
+    rebindLane = k;
+    rebindIndex = index;
+    // show whatever screen i make in html
+}
+function quitRebind() {
+    newKey = null;
+    rebinding = false;
+    // remove whatever screen i make
+}
+
 function save4Keybinds() {
     localStorage.setItem(keybinds4KSave, JSON.stringify(keybinds4K));
 }
